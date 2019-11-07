@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
+  <services>
+    <service name="ProfesorServices">
+      <implementation-class>pe.edu.pucp.sinapxon.services.ProfesorServices</implementation-class>
+    </service>
+    <service name="AdministradorServices">
+      <implementation-class>pe.edu.pucp.sinapxon.services.AdministradorServices</implementation-class>
+    </service>
+    <service name="LoginServices">
+      <implementation-class>pe.edu.pucp.sinapxon.services.LoginServices</implementation-class>
+    </service>
+    <service name="AlumnoServices">
+      <implementation-class>pe.edu.pucp.sinapxon.services.AlumnoServices</implementation-class>
+    </service>
+  </services>
+  <clients/>
+</jax-ws>
