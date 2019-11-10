@@ -12,6 +12,7 @@ public class Tema {
     private String nombre;
     private String descripcion;
     private String link;
+    private Classroom classroom;
     
     public Tema() {
         
@@ -66,4 +67,20 @@ public class Tema {
     public void setLink(String link) {
         this.link = link;
     }
+
+    /**
+     * @return the classroom
+     */
+    public Classroom getClassroom() {
+        return classroom;
+    }
+
+    /**
+     * @param classroom the classroom to set
+     */
+    public void setClassroom(Classroom classroom) {
+        this.classroom = classroom;
+    }
+    
+    
 }

@@ -41,11 +41,14 @@ public class SinpaxonTest {
 //            System.err.println(periodo.getNombre());
 //        }
         
-//        Tema tema = new Tema();
-//        tema.setDescripcion("hmm");
-//        tema.setNombre("hmm");
-//        tema.setLink("hmm");
-//        DBController.insertarTema(tema);
+        Tema tema = new Tema();
+        tema.setDescripcion("xxx");
+        tema.setNombre("xxx");
+        tema.setLink("xxx");
+        Classroom classroom= new Classroom();
+        classroom.setCodigo("H-0222");
+        tema.setClassroom(classroom);
+        DBController.insertarTema(tema);
         
 //        ArrayList<Profesor> proefesores = DBController.listarProfesores("");
 //        for (Profesor proefesore : proefesores) {

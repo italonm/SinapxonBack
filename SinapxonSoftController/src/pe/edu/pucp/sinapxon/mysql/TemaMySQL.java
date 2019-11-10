@@ -26,10 +26,11 @@ public class TemaMySQL implements TemaDAO{
     public void insertarTema(Tema tema) {
         try{
             con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
-            cs = con.prepareCall("{call INSERTAR_TEMA(?,?,?,?)}");
+            cs = con.prepareCall("{call INSERTAR_TEMA(?,?,?,?,?)}");
             cs.setString("_NOMBRE", tema.getNombre());
             cs.setString("_DESCRIPCION",tema.getDescripcion());
             cs.setString("_LINK", tema.getLink());
+            cs.setString("_COD_CLASSROOM", tema.getClassroom().getCodigo());
             cs.registerOutParameter("_ID_TEMA",java.sql.Types.INTEGER);
             cs.executeUpdate();
             tema.setId_tema(cs.getInt("_ID_TEMA"));
