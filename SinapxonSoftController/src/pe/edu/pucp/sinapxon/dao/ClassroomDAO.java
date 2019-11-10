@@ -13,6 +13,6 @@ import pe.edu.pucp.sinapxon.model.Classroom;
  * @author Italo
  */
 public interface ClassroomDAO {
-    public ArrayList<Classroom> listarClassroomxProfesor(String codigo);
+    public ArrayList<Classroom> listarClassroomxProfesor(String codigo,String nombre);
     public ArrayList<Classroom> listarClassroomxAlumno(String codigo);
 }

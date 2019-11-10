@@ -33,13 +33,14 @@ public class ClassroomMySQL implements ClassroomDAO{
     CallableStatement cs;
     
     @Override
-    public ArrayList<Classroom> listarClassroomxProfesor(String codigo) {
+    public ArrayList<Classroom> listarClassroomxProfesor(String codigo,String nombre) {
         ArrayList<Classroom> classrooms = new ArrayList<Classroom>();
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
-            cs = con.prepareCall("{call LISTAR_CLASSROOM_X_PROFESOR(?)}");
+            cs = con.prepareCall("{call LISTAR_CLASSROOM_X_PROFESOR(?,?)}");
             cs.setString("_CODIGO", codigo);
+            cs.setString("_NOMBRE", nombre);
             ResultSet rs = cs.executeQuery();
             while(rs.next()){
                 Classroom classroom = new Classroom();

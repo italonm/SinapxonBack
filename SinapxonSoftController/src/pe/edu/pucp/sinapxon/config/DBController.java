@@ -30,8 +30,8 @@ public abstract class DBController {
         return daoFactory.getPersonaDAO().validar(nickname, password);
     }
     
-    public static ArrayList<Classroom> listarClassroomxProfesor(String codigo){
-        return daoFactory.getClassroomDAO().listarClassroomxProfesor(codigo);
+    public static ArrayList<Classroom> listarClassroomxProfesor(String codigo,String nombre){
+        return daoFactory.getClassroomDAO().listarClassroomxProfesor(codigo,nombre);
     }
     
     public static ArrayList<Classroom> listarClassroomxAlumno(String codigo){

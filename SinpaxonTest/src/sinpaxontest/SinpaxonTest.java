@@ -24,9 +24,10 @@ public class SinpaxonTest {
      */
     public static void main(String[] args) {
         // Listar los classrooms de un profesor
-//        ArrayList<Classroom> classrooms = DBController.listarClassroomxProfesor("198800");
-//        Classroom classroom = classrooms.get(0);
-//        System.out.println(classroom.getCodigo()+" "+classroom.getCurso().getNombre());
+        ArrayList<Classroom> classrooms = DBController.listarClassroomxProfesor("198800","");
+        for(Classroom c : classrooms){
+            System.out.println(c.getCurso().getCodigo()+" "+c.getCodigo()+" "+c.getCurso().getNombre());
+        }
         
         // Listar los cursos
 //        ArrayList<Curso> cursos = DBController.listarCursos("");
@@ -46,10 +47,11 @@ public class SinpaxonTest {
 //        tema.setLink("hmm");
 //        DBController.insertarTema(tema);
         
-        ArrayList<Profesor> proefesores = DBController.listarProfesores("");
-        for (Profesor proefesore : proefesores) {
-            System.out.println(proefesore.getNombre());
-        }
+//        ArrayList<Profesor> proefesores = DBController.listarProfesores("");
+//        for (Profesor proefesore : proefesores) {
+//            System.out.println(proefesore.getNombre());
+//        }
+        
     }
     
 }

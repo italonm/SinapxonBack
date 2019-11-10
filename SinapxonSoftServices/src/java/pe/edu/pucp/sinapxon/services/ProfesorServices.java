@@ -25,9 +25,8 @@ import pe.edu.pucp.sinapxon.model.Tema;
 public class ProfesorServices {
 
     @WebMethod(operationName = "listarClassroomxProfesor")
-    public ArrayList<Classroom> listarClassroomxProfesor(@WebParam(name="codigo")String codigo) {
-        ArrayList<Classroom> clas =  DBController.listarClassroomxProfesor(codigo);
-        return clas;
+    public ArrayList<Classroom> listarClassroomxProfesor(@WebParam(name="codigo")String codigo, @WebParam(name="nombre")String nombre) {
+        return DBController.listarClassroomxProfesor(codigo,nombre);
     }
     
     @WebMethod(operationName = "listarCursos")
@@ -52,6 +51,7 @@ public class ProfesorServices {
     public void insertarSolicitudClassroom(@WebParam(name="solicitudclassroom")SolicitudClassroom solicitudclassroom){
         DBController.insertarSolicitudClassroom(solicitudclassroom);
     }
+    
     @WebMethod(operationName = "insertarTema")
     public void insertarTema(@WebParam(name="tema")Tema tema){
         DBController.insertarTema(tema);

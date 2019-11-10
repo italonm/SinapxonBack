@@ -21,3 +21,6 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/SinpaxonTest/dist/
+!/SinapxonSoftController/src/pe/edu/pucp/sinapxon/lib/mysql-connector-java-8.0.17.jar
+!/SinapxonSoftServices/src/java/pe/edu/pucp/sinapxon/lib/mysql-connector-java-8.0.17.jar
