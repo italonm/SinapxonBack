@@ -105,8 +105,8 @@ public class Classroom implements Serializable {
         alumnos.add(alumno);
     }
 
-    public int getPeriodo() {
-        return periodo.getId_periodo();
+    public Periodo getPeriodo() {
+        return periodo;
     }
 
     public void setPeriodo(Periodo periodo) {
