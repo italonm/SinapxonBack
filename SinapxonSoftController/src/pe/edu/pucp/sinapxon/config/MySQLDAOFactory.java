@@ -8,6 +8,7 @@ package pe.edu.pucp.sinapxon.config;
 import pe.edu.pucp.sinapxon.dao.AlumnoDAO;
 import pe.edu.pucp.sinapxon.dao.ClassroomDAO;
 import pe.edu.pucp.sinapxon.dao.CursoDAO;
+import pe.edu.pucp.sinapxon.dao.EspecialidadDAO;
 import pe.edu.pucp.sinapxon.dao.IdiomaDAO;
 import pe.edu.pucp.sinapxon.dao.PeriodoDAO;
 import pe.edu.pucp.sinapxon.dao.PersonaDAO;
@@ -17,6 +18,7 @@ import pe.edu.pucp.sinapxon.dao.TemaDAO;
 import pe.edu.pucp.sinapxon.mysql.AlumnoMySQL;
 import pe.edu.pucp.sinapxon.mysql.ClassroomMySQL;
 import pe.edu.pucp.sinapxon.mysql.CursoMySQL;
+import pe.edu.pucp.sinapxon.mysql.EspecialidadMySQL;
 import pe.edu.pucp.sinapxon.mysql.IdiomaMySQL;
 import pe.edu.pucp.sinapxon.mysql.PeriodoMySQL;
 import pe.edu.pucp.sinapxon.mysql.PersonaMySQL;
@@ -81,5 +83,10 @@ public class MySQLDAOFactory extends DAOFactory{
     @Override
     public TemaDAO getTemaDAO() {
         return new TemaMySQL();
+    }
+
+    @Override
+    public EspecialidadDAO getEspecialidadDAO() {
+        return new EspecialidadMySQL();
     }
 }

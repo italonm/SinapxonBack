@@ -23,7 +23,6 @@ import pe.edu.pucp.sinapxon.model.Idioma;
 public class IdiomaMySQL implements IdiomaDAO{
 
     Connection con;
-    Statement st = null;
     CallableStatement cs;
     
     @Override
@@ -46,5 +45,22 @@ public class IdiomaMySQL implements IdiomaDAO{
             try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
         }
         return idiomas;
+    }
+    
+    @Override
+    public void insertarIdioma(Idioma idioma) {
+        try{
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call INSERTAR_IDIOMA(?,?)}");
+            cs.setString("_NOMBRE", idioma.getNombre());
+            cs.registerOutParameter("_ID_IDIOMA", java.sql.Types.INTEGER);
+            cs.executeUpdate();
+            idioma.setId_idioma(cs.getInt("_ID_IDIOMA"));
+            
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();} catch(Exception ex){System.out.println();}
+        }
     }
 }

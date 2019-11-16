@@ -6,13 +6,13 @@
 package pe.edu.pucp.sinapxon.dao;
 
 import java.util.ArrayList;
-import pe.edu.pucp.sinapxon.model.Idioma;
+import pe.edu.pucp.sinapxon.model.Especialidad;
 
 /**
  *
  * @author Rick
  */
-public interface IdiomaDAO {
-    public void insertarIdioma(Idioma idioma);
-    public ArrayList<Idioma> listarIdiomas();
+public interface EspecialidadDAO {
+    public void insertarEspecialidad(Especialidad especialidad, String idAdministrador);
+    public ArrayList<Especialidad> listarEspecialidades();
 }
