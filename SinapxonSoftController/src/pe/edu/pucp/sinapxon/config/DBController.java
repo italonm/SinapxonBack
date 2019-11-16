@@ -10,6 +10,7 @@ import pe.edu.pucp.sinapxon.model.Alumno;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
 import pe.edu.pucp.sinapxon.model.Idioma;
+import pe.edu.pucp.sinapxon.model.Pais;
 import pe.edu.pucp.sinapxon.model.Periodo;
 import pe.edu.pucp.sinapxon.model.Persona;
 import pe.edu.pucp.sinapxon.model.Profesor;
@@ -56,8 +57,16 @@ public abstract class DBController {
         daoFactory.getAlumnoDAO().insertarAlumno(alumno);
     }
     
-    public static void insertarProfesor(Profesor profesor){
-        daoFactory.getProfesorDAO().insertarProfesor(profesor);
+    public static int insertarProfesor(Profesor profesor){
+        return daoFactory.getProfesorDAO().insertarProfesor(profesor);
+    }
+    
+    public static int actualizarProfesor(Profesor profesor){
+        return daoFactory.getProfesorDAO().actualizarProfesor(profesor);
+    }
+    
+    public static int eliminarProfesor(String idProfesor){
+        return daoFactory.getProfesorDAO().eliminarProfesor(idProfesor);
     }
    
     public static ArrayList<Idioma> listarIdiomas(){
@@ -75,5 +84,10 @@ public abstract class DBController {
     public static ArrayList<Profesor> listarProfesores(String nombre)
     {
         return daoFactory.getProfesorDAO().listarProfesores(nombre);
+    }
+    
+    public static ArrayList<Pais> listarPaises()
+    {
+        return daoFactory.getPaisDAO().listarPais();
     }
 }
