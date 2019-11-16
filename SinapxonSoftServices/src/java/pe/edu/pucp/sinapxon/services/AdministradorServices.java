@@ -43,10 +43,20 @@ public class AdministradorServices {
     }
     
     @WebMethod(operationName = "insertarAlumno")
-    public void insertarAlumno(Alumno alumno){
-        DBController.insertarAlumno(alumno);
+    public int insertarAlumno(Alumno alumno){
+        return DBController.insertarAlumno(alumno);
     }
 
+    @WebMethod(operationName = "actualizarAlumno")
+    public int actualizarAlumno(Alumno alumno){
+        return DBController.actualizarAlumno(alumno);
+    }
+    
+    @WebMethod(operationName = "eliminarAlumno")
+    public int eliminarAlumno(String idAlumno){
+        return DBController.eliminarAlumno(idAlumno);
+    }
+    
     @WebMethod(operationName = "listarCursos")
     public ArrayList<Curso> listarCursos(String nombre) {
         ArrayList<Curso> cursos = DBController.listarCursos(nombre);
@@ -57,6 +67,12 @@ public class AdministradorServices {
     public ArrayList<Profesor> listarProfes(String nombre) {
         ArrayList<Profesor> profesores = DBController.listarProfesores(nombre);
         return profesores;
+    }
+    
+    @WebMethod(operationName = "listarAlumnos")
+    public ArrayList<Alumno> listarAlumnos(String nombre) {
+        ArrayList<Alumno> alumnos = DBController.listarAlumnos(nombre);
+        return alumnos;
     }
     
     @WebMethod(operationName = "listarPaises")

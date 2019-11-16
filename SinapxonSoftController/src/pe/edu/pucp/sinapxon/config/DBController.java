@@ -53,8 +53,16 @@ public abstract class DBController {
         daoFactory.getCursoDAO().insertarCurso(curso);
     }
     
-    public static void insertarAlumno(Alumno alumno){
-        daoFactory.getAlumnoDAO().insertarAlumno(alumno);
+    public static int insertarAlumno(Alumno alumno){
+        return daoFactory.getAlumnoDAO().insertarAlumno(alumno);
+    }
+    
+    public static int actualizarAlumno(Alumno alumno){
+        return daoFactory.getAlumnoDAO().actualizarAlumno(alumno);
+    }
+    
+    public static int eliminarAlumno(String idAlumno){
+        return daoFactory.getAlumnoDAO().eliminarAlumno(idAlumno);
     }
     
     public static int insertarProfesor(Profesor profesor){
@@ -84,6 +92,11 @@ public abstract class DBController {
     public static ArrayList<Profesor> listarProfesores(String nombre)
     {
         return daoFactory.getProfesorDAO().listarProfesores(nombre);
+    }
+    
+    public static ArrayList<Alumno> listarAlumnos(String nombre)
+    {
+        return daoFactory.getAlumnoDAO().listarAlumnos(nombre);
     }
     
     public static ArrayList<Pais> listarPaises()
