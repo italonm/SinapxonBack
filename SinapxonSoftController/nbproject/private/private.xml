@@ -5,6 +5,8 @@
         724ccc332fa98b06d304a4efcd39e09cacd40151
     <group>
             <file>file:/D:/Proyectos/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/config/DBController.java</file>
+            <file>file:/D:/Proyectos/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/dao/ClassroomDAO.java</file>
+            <file>file:/D:/Proyectos/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/mysql/ClassroomMySQL.java</file>
         </group>
     </open-files>
 </project-private>

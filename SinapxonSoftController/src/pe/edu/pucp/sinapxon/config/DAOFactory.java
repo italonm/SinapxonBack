@@ -8,6 +8,7 @@ package pe.edu.pucp.sinapxon.config;
 import pe.edu.pucp.sinapxon.dao.AlumnoDAO;
 import pe.edu.pucp.sinapxon.dao.ClassroomDAO;
 import pe.edu.pucp.sinapxon.dao.CursoDAO;
+import pe.edu.pucp.sinapxon.dao.EspecialidadDAO;
 import pe.edu.pucp.sinapxon.dao.IdiomaDAO;
 import pe.edu.pucp.sinapxon.dao.PeriodoDAO;
 import pe.edu.pucp.sinapxon.dao.PersonaDAO;
@@ -25,6 +26,7 @@ public abstract class DAOFactory {
     public abstract ClassroomDAO getClassroomDAO();
     public abstract CursoDAO getCursoDAO();
     public abstract AlumnoDAO getAlumnoDAO();
+    public abstract EspecialidadDAO getEspecialidadDAO();
     public abstract ProfesorDAO getProfesorDAO();
     public abstract PeriodoDAO getPeriodoDAO();
     public abstract IdiomaDAO getIdiomaDAO();
