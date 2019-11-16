@@ -6,6 +6,7 @@
 package pe.edu.pucp.sinapxon.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import pe.edu.pucp.sinapxon.model.Periodo;
 
 /**
@@ -14,4 +15,6 @@ import pe.edu.pucp.sinapxon.model.Periodo;
  */
 public interface PeriodoDAO {
     public ArrayList<Periodo> listarPeriodo();
+    public ArrayList<Periodo> listarPeriodosDisponibles();
+    public ArrayList<Periodo> listarRangoPeriodos(Date fechaIni, Date fechaFin);
 }

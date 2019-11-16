@@ -6,6 +6,7 @@
 package pe.edu.pucp.sinapxon.config;
 
 import java.util.ArrayList;
+import java.util.Date;
 import pe.edu.pucp.sinapxon.model.Alumno;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
@@ -46,6 +47,14 @@ public abstract class DBController {
     public static ArrayList<Periodo> listarPeriodos()
     {
         return daoFactory.getPeriodoDAO().listarPeriodo();
+    }
+    
+    public static ArrayList<Periodo> listarPeriodosDisponibles(){
+        return daoFactory.getPeriodoDAO().listarPeriodosDisponibles();
+    }
+    
+    public static ArrayList<Periodo> listarRangoPeriodos(Date fechaIni, Date fechaFin){
+        return daoFactory.getPeriodoDAO().listarRangoPeriodos(fechaIni, fechaFin);
     }
     
     public static void insertarCurso(Curso curso){
