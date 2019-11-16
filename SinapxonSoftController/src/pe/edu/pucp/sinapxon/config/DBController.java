@@ -6,9 +6,11 @@
 package pe.edu.pucp.sinapxon.config;
 
 import java.util.ArrayList;
+import java.util.Date;
 import pe.edu.pucp.sinapxon.model.Alumno;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
+import pe.edu.pucp.sinapxon.model.Especialidad;
 import pe.edu.pucp.sinapxon.model.Idioma;
 import pe.edu.pucp.sinapxon.model.Periodo;
 import pe.edu.pucp.sinapxon.model.Persona;
@@ -43,9 +45,16 @@ public abstract class DBController {
         return daoFactory.getCursoDAO().listarCurso(nombre);
     }
     
-    public static ArrayList<Periodo> listarPeriodos()
-    {
+    public static ArrayList<Periodo> listarPeriodos(){
         return daoFactory.getPeriodoDAO().listarPeriodo();
+    }
+    
+    public static ArrayList<Periodo> listarPeriodosDisponibles(){
+        return daoFactory.getPeriodoDAO().listarPeriodosDisponibles();
+    }
+    
+    public static ArrayList<Periodo> listarRangoPeriodos(Date fechaIni, Date fechaFin){
+        return daoFactory.getPeriodoDAO().listarRangoPeriodos(fechaIni, fechaFin);
     }
     
     public static void insertarCurso(Curso curso){
@@ -60,6 +69,10 @@ public abstract class DBController {
         daoFactory.getProfesorDAO().insertarProfesor(profesor);
     }
    
+    public static void insertarIdioma(Idioma idioma){
+        daoFactory.getIdiomaDAO().insertarIdioma(idioma);
+    }
+    
     public static ArrayList<Idioma> listarIdiomas(){
         return daoFactory.getIdiomaDAO().listarIdiomas();
     }
@@ -72,8 +85,15 @@ public abstract class DBController {
         daoFactory.getTemaDAO().insertarTema(tema);
     }
     
-    public static ArrayList<Profesor> listarProfesores(String nombre)
-    {
+    public static ArrayList<Profesor> listarProfesores(String nombre){
         return daoFactory.getProfesorDAO().listarProfesores(nombre);
+    }
+    
+    public static void insertarEspecialidad(Especialidad especialidad, String idAdministrador){
+        daoFactory.getEspecialidadDAO().insertarEspecialidad(especialidad, idAdministrador);
+    }
+    
+    public static ArrayList<Especialidad> listarEspecialidades(){
+        return daoFactory.getEspecialidadDAO().listarEspecialidades();
     }
 }

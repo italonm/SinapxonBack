@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import pe.edu.pucp.sinapxon.config.DBController;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
+import pe.edu.pucp.sinapxon.model.Especialidad;
+import pe.edu.pucp.sinapxon.model.Idioma;
 import pe.edu.pucp.sinapxon.model.Periodo;
 import pe.edu.pucp.sinapxon.model.Profesor;
 import pe.edu.pucp.sinapxon.model.Tema;
@@ -23,38 +25,12 @@ public class SinpaxonTest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // Listar los classrooms de un profesor
-        ArrayList<Classroom> classrooms = DBController.listarClassroomxProfesor("198800","");
-        for(Classroom c : classrooms){
-            System.out.println(c.getCurso().getCodigo()+" "+c.getCodigo()+" "+c.getCurso().getNombre());
+        ArrayList<Classroom> classrooms = DBController.listarClassroomxAlumno("201521");
+        for (Classroom classroom : classrooms) {
+            System.out.println(classroom.getProfesor().getNombre());
         }
-        
-        // Listar los cursos
-//        ArrayList<Curso> cursos = DBController.listarCursos("");
-//        for (Curso curso : cursos) {
-//            System.err.println(curso.getCodigo()+" "+curso.getNombre());
-//        }
-        
-//        Listar los periodos
-//        ArrayList<Periodo> periodos = DBController.listarPeriodos();
-//        for (Periodo periodo : periodos) {
-//            System.err.println(periodo.getNombre());
-//        }
-        
-        Tema tema = new Tema();
-        tema.setDescripcion("xxx");
-        tema.setNombre("xxx");
-        tema.setLink("xxx");
-        Classroom classroom= new Classroom();
-        classroom.setCodigo("H-0222");
-        tema.setClassroom(classroom);
-        DBController.insertarTema(tema);
-        
-//        ArrayList<Profesor> proefesores = DBController.listarProfesores("");
-//        for (Profesor proefesore : proefesores) {
-//            System.out.println(proefesore.getNombre());
-//        }
-        
+        ArrayList<Especialidad> es = DBController.listarEspecialidades();
+        for(Especialidad e : es)
+            System.out.println(e.getId_especialidad() + " - " + e.getNombre() + " - " + e.getDescripcion());
     }
-    
 }
