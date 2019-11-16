@@ -23,8 +23,13 @@ public class SinpaxonTest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ArrayList<Periodo> periodos = DBController.listarPeriodosDisponibles();
-        for(Periodo p : periodos)
-            System.out.println(p.getNombre());
+//        ArrayList<Periodo> periodos = DBController.listarPeriodosDisponibles();
+//        for(Periodo p : periodos)
+//            System.out.println(p.getNombre());
+        
+        ArrayList<Classroom> classrooms = DBController.listarClassroomxAlumno("201521");
+        for (Classroom classroom : classrooms) {
+            System.out.println(classroom.getProfesor().getNombre());
+        }
     }
 }

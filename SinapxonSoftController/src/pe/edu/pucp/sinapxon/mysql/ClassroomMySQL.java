@@ -85,7 +85,9 @@ public class ClassroomMySQL implements ClassroomDAO{
                 curso.setEspecialidad(especialidad);
                 classroom.setCurso(curso);
                 classroom.setCodigo(rs.getString("HORARIO"));
-                classroom.setProfesor(new Profesor());
+                Profesor profesor = new Profesor();
+                profesor.setNombre(rs.getString("PROFESOR"));
+                classroom.setProfesor(profesor);
                 classroom.setAlumnos(new ArrayList<>());
                 classroom.setTemas(new ArrayList<>());
                 classroom.setPeriodo(new Periodo());

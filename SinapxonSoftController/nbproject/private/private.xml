@@ -2,8 +2,9 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/Cursos%20PUCP/LP2/Proyecto%20Grupal/Repositorios/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/mysql/ClassroomMySQL.java</file>
-        </group>724ccc332fa98b06d304a4efcd39e09cacd40151
+        724ccc332fa98b06d304a4efcd39e09cacd40151
+    <group>
+            <file>file:/D:/Proyectos/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/config/DBController.java</file>
+        </group>
     </open-files>
 </project-private>
