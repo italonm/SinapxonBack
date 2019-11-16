@@ -23,38 +23,8 @@ public class SinpaxonTest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // Listar los classrooms de un profesor
-        ArrayList<Classroom> classrooms = DBController.listarClassroomxProfesor("198800","");
-        for(Classroom c : classrooms){
-            System.out.println(c.getCurso().getCodigo()+" "+c.getCodigo()+" "+c.getCurso().getNombre());
-        }
-        
-        // Listar los cursos
-//        ArrayList<Curso> cursos = DBController.listarCursos("");
-//        for (Curso curso : cursos) {
-//            System.err.println(curso.getCodigo()+" "+curso.getNombre());
-//        }
-        
-//        Listar los periodos
-//        ArrayList<Periodo> periodos = DBController.listarPeriodos();
-//        for (Periodo periodo : periodos) {
-//            System.err.println(periodo.getNombre());
-//        }
-        
-        Tema tema = new Tema();
-        tema.setDescripcion("xxx");
-        tema.setNombre("xxx");
-        tema.setLink("xxx");
-        Classroom classroom= new Classroom();
-        classroom.setCodigo("H-0222");
-        tema.setClassroom(classroom);
-        DBController.insertarTema(tema);
-        
-//        ArrayList<Profesor> proefesores = DBController.listarProfesores("");
-//        for (Profesor proefesore : proefesores) {
-//            System.out.println(proefesore.getNombre());
-//        }
-        
+        ArrayList<Periodo> periodos = DBController.listarPeriodosDisponibles();
+        for(Periodo p : periodos)
+            System.out.println(p.getNombre());
     }
-    
 }
