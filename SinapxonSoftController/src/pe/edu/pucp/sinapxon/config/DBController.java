@@ -12,6 +12,7 @@ import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
 import pe.edu.pucp.sinapxon.model.Especialidad;
 import pe.edu.pucp.sinapxon.model.Idioma;
+import pe.edu.pucp.sinapxon.model.Pais;
 import pe.edu.pucp.sinapxon.model.Periodo;
 import pe.edu.pucp.sinapxon.model.Persona;
 import pe.edu.pucp.sinapxon.model.Profesor;
@@ -73,6 +74,9 @@ public abstract class DBController {
         daoFactory.getIdiomaDAO().insertarIdioma(idioma);
     }
     
+    public static ArrayList<Pais> listarPaises(){
+        return daoFactory.getPaisDAO().listarPaises();
+    }
     public static ArrayList<Idioma> listarIdiomas(){
         return daoFactory.getIdiomaDAO().listarIdiomas();
     }

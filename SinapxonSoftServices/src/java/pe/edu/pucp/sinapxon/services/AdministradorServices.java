@@ -12,6 +12,7 @@ import javax.jws.WebParam;
 import pe.edu.pucp.sinapxon.config.DBController;
 import pe.edu.pucp.sinapxon.model.Alumno;
 import pe.edu.pucp.sinapxon.model.Curso;
+import pe.edu.pucp.sinapxon.model.Pais;
 import pe.edu.pucp.sinapxon.model.Profesor;
 
 /**
@@ -35,7 +36,13 @@ public class AdministradorServices {
     public void insertarAlumno(Alumno alumno){
         DBController.insertarAlumno(alumno);
     }
-
+    
+    @WebMethod(operationName = "listarPaises")
+    public ArrayList<Pais> listarPaises(){
+        ArrayList<Pais> paises = DBController.listarPaises();
+        return paises;
+    }
+    
     @WebMethod(operationName = "listarCursos")
     public ArrayList<Curso> listarCursos(String nombre) {
         ArrayList<Curso> cursos = DBController.listarCursos(nombre);
