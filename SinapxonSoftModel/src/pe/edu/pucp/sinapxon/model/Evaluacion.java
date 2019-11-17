@@ -12,10 +12,14 @@ public class Evaluacion {
     private String nombre;
     private float peso_porcentual;
     private ArrayList<Entregable> entregables;
+    private String descripcion;
+    
     
     public Evaluacion() {
         
     }
+    
+    
     
     public Evaluacion(String nombre) {
         this.nombre = nombre;
@@ -48,5 +52,19 @@ public class Evaluacion {
 
     public void setPeso_porcentual(float peso_porcentual) {
         this.peso_porcentual = peso_porcentual;
+    }
+
+    /**
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }

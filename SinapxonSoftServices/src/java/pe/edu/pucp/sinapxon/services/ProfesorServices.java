@@ -12,6 +12,7 @@ import javax.jws.WebParam;
 import pe.edu.pucp.sinapxon.config.DBController;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
+import pe.edu.pucp.sinapxon.model.Evaluacion;
 import pe.edu.pucp.sinapxon.model.Idioma;
 import pe.edu.pucp.sinapxon.model.Periodo;
 import pe.edu.pucp.sinapxon.model.SolicitudClassroom;
@@ -55,5 +56,10 @@ public class ProfesorServices {
     @WebMethod(operationName = "insertarTema")
     public void insertarTema(@WebParam(name="tema")Tema tema){
         DBController.insertarTema(tema);
+    }
+    
+    @WebMethod(operationName = "insertarEvaluacion")
+    public void insertarEvaluacion(@WebParam(name="evaluacion")Evaluacion evaluacion){
+        //DBController.insertarTema(tema);
     }
 }
