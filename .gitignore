@@ -25,5 +25,5 @@ hs_err_pid*
 !/SinapxonSoftController/src/pe/edu/pucp/sinapxon/lib/mysql-connector-java-8.0.17.jar
 !/SinapxonSoftServices/src/java/pe/edu/pucp/sinapxon/lib/mysql-connector-java-8.0.17.jar
 /SinapxonSoftServices/dist/
-/SinpaxonController/dist/
-/SinpaxonModel/dist/
+/SinapxonSoftController/build/built-jar.properties
+/SinapxonSoftModel/build/built-jar.properties
