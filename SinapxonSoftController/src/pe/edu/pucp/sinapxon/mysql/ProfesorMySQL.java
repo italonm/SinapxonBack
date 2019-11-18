@@ -51,7 +51,7 @@ public class ProfesorMySQL implements ProfesorDAO{
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
         }finally{
-            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+            try{con.setAutoCommit(true);cs.close();con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
         }
         return resultado;
     }

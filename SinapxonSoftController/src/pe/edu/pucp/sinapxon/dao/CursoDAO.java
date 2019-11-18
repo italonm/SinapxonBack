@@ -13,6 +13,8 @@ import pe.edu.pucp.sinapxon.model.Curso;
  * @author Italo
  */
 public interface CursoDAO {
-    public void insertarCurso(Curso curso);
+    public int insertarCurso(Curso curso);
+    public int actualizarCurso(Curso curso);
+    public int eliminarCurso(String idCurso);
     public ArrayList<Curso> listarCurso(String nombre);
 }

@@ -70,17 +70,20 @@ public abstract class DBController {
     
     public static int insertarAlumno(Alumno alumno){
         return daoFactory.getAlumnoDAO().insertarAlumno(alumno);
+    public static int actualizarCurso(Curso curso){
+        return daoFactory.getCursoDAO().actualizarCurso(curso);
     }
     
     public static int actualizarAlumno(Alumno alumno){
         return daoFactory.getAlumnoDAO().actualizarAlumno(alumno);
+    public static int eliminarCurso(String idCurso){
+        return daoFactory.getCursoDAO().eliminarCurso(idCurso);
     }
     
     public static int eliminarAlumno(String idAlumno){
         return daoFactory.getAlumnoDAO().eliminarAlumno(idAlumno);
     }
     
-    public static ArrayList<Alumno> listarAlumnos(String nombre)
     {
         return daoFactory.getAlumnoDAO().listarAlumnos(nombre);
     }
@@ -95,6 +98,18 @@ public abstract class DBController {
     
     public static int eliminarProfesor(String idProfesor){
         return daoFactory.getProfesorDAO().eliminarProfesor(idProfesor);
+    }
+    
+    public static int insertarEspecialidad(Especialidad especialidad){
+        return daoFactory.getEspecialidadDAO().insertarEspecialidad(especialidad);
+    }
+    
+    public static int actualizarEspecialidad(Especialidad especialidad){
+        return daoFactory.getEspecialidadDAO().actualizarEspecialidad(especialidad);
+    }
+    
+    public static int eliminarEspecialidad(int idEspecialidad){
+        return daoFactory.getEspecialidadDAO().eliminarEspecialidad(idEspecialidad);
     }
    
     public static void insertarIdioma(Idioma idioma){
@@ -148,4 +163,8 @@ public abstract class DBController {
         daoFactory.getEvaluacionDAO().insertarEvaluacion(evaluacion,codClass,codTema);
     }
     
+    public static ArrayList<Especialidad> listarEspecialidades(String nombre)
+    {
+        return daoFactory.getEspecialidadDAO().listarEspecialidades(nombre);
+    }
 }

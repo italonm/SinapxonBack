@@ -14,4 +14,5 @@ import pe.edu.pucp.sinapxon.model.Pais;
  */
 public interface PaisDAO {
     public ArrayList<Pais> listarPaises();
+    public ArrayList<Pais> listarPais();
 }
