@@ -5,14 +5,12 @@
  */
 package pe.edu.pucp.sinapxon.dao;
 
-import java.util.ArrayList;
-import pe.edu.pucp.sinapxon.model.Pais;
+import pe.edu.pucp.sinapxon.model.Evaluacion;
 
 /**
  *
- * @author Emma Isabel Aragon Quenallata
+ * @author Italo
  */
-public interface PaisDAO {
-    public ArrayList<Pais> listarPaises();
-    public ArrayList<Pais> listarPais();
+public interface EvaluacionDAO {
+    public void insertarEvaluacion(Evaluacion evaluacion,String cod,int codTema);
 }

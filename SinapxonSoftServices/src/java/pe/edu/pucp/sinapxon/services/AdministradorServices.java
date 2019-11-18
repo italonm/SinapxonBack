@@ -13,6 +13,7 @@ import pe.edu.pucp.sinapxon.config.DBController;
 import pe.edu.pucp.sinapxon.model.Alumno;
 import pe.edu.pucp.sinapxon.model.Curso;
 import pe.edu.pucp.sinapxon.model.Pais;
+import pe.edu.pucp.sinapxon.model.Especialidad;
 import pe.edu.pucp.sinapxon.model.Profesor;
 
 /**
@@ -23,8 +24,34 @@ import pe.edu.pucp.sinapxon.model.Profesor;
 public class AdministradorServices {
 
     @WebMethod(operationName = "insertarCurso")
-    public void insertarCurso(Curso curso){
-        DBController.insertarCurso(curso);
+    public int insertarCurso(Curso curso){
+        return DBController.insertarCurso(curso);
+    }
+    
+    @WebMethod(operationName = "actualizarCurso")
+    public int actualizarCurso(Curso curso){
+        return DBController.actualizarCurso(curso);
+    }
+    
+    @WebMethod(operationName = "eliminaCurso")
+    public int eliminarCurso(String idCurso){
+        return DBController.eliminarCurso(idCurso);
+    }
+    
+    
+    @WebMethod(operationName = "insertarEspecialidad")
+    public int insertarEspecialidad(Especialidad especialidad){
+        return DBController.insertarEspecialidad(especialidad);
+    }
+
+    @WebMethod(operationName = "actualizarEspecialidad")
+    public int actualizarEspecialidad(Especialidad especialidad){
+        return DBController.actualizarEspecialidad(especialidad);
+    }
+    
+    @WebMethod(operationName = "eliminarEspecialidad")
+    public int eliminarEspecialidad(int idEspecialidad){
+        return DBController.eliminarEspecialidad(idEspecialidad);
     }
     
     @WebMethod(operationName = "listarCursos")

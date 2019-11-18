@@ -6,15 +6,13 @@
 package pe.edu.pucp.sinapxon.dao;
 
 import java.util.ArrayList;
-import pe.edu.pucp.sinapxon.model.Curso;
+import pe.edu.pucp.sinapxon.model.Tema_x_Classroom;
 
 /**
  *
  * @author Italo
  */
-public interface CursoDAO {
-    public int insertarCurso(Curso curso);
-    public int actualizarCurso(Curso curso);
-    public int eliminarCurso(String idCurso);
-    public ArrayList<Curso> listarCurso(String nombre);
+public interface TemaxClassroomDAO {
+    public void insertarTemaxClassroom(Tema_x_Classroom tema);
+    public ArrayList<Tema_x_Classroom> listarTemaxClassroom(String id);
 }
