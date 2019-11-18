@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pe.edu.pucp.sinapxon.config.DBManager;
 import pe.edu.pucp.sinapxon.dao.PersonaDAO;
 import pe.edu.pucp.sinapxon.model.Persona;
@@ -55,5 +57,42 @@ public class PersonaMySQL implements PersonaDAO{
         }
         return persona;
     }
-    
+    @Override
+    public Persona validarCorreo(String correo) {
+        Persona persona= new Persona();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call VALIDAR_CORREO(?)}");
+            cs.setString("_CORREO",correo);
+            ResultSet rs = cs.executeQuery();
+            if(rs.next()){
+                persona.setCodigo(rs.getString("CODIGO"));
+                persona.setNombre(rs.getString("NOMBRE_COMPLETO"));
+                persona.setTipo("A");
+            }
+        }catch(ClassNotFoundException | SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+        return persona;
+        
+    }
+
+    @Override
+    public void actualizarPasswordAlumno(String codigo, String password) {
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBManager.url,DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call ACTUALIZAR_PASSWORD_ALUMNO(?,?)}");
+            cs.setString("_ID_ALUMNO", codigo);
+            cs.setString("_PASSWORD", password);
+            cs.executeUpdate();
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(PersonaMySQL.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+    }
 }
