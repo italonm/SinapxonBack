@@ -5,12 +5,17 @@
  */
 package pe.edu.pucp.sinapxon.dao;
 
+import java.util.ArrayList;
 import pe.edu.pucp.sinapxon.model.Alumno;
+import pe.edu.pucp.sinapxon.model.Persona;
 
 /**
  *
  * @author Italo
  */
 public interface AlumnoDAO {
-    public void insertarAlumno(Alumno alumno);
+    public int insertarAlumno(Alumno alumno);
+    public int actualizarAlumno(Alumno alumno);
+    public int eliminarAlumno(String idAlumno);
+    public ArrayList<Alumno> listarAlumnos(String nombre);
 }

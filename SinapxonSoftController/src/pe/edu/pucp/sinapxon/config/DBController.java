@@ -12,6 +12,7 @@ import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
 import pe.edu.pucp.sinapxon.model.Especialidad;
 import pe.edu.pucp.sinapxon.model.Idioma;
+import pe.edu.pucp.sinapxon.model.Pais;
 import pe.edu.pucp.sinapxon.model.Periodo;
 import pe.edu.pucp.sinapxon.model.Persona;
 import pe.edu.pucp.sinapxon.model.Profesor;
@@ -30,6 +31,10 @@ public abstract class DBController {
     
     public static Persona validarLogin (String nickname,String password){
         return daoFactory.getPersonaDAO().validar(nickname, password);
+    }
+    
+    public static Persona validarCorreo (String correo){
+        return daoFactory.getPersonaDAO().validarCorreo(correo);
     }
     
     public static ArrayList<Classroom> listarClassroomxProfesor(String codigo,String nombre){
@@ -61,18 +66,46 @@ public abstract class DBController {
         daoFactory.getCursoDAO().insertarCurso(curso);
     }
     
-    public static void insertarAlumno(Alumno alumno){
-        daoFactory.getAlumnoDAO().insertarAlumno(alumno);
+    public static int insertarAlumno(Alumno alumno){
+        return daoFactory.getAlumnoDAO().insertarAlumno(alumno);
     }
     
-    public static void insertarProfesor(Profesor profesor){
-        daoFactory.getProfesorDAO().insertarProfesor(profesor);
+    public static int actualizarAlumno(Alumno alumno){
+        return daoFactory.getAlumnoDAO().actualizarAlumno(alumno);
+    }
+    
+    public static int eliminarAlumno(String idAlumno){
+        return daoFactory.getAlumnoDAO().eliminarAlumno(idAlumno);
+    }
+    
+    public static ArrayList<Alumno> listarAlumnos(String nombre)
+    {
+        return daoFactory.getAlumnoDAO().listarAlumnos(nombre);
+    }
+    
+    public static int insertarProfesor(Profesor profesor){
+        return daoFactory.getProfesorDAO().insertarProfesor(profesor);
+    }
+    
+    public static int actualizarProfesor(Profesor profesor){
+        return daoFactory.getProfesorDAO().actualizarProfesor(profesor);
+    }
+    
+    public static int eliminarProfesor(String idProfesor){
+        return daoFactory.getProfesorDAO().eliminarProfesor(idProfesor);
     }
    
     public static void insertarIdioma(Idioma idioma){
         daoFactory.getIdiomaDAO().insertarIdioma(idioma);
     }
     
+    public static void actualizarPassword(String codigo, String password){
+        daoFactory.getPersonaDAO().actualizarPasswordAlumno(codigo, password);
+    }
+    
+    public static ArrayList<Pais> listarPaises(){
+        return daoFactory.getPaisDAO().listarPaises();
+    }
     public static ArrayList<Idioma> listarIdiomas(){
         return daoFactory.getIdiomaDAO().listarIdiomas();
     }
