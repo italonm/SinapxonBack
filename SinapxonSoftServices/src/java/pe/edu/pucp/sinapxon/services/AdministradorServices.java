@@ -24,8 +24,8 @@ import pe.edu.pucp.sinapxon.model.Profesor;
 public class AdministradorServices {
 
     @WebMethod(operationName = "insertarCurso")
-    public int insertarCurso(Curso curso){
-        return DBController.insertarCurso(curso);
+    public void insertarCurso(Curso curso){
+        DBController.insertarCurso(curso);
     }
     
     @WebMethod(operationName = "actualizarCurso")

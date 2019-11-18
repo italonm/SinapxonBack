@@ -38,7 +38,6 @@ public abstract class DAOFactory {
     public abstract PaisDAO getPaisDAO();
     public abstract TemaxClassroomDAO getTemaxClassroomDAO();
     public abstract EvaluacionDAO getEvaluacionDAO();
-    public abstract EspecialidadDAO getEspecialidadDAO();
     
     public static DAOFactory getDAOFactory(){
         return new MySQLDAOFactory();
