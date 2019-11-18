@@ -29,8 +29,8 @@ public abstract class DBController {
     
     private static final DAOFactory daoFactory = DAOFactory.getDAOFactory();
     
+    //=========================================================================================
     //Catálogo de métodos de acceso
-    
     public static Persona validarLogin (String nickname,String password){
         return daoFactory.getPersonaDAO().validar(nickname, password);
     }
@@ -39,6 +39,12 @@ public abstract class DBController {
         return daoFactory.getPersonaDAO().validarCorreo(correo);
     }
     
+    public static void actualizarPassword(String codigo, String password){
+        daoFactory.getPersonaDAO().actualizarPasswordAlumno(codigo, password);
+    }
+    
+    //=========================================================================================
+    //Classroom
     public static ArrayList<Classroom> listarClassroomxProfesor(String codigo,String nombre){
         return daoFactory.getClassroomDAO().listarClassroomxProfesor(codigo,nombre);
     }
@@ -47,11 +53,55 @@ public abstract class DBController {
         return daoFactory.getClassroomDAO().listarClassroomxAlumno(codigo);
     }
     
+    public static void insertarSolicitudClassroom(SolicitudClassroom solicitudclassroom){
+        daoFactory.getSolicitudClassroomDAO().insertarSolicitudClassroom(solicitudclassroom);
+    }
+    
+    public static ArrayList<SolicitudClassroom> listarSolicitudesClassroom(int estadoSolicitud){
+        return daoFactory.getSolicitudClassroomDAO().listarSolicitudesClassroom(estadoSolicitud);
+    }
+    
+    //=========================================================================================
+    //Tema
+    public static ArrayList<Tema> listarTemas(){
+        return daoFactory.getTemaDAO().listarTemas();
+    }
+    
+    public static ArrayList<Tema_x_Classroom> listarTemaxClassroom(String id){
+        return daoFactory.getTemaxClassroomDAO().listarTemaxClassroom(id);
+    }
+    
+    public static void insertarTemaxClassroom(Tema_x_Classroom tema){
+        daoFactory.getTemaxClassroomDAO().insertarTemaxClassroom(tema);
+    }
+    
+    //=========================================================================================
+    //Evaluacion
+    public static void insertarEvaluacion(Evaluacion evaluacion,String codClass,int codTema){
+        daoFactory.getEvaluacionDAO().insertarEvaluacion(evaluacion,codClass,codTema);
+    }
+    
+    //=========================================================================================
+    //Curso
+    public static void insertarCurso(Curso curso){
+        daoFactory.getCursoDAO().insertarCurso(curso);
+    }
+    
+    public static int actualizarCurso(Curso curso){
+        return daoFactory.getCursoDAO().actualizarCurso(curso);
+    }
+    
+    public static int eliminarCurso(String idCurso){
+        return daoFactory.getCursoDAO().eliminarCurso(idCurso);
+    }
+    
     public static ArrayList<Curso> listarCursos(String nombre)
     {
         return daoFactory.getCursoDAO().listarCurso(nombre);
     }
     
+    //=========================================================================================
+    //Periodos
     public static ArrayList<Periodo> listarPeriodos(){
         return daoFactory.getPeriodoDAO().listarPeriodo();
     }
@@ -64,30 +114,26 @@ public abstract class DBController {
         return daoFactory.getPeriodoDAO().listarRangoPeriodos(fechaIni, fechaFin);
     }
     
-    public static void insertarCurso(Curso curso){
-        daoFactory.getCursoDAO().insertarCurso(curso);
-    }
-    
+    //=========================================================================================
+    //Alumno
     public static int insertarAlumno(Alumno alumno){
         return daoFactory.getAlumnoDAO().insertarAlumno(alumno);
-    public static int actualizarCurso(Curso curso){
-        return daoFactory.getCursoDAO().actualizarCurso(curso);
     }
     
     public static int actualizarAlumno(Alumno alumno){
         return daoFactory.getAlumnoDAO().actualizarAlumno(alumno);
-    public static int eliminarCurso(String idCurso){
-        return daoFactory.getCursoDAO().eliminarCurso(idCurso);
     }
     
     public static int eliminarAlumno(String idAlumno){
         return daoFactory.getAlumnoDAO().eliminarAlumno(idAlumno);
     }
     
-    {
+    public static ArrayList<Alumno> listarAlumnos(String nombre){
         return daoFactory.getAlumnoDAO().listarAlumnos(nombre);
     }
     
+    //=========================================================================================
+    //Profesor
     public static int insertarProfesor(Profesor profesor){
         return daoFactory.getProfesorDAO().insertarProfesor(profesor);
     }
@@ -100,8 +146,18 @@ public abstract class DBController {
         return daoFactory.getProfesorDAO().eliminarProfesor(idProfesor);
     }
     
+    public static ArrayList<Profesor> listarProfesores(String nombre){
+        return daoFactory.getProfesorDAO().listarProfesores(nombre);
+    }
+    
+    //=========================================================================================
+    //Especialidad
     public static int insertarEspecialidad(Especialidad especialidad){
         return daoFactory.getEspecialidadDAO().insertarEspecialidad(especialidad);
+    }
+    
+    public static void insertarEspecialidad(Especialidad especialidad, String idAdministrador){
+        daoFactory.getEspecialidadDAO().insertarEspecialidad(especialidad, idAdministrador);
     }
     
     public static int actualizarEspecialidad(Especialidad especialidad){
@@ -111,60 +167,28 @@ public abstract class DBController {
     public static int eliminarEspecialidad(int idEspecialidad){
         return daoFactory.getEspecialidadDAO().eliminarEspecialidad(idEspecialidad);
     }
-   
-    public static void insertarIdioma(Idioma idioma){
-        daoFactory.getIdiomaDAO().insertarIdioma(idioma);
-    }
-    
-    public static void actualizarPassword(String codigo, String password){
-        daoFactory.getPersonaDAO().actualizarPasswordAlumno(codigo, password);
-    }
-    
-    public static ArrayList<Pais> listarPaises(){
-        return daoFactory.getPaisDAO().listarPaises();
-    }
-    public static ArrayList<Idioma> listarIdiomas(){
-        return daoFactory.getIdiomaDAO().listarIdiomas();
-    }
-    
-    public static void insertarSolicitudClassroom(SolicitudClassroom solicitudclassroom){
-        daoFactory.getSolicitudClassroomDAO().insertarSolicitudClassroom(solicitudclassroom);
-    }
-    
-    public static void insertarTemaxClassroom(Tema_x_Classroom tema){
-        daoFactory.getTemaxClassroomDAO().insertarTemaxClassroom(tema);
-    }
-    
-    public static ArrayList<Profesor> listarProfesores(String nombre){
-        return daoFactory.getProfesorDAO().listarProfesores(nombre);
-    }
-    
-    public static void insertarEspecialidad(Especialidad especialidad, String idAdministrador){
-        daoFactory.getEspecialidadDAO().insertarEspecialidad(especialidad, idAdministrador);
-    }
     
     public static ArrayList<Especialidad> listarEspecialidades(){
         return daoFactory.getEspecialidadDAO().listarEspecialidades();
     }
     
-    public static ArrayList<SolicitudClassroom> listarSolicitudesClassroom(int estadoSolicitud){
-        return daoFactory.getSolicitudClassroomDAO().listarSolicitudesClassroom(estadoSolicitud);
-    }
-    
-    public static ArrayList<Tema> listarTemas(){
-        return daoFactory.getTemaDAO().listarTemas();
-    }
-    
-    public static ArrayList<Tema_x_Classroom> listarTemaxClassroom(String id){
-        return daoFactory.getTemaxClassroomDAO().listarTemaxClassroom(id);
-    }
-    
-    public static void insertarEvaluacion(Evaluacion evaluacion,String codClass,int codTema){
-        daoFactory.getEvaluacionDAO().insertarEvaluacion(evaluacion,codClass,codTema);
-    }
-    
-    public static ArrayList<Especialidad> listarEspecialidades(String nombre)
-    {
+    public static ArrayList<Especialidad> listarEspecialidades(String nombre){
         return daoFactory.getEspecialidadDAO().listarEspecialidades(nombre);
+    }
+    
+    //=========================================================================================
+    //Idioma
+    public static void insertarIdioma(Idioma idioma){
+        daoFactory.getIdiomaDAO().insertarIdioma(idioma);
+    }
+    
+    public static ArrayList<Idioma> listarIdiomas(){
+        return daoFactory.getIdiomaDAO().listarIdiomas();
+    }
+ 
+    //=========================================================================================
+    //Pais
+    public static ArrayList<Pais> listarPaises(){
+        return daoFactory.getPaisDAO().listarPaises();
     }
 }
