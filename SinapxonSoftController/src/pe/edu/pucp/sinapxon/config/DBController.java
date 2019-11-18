@@ -130,7 +130,7 @@ public abstract class DBController {
         return daoFactory.getEspecialidadDAO().listarEspecialidades();
     }
     
-    public static ArrayList<Pais> listarPaises(){
-        return daoFactory.getPaisDAO().listarPais();
+    public static ArrayList<SolicitudClassroom> listarSolicitudesClassroom(int estadoSolicitud){
+        return daoFactory.getSolicitudClassroomDAO().listarSolicitudesClassroom(estadoSolicitud);
     }
 }
