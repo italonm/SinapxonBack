@@ -12,10 +12,12 @@ import javax.jws.WebParam;
 import pe.edu.pucp.sinapxon.config.DBController;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
+import pe.edu.pucp.sinapxon.model.Evaluacion;
 import pe.edu.pucp.sinapxon.model.Idioma;
 import pe.edu.pucp.sinapxon.model.Periodo;
 import pe.edu.pucp.sinapxon.model.SolicitudClassroom;
 import pe.edu.pucp.sinapxon.model.Tema;
+import pe.edu.pucp.sinapxon.model.Tema_x_Classroom;
 
 /**
  *
@@ -52,8 +54,23 @@ public class ProfesorServices {
         DBController.insertarSolicitudClassroom(solicitudclassroom);
     }
     
-    @WebMethod(operationName = "insertarTema")
-    public void insertarTema(@WebParam(name="tema")Tema tema){
-        DBController.insertarTema(tema);
+    @WebMethod(operationName = "insertarTemaxClassroom")
+    public void insertarTemaxClassroom(@WebParam(name="tema")Tema_x_Classroom tema){
+        DBController.insertarTemaxClassroom(tema);
+    }
+    
+    @WebMethod(operationName = "listarTemas")
+    public ArrayList<Tema> listarTemas(){
+        return DBController.listarTemas();
+    }
+    
+    @WebMethod(operationName = "listarTemaxClassroom")
+    public ArrayList<Tema_x_Classroom> listarTemaxClassroom(String id){
+        return DBController.listarTemaxClassroom(id);
+    }
+    
+    @WebMethod(operationName = "insertarEvaluacion")
+    public void insertarEvaluacion(@WebParam(name="evaluacion")Evaluacion evaluacion,@WebParam(name="codClass")String codClass,@WebParam(name="codTema")int codTema){
+        DBController.insertarEvaluacion(evaluacion, codClass,codTema);
     }
 }

@@ -11,6 +11,7 @@ import pe.edu.pucp.sinapxon.model.Alumno;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
 import pe.edu.pucp.sinapxon.model.Especialidad;
+import pe.edu.pucp.sinapxon.model.Evaluacion;
 import pe.edu.pucp.sinapxon.model.Idioma;
 import pe.edu.pucp.sinapxon.model.Pais;
 import pe.edu.pucp.sinapxon.model.Periodo;
@@ -18,6 +19,7 @@ import pe.edu.pucp.sinapxon.model.Persona;
 import pe.edu.pucp.sinapxon.model.Profesor;
 import pe.edu.pucp.sinapxon.model.SolicitudClassroom;
 import pe.edu.pucp.sinapxon.model.Tema;
+import pe.edu.pucp.sinapxon.model.Tema_x_Classroom;
 
 /**
  *
@@ -114,8 +116,8 @@ public abstract class DBController {
         daoFactory.getSolicitudClassroomDAO().insertarSolicitudClassroom(solicitudclassroom);
     }
     
-    public static void insertarTema(Tema tema){
-        daoFactory.getTemaDAO().insertarTema(tema);
+    public static void insertarTemaxClassroom(Tema_x_Classroom tema){
+        daoFactory.getTemaxClassroomDAO().insertarTemaxClassroom(tema);
     }
     
     public static ArrayList<Profesor> listarProfesores(String nombre){
@@ -133,4 +135,17 @@ public abstract class DBController {
     public static ArrayList<SolicitudClassroom> listarSolicitudesClassroom(int estadoSolicitud){
         return daoFactory.getSolicitudClassroomDAO().listarSolicitudesClassroom(estadoSolicitud);
     }
+    
+    public static ArrayList<Tema> listarTemas(){
+        return daoFactory.getTemaDAO().listarTemas();
+    }
+    
+    public static ArrayList<Tema_x_Classroom> listarTemaxClassroom(String id){
+        return daoFactory.getTemaxClassroomDAO().listarTemaxClassroom(id);
+    }
+    
+    public static void insertarEvaluacion(Evaluacion evaluacion,String codClass,int codTema){
+        daoFactory.getEvaluacionDAO().insertarEvaluacion(evaluacion,codClass,codTema);
+    }
+    
 }

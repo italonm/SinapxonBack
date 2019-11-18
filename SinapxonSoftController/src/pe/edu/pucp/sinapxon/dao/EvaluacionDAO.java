@@ -5,13 +5,12 @@
  */
 package pe.edu.pucp.sinapxon.dao;
 
-import java.util.ArrayList;
-import pe.edu.pucp.sinapxon.model.Tema;
+import pe.edu.pucp.sinapxon.model.Evaluacion;
 
 /**
  *
  * @author Italo
  */
-public interface TemaDAO {
-    public ArrayList<Tema> listarTemas();
+public interface EvaluacionDAO {
+    public void insertarEvaluacion(Evaluacion evaluacion,String cod,int codTema);
 }

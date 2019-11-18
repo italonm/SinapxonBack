@@ -5,7 +5,11 @@
         724ccc332fa98b06d304a4efcd39e09cacd40151
     
     <group>
+<<<<<<< HEAD
             <file>file:/D:/Proyectos/SinapxonBack/SinapxonSoftServices/src/java/pe/edu/pucp/sinapxon/services/AdministradorServices.java</file>
+=======
+            <file>file:/D:/Cursos%20PUCP/LP2/Proyecto%20Grupal/Repositorios/SinapxonBack/SinapxonSoftServices/src/java/pe/edu/pucp/sinapxon/services/ProfesorServices.java</file>
+>>>>>>> italo
         </group>
     </open-files>
 </project-private>

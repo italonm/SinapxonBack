@@ -5,6 +5,7 @@
         724ccc332fa98b06d304a4efcd39e09cacd40151
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     <group>
             <file>file:/D:/Proyectos/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/config/MySQLDAOFactory.java</file>
             <file>file:/D:/Proyectos/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/mysql/ProfesorMySQL.java</file>
@@ -22,6 +23,14 @@
             <file>file:/home/rick/Documentos/Sinapxon/Back/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/config/DBController.java</file>
             <file>file:/home/rick/Documentos/Sinapxon/Back/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/dao/SolicitudClassroomDAO.java</file>
 >>>>>>> Rick
+=======
+    
+    <group>
+            <file>file:/D:/Cursos%20PUCP/LP2/Proyecto%20Grupal/Repositorios/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/dao/EvaluacionDAO.java</file>
+            <file>file:/D:/Cursos%20PUCP/LP2/Proyecto%20Grupal/Repositorios/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/mysql/ClassroomMySQL.java</file>
+            <file>file:/D:/Cursos%20PUCP/LP2/Proyecto%20Grupal/Repositorios/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/mysql/EvaluacionMySQL.java</file>
+            <file>file:/D:/Cursos%20PUCP/LP2/Proyecto%20Grupal/Repositorios/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/config/DBController.java</file>
+>>>>>>> italo
         </group>
     </open-files>
 </project-private>
