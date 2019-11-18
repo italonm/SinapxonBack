@@ -8,7 +8,9 @@ package pe.edu.pucp.sinapxon.mysql;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import pe.edu.pucp.sinapxon.config.DBManager;
 import pe.edu.pucp.sinapxon.dao.TemaDAO;
 import pe.edu.pucp.sinapxon.model.Tema;
@@ -23,22 +25,27 @@ public class TemaMySQL implements TemaDAO{
     CallableStatement cs;
     
     @Override
-    public void insertarTema(Tema tema) {
+    public ArrayList<Tema> listarTemas() {
+        ArrayList<Tema> temas = new ArrayList<>();
         try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
-            cs = con.prepareCall("{call INSERTAR_TEMA(?,?,?,?,?)}");
-            cs.setString("_NOMBRE", tema.getNombre());
-            cs.setString("_DESCRIPCION",tema.getDescripcion());
-            cs.setString("_LINK", tema.getLink());
-            cs.setString("_COD_CLASSROOM", tema.getClassroom().getCodigo());
-            cs.registerOutParameter("_ID_TEMA",java.sql.Types.INTEGER);
-            cs.executeUpdate();
-            tema.setId_tema(cs.getInt("_ID_TEMA"));
-        }catch(SQLException ex){
+            cs = con.prepareCall("{call LISTAR_TEMAS(?)}");
+            cs.setString("_NOMBRE_TEMA", "");
+            ResultSet rs = cs.executeQuery();
+            while(rs.next()){
+                Tema tema = new Tema();
+                tema.setId_tema(rs.getInt("ID_TEMA"));
+                tema.setNombre(rs.getString("NOMBRE"));
+                tema.setDescripcion(rs.getString("DESCRIPCION"));
+                temas.add(tema);
+            }
+        }catch(ClassNotFoundException | SQLException ex){
             System.out.println(ex.getMessage());
         }finally{
             try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
         }
+        return temas;
     }
     
 }

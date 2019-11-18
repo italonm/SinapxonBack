@@ -11,6 +11,7 @@ import pe.edu.pucp.sinapxon.model.Alumno;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
 import pe.edu.pucp.sinapxon.model.Especialidad;
+import pe.edu.pucp.sinapxon.model.Evaluacion;
 import pe.edu.pucp.sinapxon.model.Idioma;
 import pe.edu.pucp.sinapxon.model.Pais;
 import pe.edu.pucp.sinapxon.model.Periodo;
@@ -18,6 +19,7 @@ import pe.edu.pucp.sinapxon.model.Persona;
 import pe.edu.pucp.sinapxon.model.Profesor;
 import pe.edu.pucp.sinapxon.model.SolicitudClassroom;
 import pe.edu.pucp.sinapxon.model.Tema;
+import pe.edu.pucp.sinapxon.model.Tema_x_Classroom;
 
 /**
  *
@@ -68,17 +70,20 @@ public abstract class DBController {
     
     public static int insertarAlumno(Alumno alumno){
         return daoFactory.getAlumnoDAO().insertarAlumno(alumno);
+    public static int actualizarCurso(Curso curso){
+        return daoFactory.getCursoDAO().actualizarCurso(curso);
     }
     
     public static int actualizarAlumno(Alumno alumno){
         return daoFactory.getAlumnoDAO().actualizarAlumno(alumno);
+    public static int eliminarCurso(String idCurso){
+        return daoFactory.getCursoDAO().eliminarCurso(idCurso);
     }
     
     public static int eliminarAlumno(String idAlumno){
         return daoFactory.getAlumnoDAO().eliminarAlumno(idAlumno);
     }
     
-    public static ArrayList<Alumno> listarAlumnos(String nombre)
     {
         return daoFactory.getAlumnoDAO().listarAlumnos(nombre);
     }
@@ -93,6 +98,18 @@ public abstract class DBController {
     
     public static int eliminarProfesor(String idProfesor){
         return daoFactory.getProfesorDAO().eliminarProfesor(idProfesor);
+    }
+    
+    public static int insertarEspecialidad(Especialidad especialidad){
+        return daoFactory.getEspecialidadDAO().insertarEspecialidad(especialidad);
+    }
+    
+    public static int actualizarEspecialidad(Especialidad especialidad){
+        return daoFactory.getEspecialidadDAO().actualizarEspecialidad(especialidad);
+    }
+    
+    public static int eliminarEspecialidad(int idEspecialidad){
+        return daoFactory.getEspecialidadDAO().eliminarEspecialidad(idEspecialidad);
     }
    
     public static void insertarIdioma(Idioma idioma){
@@ -114,8 +131,8 @@ public abstract class DBController {
         daoFactory.getSolicitudClassroomDAO().insertarSolicitudClassroom(solicitudclassroom);
     }
     
-    public static void insertarTema(Tema tema){
-        daoFactory.getTemaDAO().insertarTema(tema);
+    public static void insertarTemaxClassroom(Tema_x_Classroom tema){
+        daoFactory.getTemaxClassroomDAO().insertarTemaxClassroom(tema);
     }
     
     public static ArrayList<Profesor> listarProfesores(String nombre){
@@ -132,5 +149,22 @@ public abstract class DBController {
     
     public static ArrayList<SolicitudClassroom> listarSolicitudesClassroom(int estadoSolicitud){
         return daoFactory.getSolicitudClassroomDAO().listarSolicitudesClassroom(estadoSolicitud);
+    }
+    
+    public static ArrayList<Tema> listarTemas(){
+        return daoFactory.getTemaDAO().listarTemas();
+    }
+    
+    public static ArrayList<Tema_x_Classroom> listarTemaxClassroom(String id){
+        return daoFactory.getTemaxClassroomDAO().listarTemaxClassroom(id);
+    }
+    
+    public static void insertarEvaluacion(Evaluacion evaluacion,String codClass,int codTema){
+        daoFactory.getEvaluacionDAO().insertarEvaluacion(evaluacion,codClass,codTema);
+    }
+    
+    public static ArrayList<Especialidad> listarEspecialidades(String nombre)
+    {
+        return daoFactory.getEspecialidadDAO().listarEspecialidades(nombre);
     }
 }

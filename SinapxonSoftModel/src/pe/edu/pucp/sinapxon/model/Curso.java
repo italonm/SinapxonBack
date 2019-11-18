@@ -14,6 +14,7 @@ public class Curso {
     private String descripcion;
     private Especialidad especialidad;
     private ArrayList<Classroom> classrooms;
+    private ArrayList<Curso> cursos;
     private Administrador administrador;
     private int estado;
     
@@ -26,6 +27,7 @@ public class Curso {
         this.nombre=nombre;
         this.descripcion=descripcion;
         classrooms = new ArrayList<Classroom>();
+        cursos = new ArrayList<Curso>();
     }
     
     public String getNombre() {
@@ -79,6 +81,12 @@ public class Curso {
     public void setAdministrador(Administrador administrador) {
         this.administrador = administrador;
     }
-    
-    
+
+    public ArrayList<Curso> getCursos() {
+        return cursos;
+    }
+
+    public void setCursos(ArrayList<Curso> cursos) {
+        this.cursos = cursos;
+    }
 }
