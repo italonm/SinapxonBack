@@ -96,4 +96,8 @@ public abstract class DBController {
     public static ArrayList<Especialidad> listarEspecialidades(){
         return daoFactory.getEspecialidadDAO().listarEspecialidades();
     }
+    
+    public static ArrayList<SolicitudClassroom> listarSolicitudesClassroom(int estadoSolicitud){
+        return daoFactory.getSolicitudClassroomDAO().listarSolicitudesClassroom(estadoSolicitud);
+    }
 }
