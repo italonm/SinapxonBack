@@ -6,6 +6,7 @@
 package pe.edu.pucp.sinapxon.dao;
 
 import pe.edu.pucp.sinapxon.model.Alumno;
+import pe.edu.pucp.sinapxon.model.Persona;
 
 /**
  *

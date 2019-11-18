@@ -33,6 +33,10 @@ public abstract class DBController {
         return daoFactory.getPersonaDAO().validar(nickname, password);
     }
     
+    public static Persona validarCorreo (String correo){
+        return daoFactory.getPersonaDAO().validarCorreo(correo);
+    }
+    
     public static ArrayList<Classroom> listarClassroomxProfesor(String codigo,String nombre){
         return daoFactory.getClassroomDAO().listarClassroomxProfesor(codigo,nombre);
     }
@@ -72,6 +76,10 @@ public abstract class DBController {
    
     public static void insertarIdioma(Idioma idioma){
         daoFactory.getIdiomaDAO().insertarIdioma(idioma);
+    }
+    
+    public static void actualizarPassword(String codigo, String password){
+        daoFactory.getPersonaDAO().actualizarPasswordAlumno(codigo, password);
     }
     
     public static ArrayList<Pais> listarPaises(){

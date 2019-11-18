@@ -13,4 +13,6 @@ import pe.edu.pucp.sinapxon.model.Persona;
  */
 public interface PersonaDAO {
     public Persona validar(String nickname,String password);
+    public Persona validarCorreo(String correo);
+    public void actualizarPasswordAlumno(String codigo, String password);
 }
