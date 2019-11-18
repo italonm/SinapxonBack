@@ -16,16 +16,12 @@ public class Tema_x_Classroom {
     private String nombre;
     private String descripcion;
     private Tema tema;
+    private Classroom classroom;
+    private String link;
     private ArrayList<Archivo_x_Tema> archivoxTema;
     private Evaluacion evaluacion;
 
-    public Tema_x_Classroom(int id_tema, String nombre, String descripcion, Tema tema, Evaluacion evaluacion) {
-        this.id_tema = id_tema;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.tema = tema;
-        this.evaluacion = evaluacion;
-    }
+    
 
     public int getId_tema() {
         return id_tema;
@@ -69,6 +65,34 @@ public class Tema_x_Classroom {
 
     public void setEvaluacion(Evaluacion evaluacion) {
         this.evaluacion = evaluacion;
+    }
+
+    /**
+     * @return the classroom
+     */
+    public Classroom getClassroom() {
+        return classroom;
+    }
+
+    /**
+     * @param classroom the classroom to set
+     */
+    public void setClassroom(Classroom classroom) {
+        this.classroom = classroom;
+    }
+
+    /**
+     * @return the link
+     */
+    public String getLink() {
+        return link;
+    }
+
+    /**
+     * @param link the link to set
+     */
+    public void setLink(String link) {
+        this.link = link;
     }
     
     
