@@ -85,6 +85,18 @@ public abstract class DBController {
     public static int eliminarProfesor(String idProfesor){
         return daoFactory.getProfesorDAO().eliminarProfesor(idProfesor);
     }
+    
+    public static int insertarEspecialidad(Especialidad especialidad){
+        return daoFactory.getEspecialidadDAO().insertarEspecialidad(especialidad);
+    }
+    
+    public static int actualizarEspecialidad(Especialidad especialidad){
+        return daoFactory.getEspecialidadDAO().actualizarEspecialidad(especialidad);
+    }
+    
+    public static int eliminarEspecialidad(int idEspecialidad){
+        return daoFactory.getEspecialidadDAO().eliminarEspecialidad(idEspecialidad);
+    }
    
     public static ArrayList<Idioma> listarIdiomas(){
         return daoFactory.getIdiomaDAO().listarIdiomas();

@@ -68,6 +68,21 @@ public class AdministradorServices {
         return DBController.eliminarAlumno(idAlumno);
     }
     
+    @WebMethod(operationName = "insertarEspecialidad")
+    public int insertarEspecialidad(Especialidad especialidad){
+        return DBController.insertarEspecialidad(especialidad);
+    }
+
+    @WebMethod(operationName = "actualizarEspecialidad")
+    public int actualizarEspecialidad(Especialidad especialidad){
+        return DBController.actualizarEspecialidad(especialidad);
+    }
+    
+    @WebMethod(operationName = "eliminarEspecialidad")
+    public int eliminarEspecialidad(int idEspecialidad){
+        return DBController.eliminarEspecialidad(idEspecialidad);
+    }
+    
     @WebMethod(operationName = "listarCursos")
     public ArrayList<Curso> listarCursos(String nombre) {
         ArrayList<Curso> cursos = DBController.listarCursos(nombre);

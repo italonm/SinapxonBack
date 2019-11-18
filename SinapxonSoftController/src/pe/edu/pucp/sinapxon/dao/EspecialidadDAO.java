@@ -13,5 +13,8 @@ import pe.edu.pucp.sinapxon.model.Especialidad;
  * @author Monica
  */
 public interface EspecialidadDAO {
+    int insertarEspecialidad(Especialidad especialidad);
+    int actualizarEspecialidad(Especialidad especialidad);
+    int eliminarEspecialidad(int idEspecialidad);
     public ArrayList<Especialidad> listarEspecialidades(String nombre);
 }

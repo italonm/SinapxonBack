@@ -50,4 +50,60 @@ public class EspecialidadMySQL implements EspecialidadDAO {
         }
         return especialidades;
     }
+
+    @Override
+    public int insertarEspecialidad(Especialidad especialidad) {
+        int resultado = 0;
+        try{
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call INSERTAR_ESPECIALIDAD(?,?,?,?)}");
+            cs.setString("_NOMBRE", especialidad.getNombre());
+            cs.setString("_DESCRIPCION", especialidad.getDescripcion());
+            cs.setString("_FID_ADMINISTRADOR", especialidad.getAdministrador().getCodigo());
+            cs.registerOutParameter("_ID_ESPECIALIDAD", java.sql.Types.INTEGER);
+            cs.executeUpdate();
+            resultado = 1;
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+            try{con.rollback();}catch(SQLException exe){System.out.println(exe.getMessage());}
+        }finally{
+            try{con.setAutoCommit(true);cs.close();con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+        return resultado;
+    }
+
+    @Override
+    public int actualizarEspecialidad(Especialidad especialidad) {
+        int resultado = 0;
+        try{
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call ACTUALIZAR_ESPECIALIDAD(?,?,?,?)}");
+            cs.setString("_NOMBRE", especialidad.getNombre());
+            cs.setString("_DESCRIPCION", especialidad.getDescripcion());
+            cs.setString("_FID_ADMINISTRADOR", especialidad.getAdministrador().getCodigo());
+            cs.setInt("_ID_ESPECIALIDAD", especialidad.getId_especialidad());
+            cs.executeUpdate();
+            resultado = 1;
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+            try{con.rollback();}catch(SQLException exe){System.out.println(exe.getMessage());}
+        }finally{
+            try{con.setAutoCommit(true);cs.close();con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+        return resultado;
+    }
+
+    @Override
+    public int eliminarEspecialidad(int idEspecialidad) {
+        int resultado = 0;
+        try{
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call ELIMINAR_ESPECIALIDAD(?)}");
+            cs.setInt("_ID_CURSO", idEspecialidad);
+            resultado = cs.executeUpdate();
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        return resultado;
+    }
 }
