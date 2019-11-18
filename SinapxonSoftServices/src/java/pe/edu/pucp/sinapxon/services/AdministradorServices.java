@@ -12,6 +12,7 @@ import javax.jws.WebParam;
 import pe.edu.pucp.sinapxon.config.DBController;
 import pe.edu.pucp.sinapxon.model.Alumno;
 import pe.edu.pucp.sinapxon.model.Curso;
+import pe.edu.pucp.sinapxon.model.Pais;
 import pe.edu.pucp.sinapxon.model.Profesor;
 
 /**
@@ -26,20 +27,36 @@ public class AdministradorServices {
         DBController.insertarCurso(curso);
     }
     
-    @WebMethod(operationName = "insertarProfesor")
-    public void insertarProfesor(Profesor profesor){
-        DBController.insertarProfesor(profesor);
-    }
-    
-    @WebMethod(operationName = "insertarAlumno")
-    public void insertarAlumno(Alumno alumno){
-        DBController.insertarAlumno(alumno);
-    }
-
     @WebMethod(operationName = "listarCursos")
     public ArrayList<Curso> listarCursos(String nombre) {
         ArrayList<Curso> cursos = DBController.listarCursos(nombre);
         return cursos;
+    }
+    
+    @WebMethod(operationName = "insertarAlumno")
+    public int insertarAlumno(Alumno alumno){
+        return DBController.insertarAlumno(alumno);
+    }
+    
+    @WebMethod(operationName = "actualizarAlumno")
+    public int actualizarAlumno(Alumno alumno){
+        return DBController.actualizarAlumno(alumno);
+    }
+    
+    @WebMethod(operationName = "eliminarAlumno")
+    public int eliminarAlumno(String idAlumno){
+        return DBController.eliminarAlumno(idAlumno);
+    }
+    
+    @WebMethod(operationName = "listarAlumnos")
+    public ArrayList<Alumno> listarAlumnos(String nombre) {
+        ArrayList<Alumno> alumnos = DBController.listarAlumnos(nombre);
+        return alumnos;
+    }
+    
+    @WebMethod(operationName = "insertarProfesor")
+    public int insertarProfesor(Profesor profesor){
+        return DBController.insertarProfesor(profesor);
     }
     
     @WebMethod(operationName = "listarProfesores")
@@ -47,4 +64,22 @@ public class AdministradorServices {
         ArrayList<Profesor> profesores = DBController.listarProfesores(nombre);
         return profesores;
     }
+    
+    @WebMethod(operationName = "actualizarProfesor")
+    public int actualizarProfesor(Profesor profesor){
+        return DBController.actualizarProfesor(profesor);
+    }
+    
+    @WebMethod(operationName = "eliminarProfesor")
+    public int eliminarProfesor(String idProfesor){
+        return DBController.eliminarProfesor(idProfesor);
+    }
+    
+    
+    @WebMethod(operationName = "listarPaises")
+    public ArrayList<Pais> listarPaises() {
+        ArrayList<Pais> paises = DBController.listarPaises();
+        return paises;
+    }
+    
 }
