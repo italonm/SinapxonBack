@@ -13,7 +13,7 @@ public class Evaluacion {
     private float peso_porcentual;
     private ArrayList<Entregable> entregables;
     private String descripcion;
-    
+    private Tema_x_Classroom tema;
     
     public Evaluacion() {
         
@@ -66,5 +66,19 @@ public class Evaluacion {
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    /**
+     * @return the tema
+     */
+    public Tema_x_Classroom getTema() {
+        return tema;
+    }
+
+    /**
+     * @param tema the tema to set
+     */
+    public void setTema(Tema_x_Classroom tema) {
+        this.tema = tema;
     }
 }
