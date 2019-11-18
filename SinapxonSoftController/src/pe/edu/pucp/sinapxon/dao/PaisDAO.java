@@ -10,8 +10,8 @@ import pe.edu.pucp.sinapxon.model.Pais;
 
 /**
  *
- * @author ld_ra
+ * @author Emma Isabel Aragon Quenallata
  */
 public interface PaisDAO {
-    public ArrayList<Pais> listarPais();
+    public ArrayList<Pais> listarPaises();
 }

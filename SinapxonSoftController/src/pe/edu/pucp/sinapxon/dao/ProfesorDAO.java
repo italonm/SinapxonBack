@@ -10,7 +10,7 @@ import pe.edu.pucp.sinapxon.model.Profesor;
 
 /**
  *
- * @author Italo
+ * @author Rick
  */
 public interface ProfesorDAO {
     public int insertarProfesor(Profesor profesor);

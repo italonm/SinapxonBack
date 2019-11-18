@@ -7,6 +7,7 @@ package pe.edu.pucp.sinapxon.dao;
 
 import java.util.ArrayList;
 import pe.edu.pucp.sinapxon.model.Alumno;
+import pe.edu.pucp.sinapxon.model.Persona;
 
 /**
  *

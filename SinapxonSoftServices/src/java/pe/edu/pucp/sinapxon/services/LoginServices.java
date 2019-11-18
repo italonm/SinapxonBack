@@ -22,4 +22,12 @@ public class LoginServices {
     public Persona validarLogin(@WebParam(name="nickname")String nickname, @WebParam(name="password")String password){
         return DBController.validarLogin(nickname, password);
     }
+    @WebMethod(operationName = "validarCorreo")
+    public Persona validarCorreo(@WebParam(name="correo")String correo){
+        return DBController.validarCorreo(correo);
+    }
+    @WebMethod(operationName = "actualizarPassword")
+    public void actualizarPassword(@WebParam(name="codigo")String codigo, @WebParam(name="password")String password){
+        DBController.actualizarPassword(codigo, password);
+    }
 }
