@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  *
- * @author Italo
+ * @author Rick
  */
 public class SolicitudClassroom {
     private int id_solicitud;

@@ -13,6 +13,7 @@ import pe.edu.pucp.sinapxon.model.Curso;
 import pe.edu.pucp.sinapxon.model.Especialidad;
 import pe.edu.pucp.sinapxon.model.Evaluacion;
 import pe.edu.pucp.sinapxon.model.Idioma;
+import pe.edu.pucp.sinapxon.model.Pais;
 import pe.edu.pucp.sinapxon.model.Periodo;
 import pe.edu.pucp.sinapxon.model.Persona;
 import pe.edu.pucp.sinapxon.model.Profesor;
@@ -32,6 +33,10 @@ public abstract class DBController {
     
     public static Persona validarLogin (String nickname,String password){
         return daoFactory.getPersonaDAO().validar(nickname, password);
+    }
+    
+    public static Persona validarCorreo (String correo){
+        return daoFactory.getPersonaDAO().validarCorreo(correo);
     }
     
     public static ArrayList<Classroom> listarClassroomxProfesor(String codigo,String nombre){
@@ -63,18 +68,61 @@ public abstract class DBController {
         daoFactory.getCursoDAO().insertarCurso(curso);
     }
     
-    public static void insertarAlumno(Alumno alumno){
-        daoFactory.getAlumnoDAO().insertarAlumno(alumno);
+    public static int insertarAlumno(Alumno alumno){
+        return daoFactory.getAlumnoDAO().insertarAlumno(alumno);
+    public static int actualizarCurso(Curso curso){
+        return daoFactory.getCursoDAO().actualizarCurso(curso);
     }
     
-    public static void insertarProfesor(Profesor profesor){
-        daoFactory.getProfesorDAO().insertarProfesor(profesor);
+    public static int actualizarAlumno(Alumno alumno){
+        return daoFactory.getAlumnoDAO().actualizarAlumno(alumno);
+    public static int eliminarCurso(String idCurso){
+        return daoFactory.getCursoDAO().eliminarCurso(idCurso);
+    }
+    
+    public static int eliminarAlumno(String idAlumno){
+        return daoFactory.getAlumnoDAO().eliminarAlumno(idAlumno);
+    }
+    
+    {
+        return daoFactory.getAlumnoDAO().listarAlumnos(nombre);
+    }
+    
+    public static int insertarProfesor(Profesor profesor){
+        return daoFactory.getProfesorDAO().insertarProfesor(profesor);
+    }
+    
+    public static int actualizarProfesor(Profesor profesor){
+        return daoFactory.getProfesorDAO().actualizarProfesor(profesor);
+    }
+    
+    public static int eliminarProfesor(String idProfesor){
+        return daoFactory.getProfesorDAO().eliminarProfesor(idProfesor);
+    }
+    
+    public static int insertarEspecialidad(Especialidad especialidad){
+        return daoFactory.getEspecialidadDAO().insertarEspecialidad(especialidad);
+    }
+    
+    public static int actualizarEspecialidad(Especialidad especialidad){
+        return daoFactory.getEspecialidadDAO().actualizarEspecialidad(especialidad);
+    }
+    
+    public static int eliminarEspecialidad(int idEspecialidad){
+        return daoFactory.getEspecialidadDAO().eliminarEspecialidad(idEspecialidad);
     }
    
     public static void insertarIdioma(Idioma idioma){
         daoFactory.getIdiomaDAO().insertarIdioma(idioma);
     }
     
+    public static void actualizarPassword(String codigo, String password){
+        daoFactory.getPersonaDAO().actualizarPasswordAlumno(codigo, password);
+    }
+    
+    public static ArrayList<Pais> listarPaises(){
+        return daoFactory.getPaisDAO().listarPaises();
+    }
     public static ArrayList<Idioma> listarIdiomas(){
         return daoFactory.getIdiomaDAO().listarIdiomas();
     }
@@ -99,6 +147,10 @@ public abstract class DBController {
         return daoFactory.getEspecialidadDAO().listarEspecialidades();
     }
     
+    public static ArrayList<SolicitudClassroom> listarSolicitudesClassroom(int estadoSolicitud){
+        return daoFactory.getSolicitudClassroomDAO().listarSolicitudesClassroom(estadoSolicitud);
+    }
+    
     public static ArrayList<Tema> listarTemas(){
         return daoFactory.getTemaDAO().listarTemas();
     }
@@ -111,4 +163,8 @@ public abstract class DBController {
         daoFactory.getEvaluacionDAO().insertarEvaluacion(evaluacion,codClass,codTema);
     }
     
+    public static ArrayList<Especialidad> listarEspecialidades(String nombre)
+    {
+        return daoFactory.getEspecialidadDAO().listarEspecialidades(nombre);
+    }
 }

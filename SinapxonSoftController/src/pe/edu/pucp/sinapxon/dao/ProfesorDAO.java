@@ -10,9 +10,11 @@ import pe.edu.pucp.sinapxon.model.Profesor;
 
 /**
  *
- * @author Italo
+ * @author Rick
  */
 public interface ProfesorDAO {
-    public void insertarProfesor(Profesor profesor);
+    public int insertarProfesor(Profesor profesor);
+    public int actualizarProfesor(Profesor profesor);
+    public int eliminarProfesor(String idProfesor);
     public ArrayList<Profesor> listarProfesores(String nombre);
 }
