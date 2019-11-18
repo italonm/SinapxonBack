@@ -14,6 +14,7 @@ public class Especialidad {
     private int id_especialidad;
     private String nombre;
     private String descripcion;
+    private Administrador administrador;
 
     public Especialidad(){
     
@@ -48,4 +49,14 @@ public class Especialidad {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
+    }
+    
+    
 }
