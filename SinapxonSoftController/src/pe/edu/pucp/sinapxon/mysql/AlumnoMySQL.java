@@ -19,7 +19,7 @@ import pe.edu.pucp.sinapxon.model.Pais;
 
 /**
  *
- * @author Italo
+ * @author Rick
  */
 public class AlumnoMySQL implements AlumnoDAO{
 
@@ -132,4 +132,39 @@ public class AlumnoMySQL implements AlumnoDAO{
         }
         return alumnos;
     }    
+
+    @Override
+    public ArrayList<Alumno> listarAlumnosXClassroom(String codigoClassroom) {
+        ArrayList<Alumno> alumnos = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call LISTAR_ALUMNO_X_CLASSROOM(?)}");
+            cs.setString("_CODIGO_CLASSROOM", codigoClassroom);
+            ResultSet rs = cs.executeQuery();
+            while(rs.next()){
+                Alumno alum = new Alumno();
+                alum.setApellidoMaterno(rs.getString("AP_MATERNO"));
+                alum.setApellidoPaterno(rs.getString("AP_PATERNO"));
+                alum.setCodigo(rs.getString("CODIGO"));
+                alum.setCorreo(rs.getString("CORREO"));
+                alum.setDni(rs.getString("DNI"));
+                alum.setFecha(new java.sql.Date(rs.getDate("FECHA_NACIMIENTO").getTime()));
+                alum.setNickname(rs.getString("NICKNAME"));
+                alum.setNombre(rs.getString("NOMBRE"));
+                Pais pais = new Pais();
+                pais.setId_pais(rs.getInt("FID_PAIS"));
+                pais.setNombre(rs.getString("PAIS"));
+                alum.setPais(pais);
+                alum.setPassword(rs.getString("PASSWORD"));
+                alum.setTelefono(rs.getString("TELEFONO"));
+                alumnos.add(alum);
+            }
+        }catch(ClassNotFoundException | SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+        return alumnos;
+    }
 }
