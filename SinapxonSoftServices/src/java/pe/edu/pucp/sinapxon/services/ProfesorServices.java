@@ -10,6 +10,7 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import pe.edu.pucp.sinapxon.config.DBController;
+import pe.edu.pucp.sinapxon.model.Alumno;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
 import pe.edu.pucp.sinapxon.model.Evaluacion;
@@ -72,5 +73,10 @@ public class ProfesorServices {
     @WebMethod(operationName = "insertarEvaluacion")
     public void insertarEvaluacion(@WebParam(name="evaluacion")Evaluacion evaluacion,@WebParam(name="codClass")String codClass,@WebParam(name="codTema")int codTema){
         DBController.insertarEvaluacion(evaluacion, codClass,codTema);
+    }
+    
+    @WebMethod(operationName = "listarAlumnoXClassroom")
+    public ArrayList<Alumno> listarAlumnoXClassroom(@WebParam(name="codigo")String codClassroom){
+        return DBController.listarAlumnoXClassroom(codClassroom);
     }
 }
