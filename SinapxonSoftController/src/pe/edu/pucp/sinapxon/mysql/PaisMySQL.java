@@ -45,4 +45,21 @@ public class PaisMySQL implements PaisDAO {
         }
         return paises;
     }
+
+    @Override
+    public void insertarPais(Pais pais) {
+        try {
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call INSERTAR_PAIS(?,?)}");
+            cs.setString("_NOMBRE", pais.getNombre());
+            cs.registerOutParameter("_ID_PAIS", java.sql.Types.INTEGER);
+            cs.executeUpdate();
+            pais.setId_pais(cs.getInt("_ID_PAIS"));
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            try {con.close();} catch(Exception ex){ System.out.println(ex.getMessage()); }
+        }        
+    }
 }
