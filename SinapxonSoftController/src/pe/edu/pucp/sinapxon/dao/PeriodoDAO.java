@@ -14,6 +14,7 @@ import pe.edu.pucp.sinapxon.model.Periodo;
  * @author ld_ra
  */
 public interface PeriodoDAO {
+    public void insertarPeriodo(Periodo periodo);
     public ArrayList<Periodo> listarPeriodo();
     public ArrayList<Periodo> listarPeriodosDisponibles();
     public ArrayList<Periodo> listarRangoPeriodos(Date fechaIni, Date fechaFin);

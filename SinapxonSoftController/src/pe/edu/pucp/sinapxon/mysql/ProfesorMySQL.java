@@ -19,12 +19,11 @@ import pe.edu.pucp.sinapxon.model.Profesor;
 
 /**
  *
- * @author Italo
+ * @author Rick
  */
 public class ProfesorMySQL implements ProfesorDAO{
 
     Connection con;
-    Statement st = null;
     CallableStatement cs;
     
     @Override
@@ -137,6 +136,43 @@ public class ProfesorMySQL implements ProfesorDAO{
             System.out.println(ex.getMessage());
         }
         return resultado;
+    }
+
+    @Override
+    public ArrayList<Profesor> listarProfesoresXCurso(String codigoCurso) {
+        ArrayList<Profesor> profesores = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call LISTAR_PROFESORES_X_CURSO(?)}");
+            cs.setString("_CODIGO_CURSO", codigoCurso);
+            ResultSet rs = cs.executeQuery();
+            while(rs.next()){
+                Profesor prof = new Profesor();
+                prof.setApellidoMaterno(rs.getString("AP_MATERNO"));
+                prof.setApellidoPaterno(rs.getString("AP_PATERNO"));
+                prof.setCodigo(rs.getString("CODIGO"));
+                prof.setCorreo(rs.getString("CORREO"));
+                prof.setDni(rs.getString("DNI"));
+                prof.setFecha(new java.sql.Date(rs.getDate("FECHA_NACIMIENTO").getTime()));
+                prof.setNickname(rs.getString("NICKNAME"));
+                prof.setNombre(rs.getString("NOMBRE"));
+                Pais pais = new Pais();
+                pais.setId_pais(rs.getInt("FID_PAIS"));
+                pais.setNombre(rs.getString("PAIS"));
+                prof.setPais(pais);
+                prof.setPassword(rs.getString("PASSWORD"));
+                prof.setTelefono(rs.getString("TELEFONO"));
+                prof.setAreaInteres(rs.getString("AREA_INTERES"));
+                prof.setGradoInstruccion(rs.getString("GRADO_INSTRUCCION"));
+                profesores.add(prof);
+            }
+        }catch(ClassNotFoundException | SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+        return profesores;
     }
     
 }

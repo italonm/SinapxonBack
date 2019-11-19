@@ -13,10 +13,9 @@ import pe.edu.pucp.sinapxon.model.Especialidad;
  * @author Rick
  */
 public interface EspecialidadDAO {
-    public void insertarEspecialidad(Especialidad especialidad, String idAdministrador);
     public ArrayList<Especialidad> listarEspecialidades();
 	
-	int insertarEspecialidad(Especialidad especialidad);
+    int insertarEspecialidad(Especialidad especialidad);
     int actualizarEspecialidad(Especialidad especialidad);
     int eliminarEspecialidad(int idEspecialidad);
     public ArrayList<Especialidad> listarEspecialidades(String nombre);

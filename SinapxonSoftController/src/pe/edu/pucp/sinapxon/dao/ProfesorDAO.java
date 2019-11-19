@@ -17,4 +17,5 @@ public interface ProfesorDAO {
     public int actualizarProfesor(Profesor profesor);
     public int eliminarProfesor(String idProfesor);
     public ArrayList<Profesor> listarProfesores(String nombre);
+    public ArrayList<Profesor> listarProfesoresXCurso(String codigoCurso);
 }

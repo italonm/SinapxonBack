@@ -108,5 +108,25 @@ public class PeriodoMySQL implements PeriodoDAO{
         }
         return periodos;
     }
+
+    @Override
+    public void insertarPeriodo(Periodo periodo) {
+        try {
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call INSERTAR_PERIODO(?,?,?,?,?)}");
+            cs.setString("_NOMBRE", periodo.getNombre());
+            cs.setString("_FID_ADMINISTRADOR", periodo.getAdministrador().getCodigo());
+            cs.setDate("_FECHA_INICIO", new java.sql.Date(periodo.getFecha_inicio().getTime()));
+            cs.setDate("_FECHA_FIN", new java.sql.Date(periodo.getFecha_fin().getTime()));
+            cs.registerOutParameter("_ID_PERIODO", java.sql.Types.INTEGER);
+            cs.executeUpdate();
+            periodo.setId_periodo(cs.getInt("_ID_PERIODO"));
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            try {con.close();} catch(Exception ex){ System.out.println(ex.getMessage()); }
+        }
+    }
     
 }
