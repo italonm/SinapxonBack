@@ -15,6 +15,7 @@ import pe.edu.pucp.sinapxon.model.Curso;
 import pe.edu.pucp.sinapxon.model.Pais;
 import pe.edu.pucp.sinapxon.model.Especialidad;
 import pe.edu.pucp.sinapxon.model.Profesor;
+import pe.edu.pucp.sinapxon.model.SolicitudClassroom;
 
 /**
  *
@@ -107,6 +108,12 @@ public class AdministradorServices {
     public ArrayList<Pais> listarPaises() {
         ArrayList<Pais> paises = DBController.listarPaises();
         return paises;
+    }
+    
+    @WebMethod(operationName = "listarSolicitudes")
+    public ArrayList<SolicitudClassroom> listarSolicitudesClassroom(int tipo){
+        ArrayList<SolicitudClassroom> solicitudes = DBController.listarSolicitudesClassroom(tipo);
+        return solicitudes;
     }
     
 }
