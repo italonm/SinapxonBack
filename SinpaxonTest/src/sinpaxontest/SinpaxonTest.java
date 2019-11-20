@@ -26,5 +26,10 @@ public class SinpaxonTest {
 
     public static void main(String[] args) {
         System.out.println("Soy un mapa");
+        
+        ArrayList<SolicitudClassroom> solicitudes = DBController.listarSolicitudesClassroom(2);
+        for (SolicitudClassroom solicitude : solicitudes) {
+            System.out.println(solicitude.getCurso().getNombre());
+        }
     }
 }
