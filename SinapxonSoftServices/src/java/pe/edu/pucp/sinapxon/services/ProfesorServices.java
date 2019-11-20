@@ -10,6 +10,7 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import pe.edu.pucp.sinapxon.config.DBController;
+import pe.edu.pucp.sinapxon.model.Alumno;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
 import pe.edu.pucp.sinapxon.model.Evaluacion;
@@ -33,8 +34,7 @@ public class ProfesorServices {
     
     @WebMethod(operationName = "listarCursos")
     public ArrayList<Curso> listarCursos(String nombre) {
-        ArrayList<Curso> cursos = DBController.listarCursos(nombre);
-        return cursos;
+        return DBController.listarCursos(nombre);
     }
     
     @WebMethod(operationName= "listarIdiomas")
@@ -43,10 +43,8 @@ public class ProfesorServices {
     }
     
     @WebMethod(operationName = "listarPeriodos")
-    public ArrayList<Periodo> listarPeriodos()
-    {
-        ArrayList<Periodo> periodos = DBController.listarPeriodos();
-        return periodos;
+    public ArrayList<Periodo> listarPeriodos(){
+        return DBController.listarPeriodos();
     }
     
     @WebMethod(operationName = "insertarSolicitudClassroom")
@@ -72,5 +70,10 @@ public class ProfesorServices {
     @WebMethod(operationName = "insertarEvaluacion")
     public void insertarEvaluacion(@WebParam(name="evaluacion")Evaluacion evaluacion,@WebParam(name="codClass")String codClass,@WebParam(name="codTema")int codTema){
         DBController.insertarEvaluacion(evaluacion, codClass,codTema);
+    }
+    
+    @WebMethod(operationName = "listarAlumnoXClassroom")
+    public ArrayList<Alumno> listarAlumnoXClassroom(@WebParam(name="codigo")String codClassroom){
+        return DBController.listarAlumnoXClassroom(codClassroom);
     }
 }

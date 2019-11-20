@@ -23,7 +23,7 @@ import pe.edu.pucp.sinapxon.model.Tema_x_Classroom;
 
 /**
  *
- * @author Italo
+ * @author Rick
  */
 public abstract class DBController {
     
@@ -45,6 +45,10 @@ public abstract class DBController {
     
     //=========================================================================================
     //Classroom
+    public static void insertarClassroom(Classroom classroom){
+        daoFactory.getClassroomDAO().insertarClassroom(classroom);
+    }
+    
     public static ArrayList<Classroom> listarClassroomxProfesor(String codigo,String nombre){
         return daoFactory.getClassroomDAO().listarClassroomxProfesor(codigo,nombre);
     }
@@ -53,8 +57,14 @@ public abstract class DBController {
         return daoFactory.getClassroomDAO().listarClassroomxAlumno(codigo);
     }
     
+    //=========================================================================================
+    //Solicitud Classroom
     public static void insertarSolicitudClassroom(SolicitudClassroom solicitudclassroom){
         daoFactory.getSolicitudClassroomDAO().insertarSolicitudClassroom(solicitudclassroom);
+    }
+    
+    public static void aceptarRechazarSolicitudClassroom(int idClassroom, int estadoSolicitud){
+        daoFactory.getSolicitudClassroomDAO().aceptarRechazarSolicitudClassroom(idClassroom, estadoSolicitud);
     }
     
     public static ArrayList<SolicitudClassroom> listarSolicitudesClassroom(int estadoSolicitud){
@@ -102,6 +112,10 @@ public abstract class DBController {
     
     //=========================================================================================
     //Periodos
+    public static void insertarPeriodo(Periodo periodo){
+        daoFactory.getPeriodoDAO().insertarPeriodo(periodo);
+    }
+    
     public static ArrayList<Periodo> listarPeriodos(){
         return daoFactory.getPeriodoDAO().listarPeriodo();
     }
@@ -132,6 +146,9 @@ public abstract class DBController {
         return daoFactory.getAlumnoDAO().listarAlumnos(nombre);
     }
     
+    public static ArrayList<Alumno> listarAlumnoXClassroom(String codigoClassrom){
+        return daoFactory.getAlumnoDAO().listarAlumnosXClassroom(codigoClassrom);
+    }
     //=========================================================================================
     //Profesor
     public static int insertarProfesor(Profesor profesor){
@@ -150,14 +167,14 @@ public abstract class DBController {
         return daoFactory.getProfesorDAO().listarProfesores(nombre);
     }
     
+    public static ArrayList<Profesor> listarProfesoresXCurso(String codigoCurso){
+        return daoFactory.getProfesorDAO().listarProfesoresXCurso(codigoCurso);
+    }
+    
     //=========================================================================================
     //Especialidad
     public static int insertarEspecialidad(Especialidad especialidad){
         return daoFactory.getEspecialidadDAO().insertarEspecialidad(especialidad);
-    }
-    
-    public static void insertarEspecialidad(Especialidad especialidad, String idAdministrador){
-        daoFactory.getEspecialidadDAO().insertarEspecialidad(especialidad, idAdministrador);
     }
     
     public static int actualizarEspecialidad(Especialidad especialidad){
@@ -188,6 +205,10 @@ public abstract class DBController {
  
     //=========================================================================================
     //Pais
+    public static void insertarPais(Pais pais){
+        daoFactory.getPaisDAO().insertarPais(pais);
+    }
+    
     public static ArrayList<Pais> listarPaises(){
         return daoFactory.getPaisDAO().listarPaises();
     }

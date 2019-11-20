@@ -11,11 +11,12 @@ import pe.edu.pucp.sinapxon.model.Persona;
 
 /**
  *
- * @author Italo
+ * @author Rick
  */
 public interface AlumnoDAO {
     public int insertarAlumno(Alumno alumno);
     public int actualizarAlumno(Alumno alumno);
     public int eliminarAlumno(String idAlumno);
     public ArrayList<Alumno> listarAlumnos(String nombre);
+    public ArrayList<Alumno> listarAlumnosXClassroom(String codigoClassroom);
 }
