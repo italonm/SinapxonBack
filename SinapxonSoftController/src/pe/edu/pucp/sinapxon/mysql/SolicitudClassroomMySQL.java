@@ -93,4 +93,19 @@ public class SolicitudClassroomMySQL implements SolicitudClassroomDAO{
         }
         return solicitudes;
     }
+
+    @Override
+    public void aceptarRechazarSolicitudClassroom(int idSolicitud, int estadoSolicitud) {
+        try{
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call ACEPTAR_RECHAZAR_SOLICITUD_CLASSROOM(?,?)}");
+            cs.setInt("_ID_SOLICITUD", idSolicitud);
+            cs.setInt("_ESTADO", estadoSolicitud);
+            cs.executeUpdate();
+        } catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        } finally {
+            try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
+        }
+    }
 }
