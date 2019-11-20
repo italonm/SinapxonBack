@@ -13,5 +13,6 @@ import pe.edu.pucp.sinapxon.model.Pais;
  * @author Emma Isabel Aragon Quenallata
  */
 public interface PaisDAO {
+    public void insertarPais(Pais pais);
     public ArrayList<Pais> listarPaises();
 }
