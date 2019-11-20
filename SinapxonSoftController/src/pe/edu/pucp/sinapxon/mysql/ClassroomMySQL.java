@@ -24,12 +24,11 @@ import pe.edu.pucp.sinapxon.model.Profesor;
 
 /**
  *
- * @author Italo
+ * @author Rick
  */
 public class ClassroomMySQL implements ClassroomDAO{
 
     Connection con;
-    Statement st = null;
     CallableStatement cs;
     
     @Override
@@ -101,5 +100,21 @@ public class ClassroomMySQL implements ClassroomDAO{
         }
         return classrooms;
     }
-    
+
+    @Override
+    public void insertarClassroom(Classroom classroom) {
+        try{
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call INSERTAR_CLASSROOM(?,?,?,?}");
+            cs.setString("_CODIGO", classroom.getCodigo());
+            cs.setString("_FID_CURSO", classroom.getCurso().getCodigo());
+            cs.setInt("_FID_PERIODO", classroom.getPeriodo().getId_periodo());
+            cs.setInt("_FID_IDIOMA", classroom.getIdioma().getId_idioma());
+            cs.executeUpdate();
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
+        }
+    }
 }

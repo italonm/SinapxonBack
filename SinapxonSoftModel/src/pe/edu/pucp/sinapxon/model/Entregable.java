@@ -4,10 +4,10 @@ package pe.edu.pucp.sinapxon.model;
 import java.util.*;
 
 /**
- * 
+ *
+ * @author Rick
  */
 public class Entregable {
-    
     
     private String descripcion;
     private int nota;
@@ -15,9 +15,7 @@ public class Entregable {
     private ArrayList<Archivo_x_Entregable> archivos;
     private Classroom_x_Alumno alumno;
     
-    public Entregable() {
-        
-    }
+    public Entregable() {}
 
     public Entregable(String descripcion, int nota, Evaluacion evaluacion, Classroom_x_Alumno alumno) {
         this.descripcion = descripcion;

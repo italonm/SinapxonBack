@@ -24,12 +24,7 @@ import pe.edu.pucp.sinapxon.model.Tema;
  */
 public class SinpaxonTest {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        ArrayList<Profesor> ps = DBController.listarProfesoresXCurso("INF239");
-        for(Profesor p : ps)
-            System.out.println(p.getNombre() + " - " + p.getPais().getNombre());
+        System.out.println("Soy un mapa");
     }
 }

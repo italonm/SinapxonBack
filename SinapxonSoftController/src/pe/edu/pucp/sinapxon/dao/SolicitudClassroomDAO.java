@@ -14,5 +14,6 @@ import pe.edu.pucp.sinapxon.model.SolicitudClassroom;
  */
 public interface SolicitudClassroomDAO {
     public void insertarSolicitudClassroom(SolicitudClassroom solicitudclassroom);
+    public void aceptarRechazarSolicitudClassroom(int idSolicitud, int estadoSolicitud);
     public ArrayList<SolicitudClassroom> listarSolicitudesClassroom(int estadoSolicitud);
 }
