@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Italo
+ * @author Rick
  */
 public class Classroom_x_Alumno {
     private int id_Classroom_x_Alumno;
@@ -20,9 +20,7 @@ public class Classroom_x_Alumno {
     private int etapaActual;
     private ArrayList<Entregable> entregables;
 
-    public Classroom_x_Alumno(){
-        
-    }
+    public Classroom_x_Alumno(){}
     
     public Classroom_x_Alumno(int id_Classroom_x_Alumno, Alumno alumno, Classroom classroom, int vez, float nota_final, int etapaActual) {
         this.id_Classroom_x_Alumno = id_Classroom_x_Alumno;

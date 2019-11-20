@@ -45,6 +45,10 @@ public abstract class DBController {
     
     //=========================================================================================
     //Classroom
+    public static void insertarClassroom(Classroom classroom){
+        daoFactory.getClassroomDAO().insertarClassroom(classroom);
+    }
+    
     public static ArrayList<Classroom> listarClassroomxProfesor(String codigo,String nombre){
         return daoFactory.getClassroomDAO().listarClassroomxProfesor(codigo,nombre);
     }
@@ -53,8 +57,14 @@ public abstract class DBController {
         return daoFactory.getClassroomDAO().listarClassroomxAlumno(codigo);
     }
     
+    //=========================================================================================
+    //Solicitud Classroom
     public static void insertarSolicitudClassroom(SolicitudClassroom solicitudclassroom){
         daoFactory.getSolicitudClassroomDAO().insertarSolicitudClassroom(solicitudclassroom);
+    }
+    
+    public static void aceptarRechazarSolicitudClassroom(int idClassroom, int estadoSolicitud){
+        daoFactory.getSolicitudClassroomDAO().aceptarRechazarSolicitudClassroom(idClassroom, estadoSolicitud);
     }
     
     public static ArrayList<SolicitudClassroom> listarSolicitudesClassroom(int estadoSolicitud){

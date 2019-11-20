@@ -10,9 +10,10 @@ import pe.edu.pucp.sinapxon.model.Classroom;
 
 /**
  *
- * @author Italo
+ * @author Rick
  */
 public interface ClassroomDAO {
+    public void insertarClassroom(Classroom classroom);
     public ArrayList<Classroom> listarClassroomxProfesor(String codigo,String nombre);
     public ArrayList<Classroom> listarClassroomxAlumno(String codigo);
 }

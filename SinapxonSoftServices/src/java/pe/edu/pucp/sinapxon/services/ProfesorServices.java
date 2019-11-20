@@ -34,8 +34,7 @@ public class ProfesorServices {
     
     @WebMethod(operationName = "listarCursos")
     public ArrayList<Curso> listarCursos(String nombre) {
-        ArrayList<Curso> cursos = DBController.listarCursos(nombre);
-        return cursos;
+        return DBController.listarCursos(nombre);
     }
     
     @WebMethod(operationName= "listarIdiomas")
@@ -44,10 +43,8 @@ public class ProfesorServices {
     }
     
     @WebMethod(operationName = "listarPeriodos")
-    public ArrayList<Periodo> listarPeriodos()
-    {
-        ArrayList<Periodo> periodos = DBController.listarPeriodos();
-        return periodos;
+    public ArrayList<Periodo> listarPeriodos(){
+        return DBController.listarPeriodos();
     }
     
     @WebMethod(operationName = "insertarSolicitudClassroom")
