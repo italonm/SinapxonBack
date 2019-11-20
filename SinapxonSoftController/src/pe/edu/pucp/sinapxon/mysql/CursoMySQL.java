@@ -16,6 +16,7 @@ import pe.edu.pucp.sinapxon.config.DBManager;
 import pe.edu.pucp.sinapxon.dao.CursoDAO;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
+import pe.edu.pucp.sinapxon.model.Especialidad;
 
 /**
  *
@@ -43,23 +44,26 @@ public class CursoMySQL implements CursoDAO{
                 curso.setNombre(rs.getString("NOMBRE"));
                 curso.setCodigo(rs.getString("CODIGO"));
                 curso.setDescripcion(rs.getString("DESCRIPCION"));
+                curso.setEstado(rs.getInt("ESTADO"));              
+                Especialidad especialidad = new Especialidad();
+                especialidad.setId_especialidad(rs.getInt("FID_ESPECIALIDAD"));
+                especialidad.setNombre(rs.getString("ESPECIALIDAD"));
+                curso.setEspecialidad(especialidad);
+                curso.getAdministrador().setCodigo(rs.getString("FID_ADMINISTRADOR"));
                 cursos.add(curso);
             }
             for(Curso cur : cursos){
                 cs1 = con.prepareCall("{call LISTAR_REQUISITOS(?)}");
                 cs1.setString("_CODIGO_CURSO", cur.getCodigo());
-                rs = cs1.executeQuery();
-                while(rs.next()){
+                ResultSet rs2 = cs1.executeQuery();
+                while(rs2.next()){
                     Curso creq = new Curso();
-                    creq.setCodigo(rs.getString("FID_REQUISITO"));
-                    cs2 = con.prepareCall("{call DATOS_REQUISITOS(?,?,?,?,?,?)}");
-                    cs2.setString("_FID_REQUISITO",creq.getCodigo());
-                    cs2.executeQuery();
-                    creq.setNombre(rs.getString("_NOMBRE"));
-                    creq.setDescripcion(rs.getString("_DESCRIPCION"));
-                    creq.getAdministrador().setCodigo(rs.getString("_FID_ADMINISTRADOR"));
-                    creq.getEspecialidad().setId_especialidad(rs.getInt("_FID_ESPECIALIDAD"));
-                    creq.setEstado(rs.getInt("_ESTADO"));
+                    creq.setCodigo(rs2.getString("FID_REQUISITO"));
+                    creq.setNombre(rs2.getString("NOMBRE"));
+                    creq.setDescripcion(rs2.getString("DESCRIPCION"));
+                    creq.getAdministrador().setCodigo(rs2.getString("FID_ADMINISTRADOR"));
+                    creq.getEspecialidad().setId_especialidad(rs2.getInt("FID_ESPECIALIDAD"));
+                    creq.setEstado(rs2.getInt("ESTADO"));
                     cur.getCursos().add(creq);
                 }
             }
@@ -141,5 +145,31 @@ public class CursoMySQL implements CursoDAO{
             System.out.println(ex.getMessage());
         }
         return resultado;
+    }
+    
+    @Override
+    public ArrayList<Curso> listarRequisitos(String codCur) {
+        ArrayList<Curso> requisitos = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs1 = con.prepareCall("{call LISTAR_REQUISITOS(?)}");
+            cs1.setString("_CODIGO_CURSO", codCur);
+            ResultSet rs2 = cs1.executeQuery();
+            while(rs2.next()){
+                Curso creq = new Curso();
+                creq.setCodigo(rs2.getString("FID_REQUISITO"));
+                creq.setNombre(rs2.getString("NOMBRE"));
+                creq.setDescripcion(rs2.getString("DESCRIPCION"));
+                creq.getAdministrador().setCodigo(rs2.getString("FID_ADMINISTRADOR"));
+                creq.getEspecialidad().setId_especialidad(rs2.getInt("FID_ESPECIALIDAD"));
+                creq.setEstado(rs2.getInt("ESTADO"));
+            }
+        }catch(ClassNotFoundException | SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+        return requisitos;
     }
 }
