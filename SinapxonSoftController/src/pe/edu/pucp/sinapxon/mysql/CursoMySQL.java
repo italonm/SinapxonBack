@@ -64,7 +64,8 @@ public class CursoMySQL implements CursoDAO{
                     creq.getAdministrador().setCodigo(rs2.getString("FID_ADMINISTRADOR"));
                     creq.getEspecialidad().setId_especialidad(rs2.getInt("FID_ESPECIALIDAD"));
                     creq.setEstado(rs2.getInt("ESTADO"));
-                    cur.getCursos().add(creq);
+                    ArrayList<Curso> asd=cur.getCursos();
+                    asd.add(creq);
                 }
             }
         }catch(ClassNotFoundException | SQLException ex){
@@ -164,6 +165,7 @@ public class CursoMySQL implements CursoDAO{
                 creq.getAdministrador().setCodigo(rs2.getString("FID_ADMINISTRADOR"));
                 creq.getEspecialidad().setId_especialidad(rs2.getInt("FID_ESPECIALIDAD"));
                 creq.setEstado(rs2.getInt("ESTADO"));
+                requisitos.add(creq);
             }
         }catch(ClassNotFoundException | SQLException ex){
             System.out.println(ex.getMessage());
