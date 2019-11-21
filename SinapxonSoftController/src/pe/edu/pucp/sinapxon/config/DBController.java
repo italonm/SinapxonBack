@@ -118,6 +118,11 @@ public abstract class DBController {
         return daoFactory.getCursoDAO().listarRequisitos(codCur);
     }
     
+    public static ArrayList<Curso> listarCursosSin(String nombre)
+    {
+        return daoFactory.getCursoDAO().listarCursoSin(nombre);
+    }
+    
     //=========================================================================================
     //Periodos
     public static void insertarPeriodo(Periodo periodo){
