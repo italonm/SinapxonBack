@@ -52,6 +52,11 @@ public class ProfesorServices {
         DBController.insertarSolicitudClassroom(solicitudclassroom);
     }
     
+    @WebMethod(operationName = "listarSolicitudesClassroomxProfesor")
+    public ArrayList<SolicitudClassroom>  listarSolicitudesClassroomxProfesor(@WebParam(name="solicitudclassroom")String codigo){
+        return DBController.listarSolicitudesClassroomxProfesor(codigo);
+    }
+    
     @WebMethod(operationName = "insertarTemaxClassroom")
     public void insertarTemaxClassroom(@WebParam(name="tema")Tema_x_Classroom tema){
         DBController.insertarTemaxClassroom(tema);

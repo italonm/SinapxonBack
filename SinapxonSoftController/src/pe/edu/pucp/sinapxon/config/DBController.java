@@ -71,6 +71,9 @@ public abstract class DBController {
         return daoFactory.getSolicitudClassroomDAO().listarSolicitudesClassroom(estadoSolicitud);
     }
     
+    public static ArrayList<SolicitudClassroom> listarSolicitudesClassroomxProfesor(String codigo){
+        return daoFactory.getSolicitudClassroomDAO().listarSolicitudesClassroomxProfesor(codigo);
+    }
     //=========================================================================================
     //Tema
     public static ArrayList<Tema> listarTemas(){
@@ -133,6 +136,9 @@ public abstract class DBController {
         return daoFactory.getPeriodoDAO().listarRangoPeriodos(fechaIni, fechaFin);
     }
     
+    public static Periodo obtenrPeriodo_X_codigo(int codigo){
+        return daoFactory.getPeriodoDAO().obtenerPeriodo_X_Codigo(codigo);
+    }
     //=========================================================================================
     //Alumno
     public static int insertarAlumno(Alumno alumno){
@@ -207,7 +213,10 @@ public abstract class DBController {
     public static ArrayList<Idioma> listarIdiomas(){
         return daoFactory.getIdiomaDAO().listarIdiomas();
     }
- 
+    
+    public static ArrayList<Idioma> listarIdiomasXNombre_codigo(String nombreCod){
+        return daoFactory.getIdiomaDAO().listarIdiomasXNombre_codigo(nombreCod);
+    }
     //=========================================================================================
     //Pais
     public static void insertarPais(Pais pais){
