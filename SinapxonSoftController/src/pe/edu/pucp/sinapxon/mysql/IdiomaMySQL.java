@@ -63,4 +63,27 @@ public class IdiomaMySQL implements IdiomaDAO{
             try{con.close();} catch(Exception ex){System.out.println();}
         }
     }
+
+    @Override
+    public ArrayList<Idioma> listarIdiomasXNombre_codigo(String nombreCodigo) {
+        ArrayList<Idioma> idiomas = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call ListarIdiomaXNombre_Codigo(?)}");
+            cs.setString("_NOMBRE_CODIGO", nombreCodigo);
+            ResultSet rs = cs.executeQuery();
+            while(rs.next()){
+                Idioma idioma = new Idioma();
+                idioma.setNombre(rs.getString("NOMBRE"));
+                idioma.setId_idioma(rs.getInt("ID_IDIOMA"));
+                idiomas.add(idioma);
+            }
+        }catch(ClassNotFoundException | SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+        return idiomas;
+    }
 }
