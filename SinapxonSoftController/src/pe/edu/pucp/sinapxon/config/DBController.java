@@ -71,6 +71,9 @@ public abstract class DBController {
         return daoFactory.getSolicitudClassroomDAO().listarSolicitudesClassroom(estadoSolicitud);
     }
     
+    public static ArrayList<SolicitudClassroom> listarSolicitudesClassroomxProfesor(String codigo){
+        return daoFactory.getSolicitudClassroomDAO().listarSolicitudesClassroomxProfesor(codigo);
+    }
     //=========================================================================================
     //Tema
     public static ArrayList<Tema> listarTemas(){
@@ -108,6 +111,11 @@ public abstract class DBController {
     public static ArrayList<Curso> listarCursos(String nombre)
     {
         return daoFactory.getCursoDAO().listarCurso(nombre);
+    }
+    
+    public static ArrayList<Curso> listarRequisitos(String codCur)
+    {
+        return daoFactory.getCursoDAO().listarRequisitos(codCur);
     }
     
     //=========================================================================================
