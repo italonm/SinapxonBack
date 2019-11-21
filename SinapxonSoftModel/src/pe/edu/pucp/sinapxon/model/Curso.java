@@ -22,6 +22,8 @@ public class Curso {
     public Curso() {
         administrador = new Administrador();
         especialidad = new Especialidad();
+        classrooms = new ArrayList<Classroom>();
+        cursos = new ArrayList<Curso>();
     }
     
     public Curso(String nombre, String descripcion) {

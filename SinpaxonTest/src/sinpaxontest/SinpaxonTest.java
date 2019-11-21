@@ -29,7 +29,12 @@ public class SinpaxonTest {
         
         ArrayList<SolicitudClassroom> solicitudes = DBController.listarSolicitudesClassroom(2);
         for (SolicitudClassroom solicitude : solicitudes) {
-            System.out.println(solicitude.getCurso().getNombre());
+            System.out.println(solicitude.getProfesor().getNombre());
         }
+        
+//        ArrayList<Idioma> idiomas = DBController.listarIdiomasXNombre_codigo("4");
+//        for (Idioma idioma : idiomas) {
+//            System.out.println(idioma.getNombre());
+//        }
     }
 }

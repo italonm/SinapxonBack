@@ -18,4 +18,5 @@ public interface PeriodoDAO {
     public ArrayList<Periodo> listarPeriodo();
     public ArrayList<Periodo> listarPeriodosDisponibles();
     public ArrayList<Periodo> listarRangoPeriodos(Date fechaIni, Date fechaFin);
+    public Periodo obtenerPeriodo_X_Codigo(int codigo);
 }
