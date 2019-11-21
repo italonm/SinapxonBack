@@ -43,6 +43,10 @@ public abstract class DBController {
         daoFactory.getPersonaDAO().actualizarPasswordAlumno(codigo, password);
     }
     
+    public static Alumno validarNickname(String nickname){
+        return daoFactory.getAlumnoDAO().validarNickname(nickname);
+    }
+    
     //=========================================================================================
     //Classroom
     public static void insertarClassroom(Classroom classroom){
