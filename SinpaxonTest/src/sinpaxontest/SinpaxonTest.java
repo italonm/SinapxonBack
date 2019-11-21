@@ -25,7 +25,7 @@ import pe.edu.pucp.sinapxon.model.Tema;
 public class SinpaxonTest {
 
     public static void main(String[] args) {
-        Classroom c = new Classroom();
+        /*Classroom c = new Classroom();
         
         Curso curso = new Curso(); curso.setCodigo("1INF06");
         Periodo periodo = new Periodo(); periodo.setId_periodo(4);
@@ -37,6 +37,10 @@ public class SinpaxonTest {
         c.setIdioma(idioma);
         c.setCurso(curso);
         
-        DBController.insertarClassroom(c);
+        DBController.insertarClassroom(c);*/
+        
+        ArrayList<Evaluacion> evs = DBController.listarEvaluacionesXClassroom("H-0222");
+        for(Evaluacion e : evs)
+            System.out.println(e.getNombre());
     }
 }
