@@ -1,29 +1,26 @@
 package pe.edu.pucp.sinapxon.model;
 
-
-import java.util.*;
+import java.util.ArrayList;
 
 /**
- * 
+ *
+ * @author Rick
  */
 public class Evaluacion {
     
     private int id_evaluacion;
     private String nombre;
     private float peso_porcentual;
+    private Classroom classroom;
     private ArrayList<Entregable> entregables;
     private String descripcion;
     private Tema_x_Classroom tema;
     
-    public Evaluacion() {
-        
-    }
-    
-    
+    public Evaluacion() {}
     
     public Evaluacion(String nombre) {
         this.nombre = nombre;
-        entregables = new ArrayList<Entregable>();
+        entregables = new ArrayList<>();
     }
     
     public void agregarEntregable(Entregable entregable){
@@ -61,6 +58,13 @@ public class Evaluacion {
         return descripcion;
     }
 
+    public Classroom getClassroom(){
+        return classroom;
+    }
+    
+    public void setClassroom(Classroom classroom){
+        this.classroom = classroom;
+    }
     /**
      * @param descripcion the descripcion to set
      */

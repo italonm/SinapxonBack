@@ -7,7 +7,7 @@ package pe.edu.pucp.sinapxon.model;
 
 /**
  *
- * @author Italo
+ * @author Rick
  */
 public class Especialidad {
 

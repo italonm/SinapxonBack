@@ -43,6 +43,10 @@ public abstract class DBController {
         daoFactory.getPersonaDAO().actualizarPasswordAlumno(codigo, password);
     }
     
+    public static Alumno validarNickname(String nickname){
+        return daoFactory.getAlumnoDAO().validarNickname(nickname);
+    }
+    
     //=========================================================================================
     //Classroom
     public static void insertarClassroom(Classroom classroom){
@@ -92,6 +96,10 @@ public abstract class DBController {
     //Evaluacion
     public static void insertarEvaluacion(Evaluacion evaluacion,String codClass,int codTema){
         daoFactory.getEvaluacionDAO().insertarEvaluacion(evaluacion,codClass,codTema);
+    }
+    
+    public static ArrayList<Evaluacion> listarEvaluacionesXClassroom(String codigoClassroom){
+        return daoFactory.getEvaluacionDAO().listarEvaluacionesXClassroom(codigoClassroom);
     }
     
     //=========================================================================================
