@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pe.edu.pucp.sinapxon.config.DBManager;
 import pe.edu.pucp.sinapxon.dao.AlumnoDAO;
 import pe.edu.pucp.sinapxon.model.Alumno;
@@ -166,6 +168,27 @@ public class AlumnoMySQL implements AlumnoDAO{
             try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
         }
         return alumnos;
+    }
+
+    @Override
+    public Alumno validarNickname(String nickname) {
+        Alumno alumno = new Alumno();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call VALIDAR_NICKNAME(?)}");
+            cs.setString("_NICKNAME", nickname);
+            ResultSet rs = cs.executeQuery();
+            if(rs.next()){
+                alumno.setCodigo(rs.getString("CODIGO"));
+            }
+        } catch(ClassNotFoundException | SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+        return alumno;
+
     }
 
 }
