@@ -157,4 +157,9 @@ public class AdministradorServices {
     public void cambiarEstadoSolicitud(int idSolicitud, int estadoSolicitud){
         DBController.aceptarRechazarSolicitudClassroom(idSolicitud, estadoSolicitud);
     }
+    
+    @WebMethod(operationName = "crearClassroom_y_asignarProfesor")
+    public void crearClassroom_y_asignarProfesor(SolicitudClassroom solicitudClassroom){
+        DBController.crearClassroomYasignarProfesor(solicitudClassroom);
+    }
 }
