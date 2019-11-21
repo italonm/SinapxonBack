@@ -52,7 +52,7 @@ public class EvaluacionMySQL implements EvaluacionDAO{
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
             cs = con.prepareCall("{call LISTAR_EVALUACIONES_X_CLASSROOM(?)}");
-            cs.setString("_CODIGO", codigoClassroom);
+            cs.setString("_CODIGO_CLASSROOM", codigoClassroom);
             ResultSet rs = cs.executeQuery();
             while(rs.next()){
                 Evaluacion e = new Evaluacion();
