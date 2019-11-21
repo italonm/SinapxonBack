@@ -8,10 +8,13 @@ package pe.edu.pucp.sinapxon.mysql;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import pe.edu.pucp.sinapxon.config.DBManager;
 import pe.edu.pucp.sinapxon.dao.EvaluacionDAO;
+import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Evaluacion;
 
 /**
@@ -40,6 +43,34 @@ public class EvaluacionMySQL implements EvaluacionDAO{
         }finally{
             try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
         }
+    }
+
+    @Override
+    public ArrayList<Evaluacion> listarEvaluacionesXClassroom(String codigoClassroom) {
+        ArrayList<Evaluacion> evaluaciones = new ArrayList<Evaluacion>();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call LISTAR_EVALUACIONES_X_CLASSROOM(?)}");
+            cs.setString("_CODIGO", codigoClassroom);
+            ResultSet rs = cs.executeQuery();
+            while(rs.next()){
+                Evaluacion e = new Evaluacion();
+                e.setId_evaluacion(rs.getInt("ID_EVALUACION"));
+                e.setNombre(rs.getString("NOMBRE"));
+                e.setDescripcion(rs.getString("DESCRIPCION"));
+                e.setPeso_porcentual(rs.getFloat("PESO_PORCENTUAL"));
+                Classroom c = new Classroom();
+                c.setCodigo(rs.getString("FID_CLASSROOM"));
+                e.setClassroom(c);
+                evaluaciones.add(e);
+            }
+        }catch(ClassNotFoundException | SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+        return evaluaciones;
     }
     
 }
