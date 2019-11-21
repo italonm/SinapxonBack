@@ -25,6 +25,8 @@ import pe.edu.pucp.sinapxon.model.Tema;
 public class SinpaxonTest {
 
     public static void main(String[] args) {
+<<<<<<< HEAD
+=======
         /*Classroom c = new Classroom();
         
 <<<<<<< HEAD
@@ -58,5 +60,6 @@ public class SinpaxonTest {
         for(Evaluacion e : evs)
             System.out.println(e.getNombre());
 >>>>>>> Rick
+>>>>>>> italo
     }
 }
