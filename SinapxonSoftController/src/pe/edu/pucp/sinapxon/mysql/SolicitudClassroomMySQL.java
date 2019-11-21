@@ -108,4 +108,46 @@ public class SolicitudClassroomMySQL implements SolicitudClassroomDAO{
             try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
         }
     }
+
+    @Override
+    public ArrayList<SolicitudClassroom> listarSolicitudesClassroomxProfesor(String codigoProfesor) {
+        ArrayList<SolicitudClassroom> solicitudes = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call LISTAR_SOLICITUDES_CLASSROOM_PROFESOR(?)}");
+            cs.setString("_CODIGO", codigoProfesor);
+            ResultSet rs = cs.executeQuery();
+            while(rs.next()){
+                SolicitudClassroom sc = new SolicitudClassroom();                
+                Profesor prof = new Profesor();
+                Periodo per = new Periodo();
+                Idioma idioma = new Idioma();
+                Curso curso = new Curso();
+                
+                sc.setId_solicitud(rs.getInt("ID_SOLICITUD"));
+                sc.setDescripcion(rs.getString("DESCRIPCION"));
+                sc.setFecha(rs.getDate("FECHA_SOLICITUD"));
+                curso.setCodigo(rs.getString("CODIGO_CURSO"));
+                curso.setNombre(rs.getString("NOMBRE_CURSO"));
+                sc.setCurso(curso);
+                prof.setCodigo(rs.getString("CODIGO_PROFESOR"));
+                prof.setNombre(rs.getString("NOMBRE_PROFESOR"));
+                prof.setAreaInteres(rs.getString("AREA_INTERES"));
+                prof.setGradoInstruccion(rs.getString("GRADO_INSTRUCCION"));
+                sc.setProfesor(prof);
+                per.setNombre(rs.getString("PERIODO"));
+                sc.setPeriodo(per);
+                idioma.setNombre(rs.getString("IDIOMA"));
+                sc.setIdioma(idioma);
+                
+                solicitudes.add(sc);
+            }
+        }catch(ClassNotFoundException | SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
+        }
+        return solicitudes;
+    }
 }

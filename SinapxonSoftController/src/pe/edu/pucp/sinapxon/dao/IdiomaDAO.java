@@ -15,4 +15,5 @@ import pe.edu.pucp.sinapxon.model.Idioma;
 public interface IdiomaDAO {
     public void insertarIdioma(Idioma idioma);
     public ArrayList<Idioma> listarIdiomas();
+    public ArrayList<Idioma> listarIdiomasXNombre_codigo(String nombreCodigo);
 }
