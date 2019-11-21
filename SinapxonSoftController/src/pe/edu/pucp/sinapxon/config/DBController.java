@@ -91,6 +91,10 @@ public abstract class DBController {
         daoFactory.getEvaluacionDAO().insertarEvaluacion(evaluacion,codClass,codTema);
     }
     
+    public static ArrayList<Evaluacion> listarEvaluacionesXClassroom(String codigoClassroom){
+        return daoFactory.getEvaluacionDAO().listarEvaluacionesXClassroom(codigoClassroom);
+    }
+    
     //=========================================================================================
     //Curso
     public static void insertarCurso(Curso curso){

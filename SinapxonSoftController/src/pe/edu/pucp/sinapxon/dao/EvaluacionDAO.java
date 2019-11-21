@@ -5,12 +5,14 @@
  */
 package pe.edu.pucp.sinapxon.dao;
 
+import java.util.ArrayList;
 import pe.edu.pucp.sinapxon.model.Evaluacion;
 
 /**
  *
- * @author Italo
+ * @author Rick
  */
 public interface EvaluacionDAO {
     public void insertarEvaluacion(Evaluacion evaluacion,String cod,int codTema);
+    public ArrayList<Evaluacion> listarEvaluacionesXClassroom(String codigoClassroom);
 }
