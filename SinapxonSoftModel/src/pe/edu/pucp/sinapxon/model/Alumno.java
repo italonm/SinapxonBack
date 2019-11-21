@@ -1,10 +1,11 @@
 package pe.edu.pucp.sinapxon.model;
 
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
- * 
+ *
+ * @author Rick
  */
 public class Alumno{
     

@@ -21,7 +21,7 @@ public class Entregable {
         this.descripcion = descripcion;
         this.nota = nota;
         this.evaluacion = evaluacion;
-        this.archivos = new ArrayList<Archivo_x_Entregable>();
+        this.archivos = new ArrayList<>();
         this.alumno = alumno;
     }
 

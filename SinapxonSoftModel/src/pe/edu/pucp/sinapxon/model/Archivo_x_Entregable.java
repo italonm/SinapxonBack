@@ -1,10 +1,8 @@
 package pe.edu.pucp.sinapxon.model;
 
-
-import java.util.*;
-
 /**
- * 
+ *
+ * @author Rick
  */
 public class Archivo_x_Entregable {
     
@@ -16,9 +14,8 @@ public class Archivo_x_Entregable {
         this.nombre = nombre;
     }
     
-    public Archivo_x_Entregable() {
+    public Archivo_x_Entregable() {}
     
-    }
     public int getId_archivo_x_entregable() {
         return id_archivo_x_entregable;
     }

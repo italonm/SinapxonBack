@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Italo
+ * @author Rick
  */
 public class Tema_x_Classroom {
     private int id_tema;
@@ -20,9 +20,7 @@ public class Tema_x_Classroom {
     private String link;
     private ArrayList<Archivo_x_Tema> archivoxTema;
     private Evaluacion evaluacion;
-
     
-
     public int getId_tema() {
         return id_tema;
     }
@@ -94,6 +92,5 @@ public class Tema_x_Classroom {
     public void setLink(String link) {
         this.link = link;
     }
-    
     
 }

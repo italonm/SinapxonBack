@@ -25,11 +25,18 @@ import pe.edu.pucp.sinapxon.model.Tema;
 public class SinpaxonTest {
 
     public static void main(String[] args) {
-        System.out.println("Soy un mapa");
+        Classroom c = new Classroom();
         
-        ArrayList<SolicitudClassroom> solicitudes = DBController.listarSolicitudesClassroom(2);
-        for (SolicitudClassroom solicitude : solicitudes) {
-            System.out.println(solicitude.getCurso().getNombre());
-        }
+        Curso curso = new Curso(); curso.setCodigo("1INF06");
+        Periodo periodo = new Periodo(); periodo.setId_periodo(4);
+        Idioma idioma = new Idioma(); idioma.setId_idioma(1);
+        
+        c.setCodigo("H-0112");
+        c.setActivo(1);
+        c.setPeriodo(periodo);
+        c.setIdioma(idioma);
+        c.setCurso(curso);
+        
+        DBController.insertarClassroom(c);
     }
 }

@@ -7,7 +7,7 @@ package pe.edu.pucp.sinapxon.model;
 
 /**
  *
- * @author Italo
+ * @author Rick
  */
 public class Especialidad {
 
@@ -16,9 +16,7 @@ public class Especialidad {
     private String descripcion;
     private Administrador administrador;
 
-    public Especialidad(){
-    
-    }
+    public Especialidad(){}
     
     public Especialidad(int id_especialidad, String nombre, String descripcion) {
         this.id_especialidad = id_especialidad;
