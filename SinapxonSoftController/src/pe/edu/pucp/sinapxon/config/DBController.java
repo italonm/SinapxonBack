@@ -98,6 +98,10 @@ public abstract class DBController {
         daoFactory.getEvaluacionDAO().insertarEvaluacion(evaluacion,codClass,codTema);
     }
     
+    public static ArrayList<Evaluacion> listarEvaluacionesXClassroom(String codigoClassroom){
+        return daoFactory.getEvaluacionDAO().listarEvaluacionesXClassroom(codigoClassroom);
+    }
+    
     //=========================================================================================
     //Curso
     public static void insertarCurso(Curso curso){
@@ -120,6 +124,11 @@ public abstract class DBController {
     public static ArrayList<Curso> listarRequisitos(String codCur)
     {
         return daoFactory.getCursoDAO().listarRequisitos(codCur);
+    }
+    
+    public static ArrayList<Curso> listarCursosSin(String nombre)
+    {
+        return daoFactory.getCursoDAO().listarCursoSin(nombre);
     }
     
     //=========================================================================================

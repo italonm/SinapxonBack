@@ -1,11 +1,11 @@
 package pe.edu.pucp.sinapxon.model;
 
-
-import java.util.*;
+import java.util.Date;
 import pe.edu.pucp.sinapxon.model.Curso;
 
 /**
- * 
+ *
+ * @author Rick
  */
 public class Administrador {
 
@@ -174,7 +174,5 @@ public class Administrador {
     public void setPais(Pais pais) {
         this.pais = pais;
     }
-    
-   
     
 }

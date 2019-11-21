@@ -105,7 +105,7 @@ public class ClassroomMySQL implements ClassroomDAO{
     public void insertarClassroom(Classroom classroom) {
         try{
             con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
-            cs = con.prepareCall("{call INSERTAR_CLASSROOM(?,?,?,?}");
+            cs = con.prepareCall("{call INSERTAR_CLASSROOM(?,?,?,?)}");
             cs.setString("_CODIGO", classroom.getCodigo());
             cs.setString("_FID_CURSO", classroom.getCurso().getCodigo());
             cs.setInt("_FID_PERIODO", classroom.getPeriodo().getId_periodo());
