@@ -9,6 +9,7 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import pe.edu.pucp.sinapxon.config.DBController;
+import pe.edu.pucp.sinapxon.model.Alumno;
 import pe.edu.pucp.sinapxon.model.Persona;
 
 /**
@@ -29,5 +30,10 @@ public class LoginServices {
     @WebMethod(operationName = "actualizarPassword")
     public void actualizarPassword(@WebParam(name="codigo")String codigo, @WebParam(name="password")String password){
         DBController.actualizarPassword(codigo, password);
+    }
+    
+    @WebMethod(operationName = "validarNickname")
+    public Alumno validarNickname(@WebParam(name="nickname")String nickname){
+        return DBController.validarNickname(nickname);
     }
 }

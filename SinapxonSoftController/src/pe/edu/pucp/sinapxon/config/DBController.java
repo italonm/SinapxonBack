@@ -43,6 +43,10 @@ public abstract class DBController {
         daoFactory.getPersonaDAO().actualizarPasswordAlumno(codigo, password);
     }
     
+    public static Alumno validarNickname(String nickname){
+        return daoFactory.getAlumnoDAO().validarNickname(nickname);
+    }
+    
     //=========================================================================================
     //Classroom
     public static void insertarClassroom(Classroom classroom){
@@ -120,6 +124,11 @@ public abstract class DBController {
     public static ArrayList<Curso> listarRequisitos(String codCur)
     {
         return daoFactory.getCursoDAO().listarRequisitos(codCur);
+    }
+    
+    public static ArrayList<Curso> listarCursosSin(String nombre)
+    {
+        return daoFactory.getCursoDAO().listarCursoSin(nombre);
     }
     
     //=========================================================================================
