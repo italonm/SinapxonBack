@@ -5,6 +5,7 @@
  */
 package pe.edu.pucp.sinapxon.services;
 
+import java.time.Period;
 import java.util.ArrayList;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -14,6 +15,8 @@ import pe.edu.pucp.sinapxon.model.Alumno;
 import pe.edu.pucp.sinapxon.model.Curso;
 import pe.edu.pucp.sinapxon.model.Pais;
 import pe.edu.pucp.sinapxon.model.Especialidad;
+import pe.edu.pucp.sinapxon.model.Idioma;
+import pe.edu.pucp.sinapxon.model.Periodo;
 import pe.edu.pucp.sinapxon.model.Profesor;
 import pe.edu.pucp.sinapxon.model.SolicitudClassroom;
 
@@ -138,4 +141,20 @@ public class AdministradorServices {
         return solicitudes;
     }
     
+    @WebMethod(operationName = "listarIdiomasXNombreCodigo")
+    public ArrayList<Idioma> listarIdiomasXNombreCodigo(String nombreCodigo){
+        ArrayList<Idioma> idiomas = DBController.listarIdiomasXNombre_codigo(nombreCodigo);
+        return idiomas;
+    }
+    
+    @WebMethod(operationName = "obtenerPeriodo")
+    public Periodo obtenerPeriodo(int codigo){
+        Periodo periodo = DBController.obtenrPeriodo_X_codigo(codigo);
+        return periodo;
+    }
+    
+    @WebMethod(operationName = "cambiarEstadoSolicitud")
+    public void cambiarEstadoSolicitud(int idSolicitud, int estadoSolicitud){
+        DBController.aceptarRechazarSolicitudClassroom(idSolicitud, estadoSolicitud);
+    }
 }
