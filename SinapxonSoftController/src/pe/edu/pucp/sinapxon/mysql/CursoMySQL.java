@@ -157,15 +157,17 @@ public class CursoMySQL implements CursoDAO{
             cs1 = con.prepareCall("{call LISTAR_REQUISITOS(?)}");
             cs1.setString("_CODIGO_CURSO", codCur);
             ResultSet rs2 = cs1.executeQuery();
-            while(rs2.next()){
-                Curso creq = new Curso();
-                creq.setCodigo(rs2.getString("FID_REQUISITO"));
-                creq.setNombre(rs2.getString("NOMBRE"));
-                creq.setDescripcion(rs2.getString("DESCRIPCION"));
-                creq.getAdministrador().setCodigo(rs2.getString("FID_ADMINISTRADOR"));
-                creq.getEspecialidad().setId_especialidad(rs2.getInt("FID_ESPECIALIDAD"));
-                creq.setEstado(rs2.getInt("ESTADO"));
-                requisitos.add(creq);
+            if(rs2.getRow()!=0){
+                while(rs2.next()){
+                    Curso creq = new Curso();
+                    creq.setCodigo(rs2.getString("FID_REQUISITO"));
+                    creq.setNombre(rs2.getString("NOMBRE"));
+                    creq.setDescripcion(rs2.getString("DESCRIPCION"));
+                    creq.getAdministrador().setCodigo(rs2.getString("FID_ADMINISTRADOR"));
+                    creq.getEspecialidad().setId_especialidad(rs2.getInt("FID_ESPECIALIDAD"));
+                    creq.setEstado(rs2.getInt("ESTADO"));
+                    requisitos.add(creq);
+                }
             }
         }catch(ClassNotFoundException | SQLException ex){
             System.out.println(ex.getMessage());
