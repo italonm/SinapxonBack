@@ -15,7 +15,9 @@ import java.util.ArrayList;
 import pe.edu.pucp.sinapxon.config.DBManager;
 import pe.edu.pucp.sinapxon.dao.EvaluacionDAO;
 import pe.edu.pucp.sinapxon.model.Classroom;
+import pe.edu.pucp.sinapxon.model.Entregable;
 import pe.edu.pucp.sinapxon.model.Evaluacion;
+import pe.edu.pucp.sinapxon.model.Tema_x_Classroom;
 
 /**
  *
@@ -60,9 +62,9 @@ public class EvaluacionMySQL implements EvaluacionDAO{
                 e.setNombre(rs.getString("NOMBRE"));
                 e.setDescripcion(rs.getString("DESCRIPCION"));
                 e.setPeso_porcentual(rs.getFloat("PESO_PORCENTUAL"));
-                Classroom c = new Classroom();
-                c.setCodigo(rs.getString("FID_CLASSROOM"));
-                e.setClassroom(c);
+                e.setClassroom(new Classroom());
+                //e.setEntregables(new ArrayList<Entregable>());
+                e.setTema(new Tema_x_Classroom());
                 evaluaciones.add(e);
             }
         }catch(ClassNotFoundException | SQLException ex){
