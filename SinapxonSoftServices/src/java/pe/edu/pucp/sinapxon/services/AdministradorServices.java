@@ -56,6 +56,12 @@ public class AdministradorServices {
         return requisitos;
     }
     
+    @WebMethod(operationName = "listarCursosSin")
+    public ArrayList<Curso> listarCursosSin(String nombre) {
+        ArrayList<Curso> cursos = DBController.listarCursosSin(nombre);
+        return cursos;
+    }
+    
     //Especialidad 
     //==========================================================================
     @WebMethod(operationName = "insertarEspecialidad")

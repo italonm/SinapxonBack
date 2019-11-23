@@ -37,5 +37,9 @@ public class SinpaxonTest {
 //        for (Idioma idioma : idiomas) {
 //            System.out.println(idioma.getNombre());
 //        }
+    public static void main(String[] args) {        
+        ArrayList<Evaluacion> evs = DBController.listarEvaluacionesXClassroom("H-0222");
+        for(Evaluacion e : evs)
+            System.out.println(e.getNombre());
     }
 }
