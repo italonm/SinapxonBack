@@ -157,15 +157,17 @@ public class CursoMySQL implements CursoDAO{
             cs1 = con.prepareCall("{call LISTAR_REQUISITOS(?)}");
             cs1.setString("_CODIGO_CURSO", codCur);
             ResultSet rs2 = cs1.executeQuery();
-            while(rs2.next()){
-                Curso creq = new Curso();
-                creq.setCodigo(rs2.getString("FID_REQUISITO"));
-                creq.setNombre(rs2.getString("NOMBRE"));
-                creq.setDescripcion(rs2.getString("DESCRIPCION"));
-                creq.getAdministrador().setCodigo(rs2.getString("FID_ADMINISTRADOR"));
-                creq.getEspecialidad().setId_especialidad(rs2.getInt("FID_ESPECIALIDAD"));
-                creq.setEstado(rs2.getInt("ESTADO"));
-                requisitos.add(creq);
+            if(rs2.getRow()!=0){
+                while(rs2.next()){
+                    Curso creq = new Curso();
+                    creq.setCodigo(rs2.getString("FID_REQUISITO"));
+                    creq.setNombre(rs2.getString("NOMBRE"));
+                    creq.setDescripcion(rs2.getString("DESCRIPCION"));
+                    creq.getAdministrador().setCodigo(rs2.getString("FID_ADMINISTRADOR"));
+                    creq.getEspecialidad().setId_especialidad(rs2.getInt("FID_ESPECIALIDAD"));
+                    creq.setEstado(rs2.getInt("ESTADO"));
+                    requisitos.add(creq);
+                }
             }
         }catch(ClassNotFoundException | SQLException ex){
             System.out.println(ex.getMessage());
@@ -183,6 +185,37 @@ public class CursoMySQL implements CursoDAO{
             con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
             cs = con.prepareCall("{call LISTAR_CURSOS(?)}");
             cs.setString("_NOMBRE_CURSO",nombre);
+            ResultSet rs = cs.executeQuery();
+            while(rs.next()){
+                Curso curso = new Curso();
+                curso.setNombre(rs.getString("NOMBRE"));
+                curso.setCodigo(rs.getString("CODIGO"));
+                curso.setDescripcion(rs.getString("DESCRIPCION"));
+                curso.setEstado(rs.getInt("ESTADO"));              
+                Especialidad especialidad = new Especialidad();
+                especialidad.setId_especialidad(rs.getInt("FID_ESPECIALIDAD"));
+                especialidad.setNombre(rs.getString("ESPECIALIDAD"));
+                curso.setEspecialidad(especialidad);
+                curso.getAdministrador().setCodigo(rs.getString("FID_ADMINISTRADOR"));
+                cursos.add(curso);
+            }
+        }catch(ClassNotFoundException | SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+        return cursos;
+    }
+    
+    @Override
+    public ArrayList<Curso> listarCursoPag(String nombre,int nPag) {
+        ArrayList<Curso> cursos = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call LISTAR_CURSOS_2(?,?)}");
+            cs.setString("_NOMBRE_CURSO",nombre);
+            cs.setInt("NPAG",nPag);
             ResultSet rs = cs.executeQuery();
             while(rs.next()){
                 Curso curso = new Curso();
