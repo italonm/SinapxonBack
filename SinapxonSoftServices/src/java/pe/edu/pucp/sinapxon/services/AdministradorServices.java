@@ -62,11 +62,6 @@ public class AdministradorServices {
         return cursos;
     }
     
-    @WebMethod(operationName = "listarCursosPag")
-    public ArrayList<Curso> listarCursoPag(String nombre,int nPag) {
-        ArrayList<Curso> cursos = DBController.listarCursoPag(nombre, nPag);
-        return cursos;
-    }
     //Especialidad 
     //==========================================================================
     @WebMethod(operationName = "insertarEspecialidad")

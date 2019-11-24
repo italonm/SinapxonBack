@@ -130,11 +130,6 @@ public abstract class DBController {
     {
         return daoFactory.getCursoDAO().listarCursoSin(nombre);
     }
-
-    public static ArrayList<Curso> listarCursoPag(String nombre,int nPag)
-    {
-        return daoFactory.getCursoDAO().listarCursoPag(nombre, nPag);
-    }
     
     //=========================================================================================
     //Periodos

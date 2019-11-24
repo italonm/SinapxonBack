@@ -81,9 +81,4 @@ public class ProfesorServices {
     public ArrayList<Alumno> listarAlumnoXClassroom(@WebParam(name="codigo")String codClassroom){
         return DBController.listarAlumnoXClassroom(codClassroom);
     }
-    
-    @WebMethod(operationName = "listarEvaluacionesXClassroom")
-    public ArrayList<Evaluacion> listarEvaluacionesXClassroom(@WebParam(name="codigo")String codigoClassroom){
-        return DBController.listarEvaluacionesXClassroom(codigoClassroom);
-    }
 }
