@@ -164,8 +164,6 @@ public class SolicitudClassroomMySQL implements SolicitudClassroomDAO{
         
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
-            cs = con.prepareCall("{call INSERTAR_CLASSROOM(?,?,?,?)}");
             
             Random randomGen = new Random();
             String codigoClassroom = "H-";
@@ -174,32 +172,37 @@ public class SolicitudClassroomMySQL implements SolicitudClassroomDAO{
                 codigoClassroom = codigoClassroom+String.valueOf(randomGen.nextInt(10));
             }
             
+            //Obtener el codigo del periodo
             con2 = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
             cs2 = con2.prepareCall("{call LISTAR_PERIODOS_x_NOMBRE(?)}");
             cs2.setString("_NOMBRE_CODIGO", solicitudClassroom.getPeriodo().getNombre());
-            ResultSet rs2 = cs.executeQuery();
+            ResultSet rs2 = cs2.executeQuery();
             rs2.next();
             int codigoPeriodo = rs2.getInt("ID_PERIODO");
             
+            //Obtener el id del idioma
             con3 = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
             cs3 = con3.prepareCall("{call ListarIdiomaXNombre_Codigo(?)}");
             cs3.setString("_NOMBRE_CODIGO", solicitudClassroom.getIdioma().getNombre());
-            ResultSet rs3 = cs.executeQuery();
+            ResultSet rs3 = cs3.executeQuery();
             rs3.next();
             int idIdioma = rs3.getInt("ID_IDIOMA");
             
+            //Insertamos el nuevo classroom
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call INSERTAR_CLASSROOM(?,?,?,?)}");
             cs.setString("_CODIGO", codigoClassroom);
             cs.setString("_FID_CURSO", solicitudClassroom.getCurso().getCodigo());
             cs.setInt("_FID_PERIODO", codigoPeriodo);
             cs.setInt("_FID_IDIOMA", idIdioma);
-            cs.executeUpdate();
+            cs.executeQuery();
             
-            
+            //Asignamos el profesor al nuevo classroom
             con4 = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
             cs4 = con4.prepareCall("{call REGISTRAR_PROFESOR_EN_CLASSROOM(?,?)}");
             cs4.setString("_FID_CLASSROOM", codigoClassroom);
             cs4.setString("_FID_PROFESOR", solicitudClassroom.getProfesor().getCodigo());
-            cs4.executeUpdate();
+            cs4.executeQuery();
             
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());

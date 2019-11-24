@@ -36,8 +36,7 @@ public class SinpaxonTest {
 //        ArrayList<Idioma> idiomas = DBController.listarIdiomasXNombre_codigo("4");
 //        for (Idioma idioma : idiomas) {
 //            System.out.println(idioma.getNombre());
-//        }
-    public static void main(String[] args) {        
+//        }      
         ArrayList<Evaluacion> evs = DBController.listarEvaluacionesXClassroom("H-0222");
         for(Evaluacion e : evs)
             System.out.println(e.getNombre());
