@@ -59,7 +59,5 @@ public class SinpaxonTest {
         ArrayList<Evaluacion> evs = DBController.listarEvaluacionesXClassroom("H-0222");
         for(Evaluacion e : evs)
             System.out.println(e.getNombre());
->>>>>>> Rick
->>>>>>> italo
     }
 }
