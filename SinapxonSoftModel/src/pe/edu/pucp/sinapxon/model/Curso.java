@@ -20,7 +20,10 @@ public class Curso {
     
     
     public Curso() {
-        
+        administrador = new Administrador();
+        especialidad = new Especialidad();
+        classrooms = new ArrayList<Classroom>();
+        cursos = new ArrayList<Curso>();
     }
     
     public Curso(String nombre, String descripcion) {
@@ -28,6 +31,8 @@ public class Curso {
         this.descripcion=descripcion;
         classrooms = new ArrayList<Classroom>();
         cursos = new ArrayList<Curso>();
+        administrador = new Administrador();
+        especialidad = new Especialidad();
     }
     
     public String getNombre() {

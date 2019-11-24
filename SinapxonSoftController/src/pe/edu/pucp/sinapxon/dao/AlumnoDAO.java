@@ -19,4 +19,5 @@ public interface AlumnoDAO {
     public int eliminarAlumno(String idAlumno);
     public ArrayList<Alumno> listarAlumnos(String nombre);
     public ArrayList<Alumno> listarAlumnosXClassroom(String codigoClassroom);
+    public Alumno validarNickname(String nickname);
 }

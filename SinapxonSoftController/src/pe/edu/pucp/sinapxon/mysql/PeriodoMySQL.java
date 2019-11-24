@@ -128,5 +128,31 @@ public class PeriodoMySQL implements PeriodoDAO{
             try {con.close();} catch(Exception ex){ System.out.println(ex.getMessage()); }
         }
     }
+
+    @Override
+    public Periodo obtenerPeriodo_X_Codigo(int codigo) {
+        Periodo periodo = new Periodo();
+        try 
+        {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call LISTAR_PERIODOS_x_CODIGO(?)}");
+            cs.setInt("_NOMBRE_CODIGO", codigo);
+            ResultSet rs = cs.executeQuery();
+            while(rs.next())
+            {
+                periodo.setId_periodo(rs.getInt("ID_PERIODO"));
+                periodo.setNombre(rs.getString("NOMBRE"));
+                //periodo.getAdministrador().setCodigo(String.valueOf(rs.getInt("FID_ADMINISTRADOR")));
+                periodo.setFecha_inicio(rs.getDate("FECHA_INICIO"));
+                periodo.setFecha_fin(rs.getDate("FECHA_FIN"));
+            }
+        }catch (ClassNotFoundException | SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+        return periodo;
+    }
     
 }

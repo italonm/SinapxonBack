@@ -16,13 +16,17 @@ public class Especialidad {
     private String descripcion;
     private Administrador administrador;
 
-    public Especialidad(){}
+    public Especialidad(){
+        administrador = new Administrador();
+    }
     
     public Especialidad(int id_especialidad, String nombre, String descripcion) {
         this.id_especialidad = id_especialidad;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        administrador = new Administrador();
     }
+    
     
     public int getId_especialidad() {
         return id_especialidad;

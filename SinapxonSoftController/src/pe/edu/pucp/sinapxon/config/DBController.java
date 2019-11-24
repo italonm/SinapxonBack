@@ -43,6 +43,10 @@ public abstract class DBController {
         daoFactory.getPersonaDAO().actualizarPasswordAlumno(codigo, password);
     }
     
+    public static Alumno validarNickname(String nickname){
+        return daoFactory.getAlumnoDAO().validarNickname(nickname);
+    }
+    
     //=========================================================================================
     //Classroom
     public static void insertarClassroom(Classroom classroom){
@@ -71,6 +75,12 @@ public abstract class DBController {
         return daoFactory.getSolicitudClassroomDAO().listarSolicitudesClassroom(estadoSolicitud);
     }
     
+    public static ArrayList<SolicitudClassroom> listarSolicitudesClassroomxProfesor(String codigo){
+        return daoFactory.getSolicitudClassroomDAO().listarSolicitudesClassroomxProfesor(codigo);
+    }
+    public static void crearClassroomYasignarProfesor(SolicitudClassroom solicitudClassroom){
+        daoFactory.getSolicitudClassroomDAO().crearClassroom_y_asignarProfesor(solicitudClassroom);
+    }
     //=========================================================================================
     //Tema
     public static ArrayList<Tema> listarTemas(){
@@ -114,6 +124,16 @@ public abstract class DBController {
         return daoFactory.getCursoDAO().listarCurso(nombre);
     }
     
+    public static ArrayList<Curso> listarRequisitos(String codCur)
+    {
+        return daoFactory.getCursoDAO().listarRequisitos(codCur);
+    }
+    
+    public static ArrayList<Curso> listarCursosSin(String nombre)
+    {
+        return daoFactory.getCursoDAO().listarCursoSin(nombre);
+    }
+    
     //=========================================================================================
     //Periodos
     public static void insertarPeriodo(Periodo periodo){
@@ -132,6 +152,9 @@ public abstract class DBController {
         return daoFactory.getPeriodoDAO().listarRangoPeriodos(fechaIni, fechaFin);
     }
     
+    public static Periodo obtenrPeriodo_X_codigo(int codigo){
+        return daoFactory.getPeriodoDAO().obtenerPeriodo_X_Codigo(codigo);
+    }
     //=========================================================================================
     //Alumno
     public static int insertarAlumno(Alumno alumno){
@@ -206,7 +229,10 @@ public abstract class DBController {
     public static ArrayList<Idioma> listarIdiomas(){
         return daoFactory.getIdiomaDAO().listarIdiomas();
     }
- 
+    
+    public static ArrayList<Idioma> listarIdiomasXNombre_codigo(String nombreCod){
+        return daoFactory.getIdiomaDAO().listarIdiomasXNombre_codigo(nombreCod);
+    }
     //=========================================================================================
     //Pais
     public static void insertarPais(Pais pais){

@@ -95,7 +95,7 @@ public class EspecialidadMySQL implements EspecialidadDAO{
                 esp.setNombre(rs.getString("NOMBRE"));
                 esp.setId_especialidad(rs.getInt("ID_ESPECIALIDAD"));
                 esp.setDescripcion(rs.getString("DESCRIPCION"));
-                esp.getAdministrador().setCodigo("FID_ADMINISTRADOR");
+                esp.getAdministrador().setCodigo(rs.getString("FID_ADMINISTRADOR"));
                 especialidades.add(esp);
             }
         }catch(ClassNotFoundException | SQLException ex){

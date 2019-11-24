@@ -17,4 +17,6 @@ public interface CursoDAO {
     public int actualizarCurso(Curso curso);
     public int eliminarCurso(String idCurso);
     public ArrayList<Curso> listarCurso(String nombre);
+    public ArrayList<Curso> listarCursoSin(String nombre);
+    public ArrayList<Curso> listarRequisitos(String codCur);
 }
