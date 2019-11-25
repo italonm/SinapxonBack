@@ -56,6 +56,12 @@ public class AdministradorServices {
         return requisitos;
     }
     
+    @WebMethod(operationName = "listarCursosSin")
+    public ArrayList<Curso> listarCursosSin(String nombre) {
+        ArrayList<Curso> cursos = DBController.listarCursosSin(nombre);
+        return cursos;
+    }
+    
     //Especialidad 
     //==========================================================================
     @WebMethod(operationName = "insertarEspecialidad")
@@ -156,5 +162,10 @@ public class AdministradorServices {
     @WebMethod(operationName = "cambiarEstadoSolicitud")
     public void cambiarEstadoSolicitud(int idSolicitud, int estadoSolicitud){
         DBController.aceptarRechazarSolicitudClassroom(idSolicitud, estadoSolicitud);
+    }
+    
+    @WebMethod(operationName = "crearClassroom_y_asignarProfesor")
+    public void crearClassroom_y_asignarProfesor(SolicitudClassroom solicitudClassroom){
+        DBController.crearClassroomYasignarProfesor(solicitudClassroom);
     }
 }

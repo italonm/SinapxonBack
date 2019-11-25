@@ -6,6 +6,7 @@
 package sinpaxontest;
 
 import java.util.ArrayList;
+import java.util.Random;
 import pe.edu.pucp.sinapxon.config.DBController;
 import pe.edu.pucp.sinapxon.model.Alumno;
 import pe.edu.pucp.sinapxon.model.Classroom;
@@ -27,14 +28,17 @@ public class SinpaxonTest {
     public static void main(String[] args) {
         System.out.println("Soy un mapa");
         
-        ArrayList<SolicitudClassroom> solicitudes = DBController.listarSolicitudesClassroom(2);
-        for (SolicitudClassroom solicitude : solicitudes) {
-            System.out.println(solicitude.getProfesor().getNombre());
-        }
+//        ArrayList<SolicitudClassroom> solicitudes = DBController.listarSolicitudesClassroom(2);
+//        for (SolicitudClassroom solicitude : solicitudes) {
+//            System.out.println(solicitude.getProfesor().getNombre());
+//        }
         
 //        ArrayList<Idioma> idiomas = DBController.listarIdiomasXNombre_codigo("4");
 //        for (Idioma idioma : idiomas) {
 //            System.out.println(idioma.getNombre());
-//        }
+//        }      
+        ArrayList<Evaluacion> evs = DBController.listarEvaluacionesXClassroom("H-0222");
+        for(Evaluacion e : evs)
+            System.out.println(e.getNombre());
     }
 }

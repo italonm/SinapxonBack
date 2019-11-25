@@ -53,6 +53,8 @@ public class TemaxClassroomMySQL implements TemaxClassroomDAO{
                 Tema_x_Classroom tema = new Tema_x_Classroom();
                 tema.setNombre(rs.getString("NOMBRE"));
                 tema.setId_tema(rs.getInt("ID_TEMA"));
+                tema.setDescripcion(rs.getString("DESCRIPCION"));
+                tema.setLink(rs.getString("LINK"));
                 temas.add(tema);
             }
         }catch(ClassNotFoundException | SQLException ex){

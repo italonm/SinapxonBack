@@ -17,4 +17,5 @@ public interface SolicitudClassroomDAO {
     public void aceptarRechazarSolicitudClassroom(int idSolicitud, int estadoSolicitud);
     public ArrayList<SolicitudClassroom> listarSolicitudesClassroom(int estadoSolicitud);
     public ArrayList<SolicitudClassroom> listarSolicitudesClassroomxProfesor(String codigoProfesor);
+    public int crearClassroom_y_asignarProfesor(SolicitudClassroom solicitudClassroom);
 }

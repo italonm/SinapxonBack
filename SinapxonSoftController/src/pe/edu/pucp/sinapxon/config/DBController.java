@@ -43,6 +43,10 @@ public abstract class DBController {
         daoFactory.getPersonaDAO().actualizarPasswordAlumno(codigo, password);
     }
     
+    public static Alumno validarNickname(String nickname){
+        return daoFactory.getAlumnoDAO().validarNickname(nickname);
+    }
+    
     //=========================================================================================
     //Classroom
     public static void insertarClassroom(Classroom classroom){
@@ -74,6 +78,9 @@ public abstract class DBController {
     public static ArrayList<SolicitudClassroom> listarSolicitudesClassroomxProfesor(String codigo){
         return daoFactory.getSolicitudClassroomDAO().listarSolicitudesClassroomxProfesor(codigo);
     }
+    public static void crearClassroomYasignarProfesor(SolicitudClassroom solicitudClassroom){
+        daoFactory.getSolicitudClassroomDAO().crearClassroom_y_asignarProfesor(solicitudClassroom);
+    }
     //=========================================================================================
     //Tema
     public static ArrayList<Tema> listarTemas(){
@@ -92,6 +99,10 @@ public abstract class DBController {
     //Evaluacion
     public static void insertarEvaluacion(Evaluacion evaluacion,String codClass,int codTema){
         daoFactory.getEvaluacionDAO().insertarEvaluacion(evaluacion,codClass,codTema);
+    }
+    
+    public static ArrayList<Evaluacion> listarEvaluacionesXClassroom(String codigoClassroom){
+        return daoFactory.getEvaluacionDAO().listarEvaluacionesXClassroom(codigoClassroom);
     }
     
     //=========================================================================================
@@ -116,6 +127,11 @@ public abstract class DBController {
     public static ArrayList<Curso> listarRequisitos(String codCur)
     {
         return daoFactory.getCursoDAO().listarRequisitos(codCur);
+    }
+    
+    public static ArrayList<Curso> listarCursosSin(String nombre)
+    {
+        return daoFactory.getCursoDAO().listarCursoSin(nombre);
     }
     
     //=========================================================================================

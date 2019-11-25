@@ -5,7 +5,8 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * 
+ *
+ * @author Rick
  */
 public class Classroom implements Serializable {
     
@@ -19,17 +20,13 @@ public class Classroom implements Serializable {
     private Periodo periodo;
     private Idioma idioma;
     
-    
-    public Classroom() {
-
-    }
-    
+    public Classroom() {}
     
     public Classroom(Curso curso) {
         this.activo=1;
         this.curso=curso;
-        alumnos = new ArrayList<Classroom_x_Alumno>();
-        temas = new ArrayList<Tema_x_Classroom>();
+        alumnos = new ArrayList<>();
+        temas = new ArrayList<>();
         this.profesor = new Profesor();
     }
 
