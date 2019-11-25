@@ -135,6 +135,7 @@ public class SolicitudClassroomMySQL implements SolicitudClassroomDAO{
                 sc.setId_solicitud(rs.getInt("ID_SOLICITUD"));
                 sc.setDescripcion(rs.getString("DESCRIPCION"));
                 sc.setFecha(rs.getDate("FECHA_SOLICITUD"));
+                sc.setEstado(rs.getInt("ESTADO"));
                 curso.setCodigo(rs.getString("CODIGO_CURSO"));
                 curso.setNombre(rs.getString("NOMBRE_CURSO"));
                 sc.setCurso(curso);
