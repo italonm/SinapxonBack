@@ -36,4 +36,9 @@ public class AlumnoServices {
         ArrayList<Curso> cursos = DBController.listarCursos(nombre);
         return cursos;
     }
+    
+    @WebMethod(operationName = "listarClassroomXAlumnoXPeriodo")
+    public ArrayList<Classroom> listarClassroomXAlumnoXPeriodo(String codAlum, int id_periodo){
+        return DBController.listarClassroomXAlumnoXPeriodo(codAlum, id_periodo);
+    }
 }

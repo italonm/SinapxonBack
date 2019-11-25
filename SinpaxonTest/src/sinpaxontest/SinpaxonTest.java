@@ -28,6 +28,11 @@ public class SinpaxonTest {
     public static void main(String[] args) {
         System.out.println("Soy un mapa");
         
+        ArrayList<Classroom> clasrrums = DBController.listarClassroomXAlumnoXPeriodo("201200", 2);
+        for (Classroom clasrrum : clasrrums) {
+            System.out.println(clasrrum.getCurso().getNombre());
+        }
+        
 //        ArrayList<SolicitudClassroom> solicitudes = DBController.listarSolicitudesClassroom(2);
 //        for (SolicitudClassroom solicitude : solicitudes) {
 //            System.out.println(solicitude.getProfesor().getNombre());
@@ -37,8 +42,11 @@ public class SinpaxonTest {
 //        for (Idioma idioma : idiomas) {
 //            System.out.println(idioma.getNombre());
 //        }      
-        ArrayList<Evaluacion> evs = DBController.listarEvaluacionesXClassroom("H-0222");
-        for(Evaluacion e : evs)
-            System.out.println(e.getNombre());
+//        ArrayList<Evaluacion> evs = DBController.listarEvaluacionesXClassroom("H-0222");
+//        for(Evaluacion e : evs)
+//            System.out.println(e.getNombre());
+
+        
+        
     }
 }
