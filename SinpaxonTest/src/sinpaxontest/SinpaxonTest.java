@@ -37,8 +37,18 @@ public class SinpaxonTest {
 //        for (Idioma idioma : idiomas) {
 //            System.out.println(idioma.getNombre());
 //        }      
-        ArrayList<Evaluacion> evs = DBController.listarEvaluacionesXClassroom("H-0222");
-        for(Evaluacion e : evs)
-            System.out.println(e.getNombre());
+//        ArrayList<Evaluacion> evs = DBController.listarEvaluacionesXClassroom("H-0222");
+//        for(Evaluacion e : evs)
+//            System.out.println(e.getNombre());
+        
+//        Curso curso = new Curso();
+//        curso.setCodigo("IND231");
+//        ArrayList<Classroom> classrooms = DBController.listarClassroomxCurso(curso);
+//        for (Classroom classroom : classrooms) {
+//            System.out.println(classroom.getProfesor().getNombre());
+//        }
+        int salida = -1;
+        salida = DBController.insertarAlumno_classroom("203383", "H-6506");
+        System.out.println(salida);
     }
 }

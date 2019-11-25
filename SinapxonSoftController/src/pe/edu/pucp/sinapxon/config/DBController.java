@@ -61,6 +61,10 @@ public abstract class DBController {
         return daoFactory.getClassroomDAO().listarClassroomxAlumno(codigo);
     }
     
+    public static ArrayList<Classroom> listarClassroomxCurso(Curso cursoIn){
+        return daoFactory.getClassroomDAO().listarClassroomxCurso(cursoIn);
+    }
+    
     //=========================================================================================
     //Solicitud Classroom
     public static void insertarSolicitudClassroom(SolicitudClassroom solicitudclassroom){
@@ -175,6 +179,11 @@ public abstract class DBController {
     
     public static ArrayList<Alumno> listarAlumnoXClassroom(String codigoClassrom){
         return daoFactory.getAlumnoDAO().listarAlumnosXClassroom(codigoClassrom);
+    }
+    
+    public static int insertarAlumno_classroom(String codAlumno, String codClassroom)
+    {
+        return daoFactory.getAlumnoDAO().insertarAlumno_a_un_classroom(codAlumno, codClassroom);
     }
     //=========================================================================================
     //Profesor
