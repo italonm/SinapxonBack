@@ -37,6 +37,16 @@ public class AlumnoServices {
         return cursos;
     }
     
+    @WebMethod(operationName = "listarClassroomsxCurso")
+    public ArrayList<Classroom> listarClassroomXCurso(@WebParam(name = "curso") Curso curso){
+        return DBController.listarClassroomxCurso(curso);
+    }
+    
+    @WebMethod(operationName = "insertarAlumnoAlClassroom")
+    public int insertarAlumnoAlClassroom(@WebParam(name = "codigALumno") String codAlumno, @WebParam(name = "codigoClassroom") String codClassroom){
+        return DBController.insertarAlumno_classroom(codAlumno, codClassroom);
+    }
+    
     @WebMethod(operationName = "listarClassroomXAlumnoXPeriodo")
     public ArrayList<Classroom> listarClassroomXAlumnoXPeriodo(String codAlum, int id_periodo){
         return DBController.listarClassroomXAlumnoXPeriodo(codAlum, id_periodo);
