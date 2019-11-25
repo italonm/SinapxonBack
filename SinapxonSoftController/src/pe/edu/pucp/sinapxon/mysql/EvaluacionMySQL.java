@@ -60,9 +60,6 @@ public class EvaluacionMySQL implements EvaluacionDAO{
                 e.setNombre(rs.getString("NOMBRE"));
                 e.setDescripcion(rs.getString("DESCRIPCION"));
                 e.setPeso_porcentual(rs.getFloat("PESO_PORCENTUAL"));
-                Classroom c = new Classroom();
-                c.setCodigo(rs.getString("FID_CLASSROOM"));
-                e.setClassroom(c);
                 evaluaciones.add(e);
             }
         }catch(ClassNotFoundException | SQLException ex){

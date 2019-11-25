@@ -180,6 +180,9 @@ public abstract class DBController {
     public static ArrayList<Alumno> listarAlumnoXClassroom(String codigoClassrom){
         return daoFactory.getAlumnoDAO().listarAlumnosXClassroom(codigoClassrom);
     }
+    public static ArrayList<Classroom> listarClassroomXAlumnoXPeriodo(String codAlum, int id_periodo){
+        return daoFactory.getClassroomXAlumnoDAO().listarClassroomXAlumnoXPeriodo(codAlum, id_periodo);
+    }
     
     public static int insertarAlumno_classroom(String codAlumno, String codClassroom)
     {
