@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-=======
->>>>>>> master
-=======
-=======
-<<<<<<< Updated upstream
-<<<<<<< HEAD
->>>>>>> Rick
->>>>>>> italo
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -17,14 +5,11 @@
         <group>
             <file>file:/D:/Proyectos/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/mysql/SolicitudClassroomMySQL.java</file>
             <file>file:/D:/Proyectos/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/config/DBController.java</file>
+            <file>file:/D:/Proyectos/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/mysql/ClassroomMySQL.java</file>
             <file>file:/D:/Proyectos/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/dao/SolicitudClassroomDAO.java</file>
+            <file>file:/D:/Proyectos/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/mysql/AlumnoMySQL.java</file>
+            <file>file:/D:/Proyectos/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/dao/AlumnoDAO.java</file>
+            <file>file:/D:/Proyectos/SinapxonBack/SinapxonSoftController/src/pe/edu/pucp/sinapxon/dao/ClassroomDAO.java</file>
         </group>
     </open-files>
 </project-private>
->>>>>>> Stashed changes
-<<<<<<< HEAD
-=======
->>>>>>> master
-=======
->>>>>>> Rick
->>>>>>> italo

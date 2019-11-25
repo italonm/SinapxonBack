@@ -20,4 +20,5 @@ public interface AlumnoDAO {
     public ArrayList<Alumno> listarAlumnos(String nombre);
     public ArrayList<Alumno> listarAlumnosXClassroom(String codigoClassroom);
     public Alumno validarNickname(String nickname);
+    public int insertarAlumno_a_un_classroom(String codAlumno, String codClassroom);
 }
