@@ -65,4 +65,18 @@ public class TemaxClassroomMySQL implements TemaxClassroomDAO{
         return temas;
     }
     
+    @Override
+    public void eliminarTemaxClassroom(int codTema,String codClassroom) {
+        try{
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call ELIMINAR_TEMA(?,?)}");
+            cs.setInt("_ID_TEMA",codTema);
+            cs.setString("_ID_CLASSROOM",codClassroom);
+            cs.executeUpdate();
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+    }
 }

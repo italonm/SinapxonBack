@@ -95,6 +95,10 @@ public abstract class DBController {
         daoFactory.getTemaxClassroomDAO().insertarTemaxClassroom(tema);
     }
     
+    public static void eliminarTemaxClassroom(int codTema,String codClassroom){
+        daoFactory.getTemaxClassroomDAO().eliminarTemaxClassroom(codTema,codClassroom);
+    }
+    
     //=========================================================================================
     //Evaluacion
     public static void insertarEvaluacion(Evaluacion evaluacion,String codClass,int codTema){
@@ -104,7 +108,9 @@ public abstract class DBController {
     public static ArrayList<Evaluacion> listarEvaluacionesXClassroom(String codigoClassroom){
         return daoFactory.getEvaluacionDAO().listarEvaluacionesXClassroom(codigoClassroom);
     }
-    
+    public static void eliminarEvaluacionxClassroom(int codigo){
+        daoFactory.getEvaluacionDAO().eliminarEvaluacionxClassroom(codigo);
+    }
     //=========================================================================================
     //Curso
     public static void insertarCurso(Curso curso){

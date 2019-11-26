@@ -86,4 +86,16 @@ public class ProfesorServices {
     public ArrayList<Evaluacion> listarEvaluacionesXClassroom(@WebParam(name="codigo")String codClassroom){
         return DBController.listarEvaluacionesXClassroom(codClassroom);
     }
+    
+    
+    @WebMethod(operationName = "eliminarTemaxClassroom")
+    public void eliminarTemaxClassroom(@WebParam(name="codTema")int codTema,@WebParam(name="codClassroom")String codClassroom){
+        DBController.eliminarTemaxClassroom(codTema,codClassroom);
+    }
+    
+    @WebMethod(operationName = "eliminarEvaluacionxClassroom")
+    public void eliminarEvaluacionxClassroom(@WebParam(name="codigo")int codigo){
+        DBController.eliminarEvaluacionxClassroom(codigo);
+    }
+    
 }

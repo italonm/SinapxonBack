@@ -15,4 +15,5 @@ import pe.edu.pucp.sinapxon.model.Tema_x_Classroom;
 public interface TemaxClassroomDAO {
     public void insertarTemaxClassroom(Tema_x_Classroom tema);
     public ArrayList<Tema_x_Classroom> listarTemaxClassroom(String id);
+    public void eliminarTemaxClassroom(int codTema,String codClassroom);
 }

@@ -15,4 +15,5 @@ import pe.edu.pucp.sinapxon.model.Evaluacion;
 public interface EvaluacionDAO {
     public void insertarEvaluacion(Evaluacion evaluacion,String cod,int codTema);
     public ArrayList<Evaluacion> listarEvaluacionesXClassroom(String codigoClassroom);
+    public void eliminarEvaluacionxClassroom(int codigo);
 }
