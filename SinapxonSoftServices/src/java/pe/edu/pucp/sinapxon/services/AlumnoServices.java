@@ -12,7 +12,9 @@ import javax.jws.WebParam;
 import pe.edu.pucp.sinapxon.config.DBController;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
+import pe.edu.pucp.sinapxon.model.Evaluacion;
 import pe.edu.pucp.sinapxon.model.Periodo;
+import pe.edu.pucp.sinapxon.model.Tema_x_Classroom;
 
 /**
  *
@@ -65,5 +67,15 @@ public class AlumnoServices {
     @WebMethod(operationName = "listarPeriodos")
     public ArrayList<Periodo> listarPeriodos(){
         return DBController.listarPeriodos();
+    }
+    
+    @WebMethod(operationName = "listarTemaxClassroom")
+    public ArrayList<Tema_x_Classroom> listarTemaxClassroom(String id){
+        return DBController.listarTemaxClassroom(id);
+    }
+    
+    @WebMethod(operationName = "listarEvaluacionesXClassroom")
+    public ArrayList<Evaluacion> listarEvaluacionesXClassroom(@WebParam(name="codigo")String codClassroom){
+        return DBController.listarEvaluacionesXClassroom(codClassroom);
     }
 }
