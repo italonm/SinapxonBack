@@ -28,7 +28,7 @@ public class SinpaxonTest {
     public static void main(String[] args) {
         System.out.println("Soy un mapa");
         
-        ArrayList<Classroom> clasrrums = DBController.listarClassroomXAlumnoXPeriodo("201200", 2);
+        ArrayList<Classroom> clasrrums = DBController.listarClassroomXAlumnoXPeriodo("20190", 2);
         for (Classroom clasrrum : clasrrums) {
             System.out.println(clasrrum.getCurso().getNombre());
         }
@@ -52,8 +52,8 @@ public class SinpaxonTest {
 //        for (Classroom classroom : classrooms) {
 //            System.out.println(classroom.getProfesor().getNombre());
 //        }
-        int salida = -1;
-        salida = DBController.insertarAlumno_classroom("203383", "H-6506");
-        System.out.println(salida);
+//        int salida = -1;
+//        salida = DBController.insertarAlumno_classroom("203383", "H-6506");
+//        System.out.println(salida);
     }
 }

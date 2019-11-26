@@ -19,6 +19,8 @@ import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Classroom_x_Alumno;
 import pe.edu.pucp.sinapxon.model.Curso;
 import pe.edu.pucp.sinapxon.model.Especialidad;
+import pe.edu.pucp.sinapxon.model.Idioma;
+import pe.edu.pucp.sinapxon.model.Periodo;
 import pe.edu.pucp.sinapxon.model.Profesor;
 
 /**
@@ -54,8 +56,8 @@ public class ClassroomxAlumnoMySQL implements ClassroomxAlumnoDAO{
             cs.setInt("_ID_PERIODO", id_periodo);
             ResultSet rs = cs.executeQuery();
             while(rs.next()){
-                Curso curso = new Curso();
                 Classroom clas = new Classroom ();
+                Curso curso = new Curso();
                 curso.setCodigo(rs.getString("CODIGO"));
                 curso.setNombre(rs.getString("CURSO"));
                 Especialidad especialidad = new Especialidad();
@@ -65,7 +67,16 @@ public class ClassroomxAlumnoMySQL implements ClassroomxAlumnoDAO{
                 clas.setCodigo(rs.getString("HORARIO"));
                 Profesor profesor = new Profesor();
                 profesor.setNombre(rs.getString("PROFESOR"));
+                Periodo perido = new Periodo();
+                Idioma idioma = new Idioma();
                 clas.setProfesor(profesor);
+                
+                clas.setCurso(curso);
+                clas.setProfesor(profesor);
+                clas.setAlumnos(new ArrayList<>());
+                clas.setTemas(new ArrayList<>());
+                clas.setPeriodo(perido);
+                clas.setIdioma(idioma);
                 classrooms.add(clas);
             }
         }catch(SQLException ex){
