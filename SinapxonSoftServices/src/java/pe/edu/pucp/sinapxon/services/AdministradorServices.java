@@ -7,6 +7,7 @@ package pe.edu.pucp.sinapxon.services;
 
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.TimeZone;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -22,11 +23,14 @@ import pe.edu.pucp.sinapxon.model.SolicitudClassroom;
 
 /**
  *
- * @author Italo
+ * @author Rick
  */
 @WebService(serviceName = "AdministradorServices")
 public class AdministradorServices {
 
+    public AdministradorServices(){
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+    }
     //Curso
     //==========================================================================
     @WebMethod(operationName = "insertarCurso")
