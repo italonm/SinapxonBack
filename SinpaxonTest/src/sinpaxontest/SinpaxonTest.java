@@ -18,6 +18,7 @@ import pe.edu.pucp.sinapxon.model.Periodo;
 import pe.edu.pucp.sinapxon.model.Profesor;
 import pe.edu.pucp.sinapxon.model.SolicitudClassroom;
 import pe.edu.pucp.sinapxon.model.Tema;
+import pe.edu.pucp.sinapxon.model.Tema_x_Classroom;
 
 /**
  *
@@ -28,10 +29,10 @@ public class SinpaxonTest {
     public static void main(String[] args) {
         System.out.println("Soy un mapa");
         
-        ArrayList<Classroom> clasrrums = DBController.listarClassroomXAlumnoXPeriodo("20190", 2);
-        for (Classroom clasrrum : clasrrums) {
-            System.out.println(clasrrum.getCurso().getNombre());
-        }
+//        ArrayList<Classroom> clasrrums = DBController.listarClassroomXAlumnoXPeriodo("20190", 2);
+//        for (Classroom clasrrum : clasrrums) {
+//            System.out.println(clasrrum.getCurso().getNombre());
+//        }
         
 //        ArrayList<SolicitudClassroom> solicitudes = DBController.listarSolicitudesClassroom(2);
 //        for (SolicitudClassroom solicitude : solicitudes) {
@@ -54,6 +55,24 @@ public class SinpaxonTest {
 //        }
 //        int salida = -1;
 //        salida = DBController.insertarAlumno_classroom("203383", "H-6506");
-//        System.out.println(salida);
+        //System.out.println(salida);
+        
+//        ArrayList<Tema_x_Classroom> temasXclasroom = null;
+//        temasXclasroom = DBController.listarTemaxClassroom("H-0222");
+//        if(temasXclasroom != null)
+//        {
+//            for (Tema_x_Classroom tema_x_Classroom : temasXclasroom) {
+//                System.out.println(tema_x_Classroom.getNombre());
+//            }
+//        }
+        
+        ArrayList<Evaluacion> evaluaciones = null;
+        evaluaciones = DBController.listarEvaluacionesXClassroom("H-0222");
+        if(evaluaciones != null)
+        {
+            for (Evaluacion evaluacione : evaluaciones) {
+                System.out.println(evaluacione.getNombre());
+            }
+        }
     }
 }
