@@ -21,10 +21,6 @@ public class Administrador {
     private String password;
     private Pais pais;
 
-    public Administrador(){
-        
-    }
-    
     /**
      * @return the codigo
      */

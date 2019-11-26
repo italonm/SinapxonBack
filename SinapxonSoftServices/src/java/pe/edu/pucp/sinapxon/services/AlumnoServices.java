@@ -12,6 +12,7 @@ import javax.jws.WebParam;
 import pe.edu.pucp.sinapxon.config.DBController;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
+import pe.edu.pucp.sinapxon.model.Periodo;
 
 /**
  *
@@ -35,5 +36,34 @@ public class AlumnoServices {
     public ArrayList<Curso> listarCursos(String nombre) {
         ArrayList<Curso> cursos = DBController.listarCursos(nombre);
         return cursos;
+    }
+    
+    @WebMethod(operationName = "listarClassroomsxCurso")
+    public ArrayList<Classroom> listarClassroomXCurso(@WebParam(name = "curso") Curso curso){
+        return DBController.listarClassroomxCurso(curso);
+    }
+    
+    @WebMethod(operationName = "insertarAlumnoAlClassroom")
+    public int insertarAlumnoAlClassroom(@WebParam(name = "codigALumno") String codAlumno, @WebParam(name = "codigoClassroom") String codClassroom){
+        return DBController.insertarAlumno_classroom(codAlumno, codClassroom);
+    }
+    
+    @WebMethod(operationName = "listarClassroomsXAlumno_X_Periodo")
+    public ArrayList<Classroom> listarClassroomsXAlumno_X_Periodo(@WebParam(name = "codigoAlumno")String codAlum,@WebParam(name = "id_perido") int id_periodo){
+        ArrayList<Classroom> clasrrums = DBController.listarClassroomXAlumnoXPeriodo(codAlum,id_periodo);
+        return clasrrums;
+    }
+    
+    @WebMethod(operationName = "listarClassrooms_Alumno_Periodo")
+    public ArrayList<Classroom> listarClassrooms_Alumno_Periodo(@WebParam (name = "CodAl") String codAl, @WebParam(name = "idPer")int idPer)
+    {
+        ArrayList<Classroom> classrooms = DBController.listarClassroomXAlumnoXPeriodo(codAl, idPer);
+        return classrooms;
+    }
+    
+    
+    @WebMethod(operationName = "listarPeriodos")
+    public ArrayList<Periodo> listarPeriodos(){
+        return DBController.listarPeriodos();
     }
 }

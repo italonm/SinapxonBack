@@ -7,6 +7,7 @@ package pe.edu.pucp.sinapxon.dao;
 
 import java.util.ArrayList;
 import pe.edu.pucp.sinapxon.model.Classroom;
+import pe.edu.pucp.sinapxon.model.Curso;
 
 /**
  *
@@ -16,4 +17,5 @@ public interface ClassroomDAO {
     public void insertarClassroom(Classroom classroom);
     public ArrayList<Classroom> listarClassroomxProfesor(String codigo,String nombre);
     public ArrayList<Classroom> listarClassroomxAlumno(String codigo);
+    public ArrayList<Classroom> listarClassroomxCurso(Curso cursoIn);
 }

@@ -57,7 +57,7 @@ public class EspecialidadMySQL implements EspecialidadDAO{
             cs.setString("_FID_ADMINISTRADOR", especialidad.getAdministrador().getCodigo());
             cs.setInt("_ID_ESPECIALIDAD", especialidad.getId_especialidad());
             cs.executeUpdate();
-            resultado = 1;
+            resultado = cs.getInt("ID_ESPECIALIDAD");
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
             try{con.rollback();}catch(SQLException exe){System.out.println(exe.getMessage());}

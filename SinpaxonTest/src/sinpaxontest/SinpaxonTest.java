@@ -6,6 +6,7 @@
 package sinpaxontest;
 
 import java.util.ArrayList;
+import java.util.Random;
 import pe.edu.pucp.sinapxon.config.DBController;
 import pe.edu.pucp.sinapxon.model.Alumno;
 import pe.edu.pucp.sinapxon.model.Classroom;
@@ -25,41 +26,34 @@ import pe.edu.pucp.sinapxon.model.Tema;
 public class SinpaxonTest {
 
     public static void main(String[] args) {
-<<<<<<< HEAD
-=======
-        /*Classroom c = new Classroom();
+        System.out.println("Soy un mapa");
         
-<<<<<<< HEAD
-        ArrayList<SolicitudClassroom> solicitudes = DBController.listarSolicitudesClassroom(2);
-        for (SolicitudClassroom solicitude : solicitudes) {
-            System.out.println(solicitude.getProfesor().getNombre());
+        ArrayList<Classroom> clasrrums = DBController.listarClassroomXAlumnoXPeriodo("20190", 2);
+        for (Classroom clasrrum : clasrrums) {
+            System.out.println(clasrrum.getCurso().getNombre());
         }
+        
+//        ArrayList<SolicitudClassroom> solicitudes = DBController.listarSolicitudesClassroom(2);
+//        for (SolicitudClassroom solicitude : solicitudes) {
+//            System.out.println(solicitude.getProfesor().getNombre());
+//        }
         
 //        ArrayList<Idioma> idiomas = DBController.listarIdiomasXNombre_codigo("4");
 //        for (Idioma idioma : idiomas) {
 //            System.out.println(idioma.getNombre());
+//        }      
+//        ArrayList<Evaluacion> evs = DBController.listarEvaluacionesXClassroom("H-0222");
+//        for(Evaluacion e : evs)
+//            System.out.println(e.getNombre());
+        
+//        Curso curso = new Curso();
+//        curso.setCodigo("IND231");
+//        ArrayList<Classroom> classrooms = DBController.listarClassroomxCurso(curso);
+//        for (Classroom classroom : classrooms) {
+//            System.out.println(classroom.getProfesor().getNombre());
 //        }
-=======
-        Curso curso = new Curso(); curso.setCodigo("1INF06");
-        Periodo periodo = new Periodo(); periodo.setId_periodo(4);
-        Idioma idioma = new Idioma(); idioma.setId_idioma(1);
-        
-        c.setCodigo("H-0112");
-        c.setActivo(1);
-        c.setPeriodo(periodo);
-        c.setIdioma(idioma);
-        c.setCurso(curso);
-        
-<<<<<<< HEAD
-        DBController.insertarClassroom(c);
->>>>>>> Rick
-=======
-        DBController.insertarClassroom(c);*/
-        
-        ArrayList<Evaluacion> evs = DBController.listarEvaluacionesXClassroom("H-0222");
-        for(Evaluacion e : evs)
-            System.out.println(e.getNombre());
->>>>>>> Rick
->>>>>>> italo
+//        int salida = -1;
+//        salida = DBController.insertarAlumno_classroom("203383", "H-6506");
+//        System.out.println(salida);
     }
 }

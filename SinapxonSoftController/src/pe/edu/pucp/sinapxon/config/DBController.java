@@ -61,6 +61,10 @@ public abstract class DBController {
         return daoFactory.getClassroomDAO().listarClassroomxAlumno(codigo);
     }
     
+    public static ArrayList<Classroom> listarClassroomxCurso(Curso cursoIn){
+        return daoFactory.getClassroomDAO().listarClassroomxCurso(cursoIn);
+    }
+    
     //=========================================================================================
     //Solicitud Classroom
     public static void insertarSolicitudClassroom(SolicitudClassroom solicitudclassroom){
@@ -77,6 +81,9 @@ public abstract class DBController {
     
     public static ArrayList<SolicitudClassroom> listarSolicitudesClassroomxProfesor(String codigo){
         return daoFactory.getSolicitudClassroomDAO().listarSolicitudesClassroomxProfesor(codigo);
+    }
+    public static void crearClassroomYasignarProfesor(SolicitudClassroom solicitudClassroom){
+        daoFactory.getSolicitudClassroomDAO().crearClassroom_y_asignarProfesor(solicitudClassroom);
     }
     //=========================================================================================
     //Tema
@@ -130,11 +137,6 @@ public abstract class DBController {
     {
         return daoFactory.getCursoDAO().listarCursoSin(nombre);
     }
-
-    public static ArrayList<Curso> listarCursoPag(String nombre,int nPag)
-    {
-        return daoFactory.getCursoDAO().listarCursoPag(nombre, nPag);
-    }
     
     //=========================================================================================
     //Periodos
@@ -177,6 +179,14 @@ public abstract class DBController {
     
     public static ArrayList<Alumno> listarAlumnoXClassroom(String codigoClassrom){
         return daoFactory.getAlumnoDAO().listarAlumnosXClassroom(codigoClassrom);
+    }
+    public static ArrayList<Classroom> listarClassroomXAlumnoXPeriodo(String codAlum, int id_periodo){
+        return daoFactory.getClassroomXAlumnoDAO().listarClassroomXAlumnoXPeriodo(codAlum, id_periodo);
+    }
+    
+    public static int insertarAlumno_classroom(String codAlumno, String codClassroom)
+    {
+        return daoFactory.getAlumnoDAO().insertarAlumno_a_un_classroom(codAlumno, codClassroom);
     }
     //=========================================================================================
     //Profesor
