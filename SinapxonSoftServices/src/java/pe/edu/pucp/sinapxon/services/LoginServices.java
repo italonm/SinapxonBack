@@ -5,6 +5,7 @@
  */
 package pe.edu.pucp.sinapxon.services;
 
+import java.util.TimeZone;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -14,10 +15,14 @@ import pe.edu.pucp.sinapxon.model.Persona;
 
 /**
  *
- * @author Italo
+ * @author Rick
  */
 @WebService(serviceName = "LoginServices")
 public class LoginServices {
+    
+    public LoginServices(){
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+    }
     
     @WebMethod(operationName = "validarLogin")
     public Persona validarLogin(@WebParam(name="nickname")String nickname, @WebParam(name="password")String password){

@@ -6,6 +6,7 @@
 package pe.edu.pucp.sinapxon.services;
 
 import java.util.ArrayList;
+import java.util.TimeZone;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -22,11 +23,15 @@ import pe.edu.pucp.sinapxon.model.Tema_x_Classroom;
 
 /**
  *
- * @author Italo
+ * @author Rick
  */
 @WebService(serviceName = "ProfesorServices")
 public class ProfesorServices {
 
+    public ProfesorServices(){
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+    }
+    
     @WebMethod(operationName = "listarClassroomxProfesor")
     public ArrayList<Classroom> listarClassroomxProfesor(@WebParam(name="codigo")String codigo, @WebParam(name="nombre")String nombre) {
         return DBController.listarClassroomxProfesor(codigo,nombre);
