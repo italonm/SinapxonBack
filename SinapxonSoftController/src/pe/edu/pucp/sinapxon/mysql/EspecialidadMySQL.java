@@ -36,7 +36,7 @@ public class EspecialidadMySQL implements EspecialidadDAO{
             cs.setString("_FID_ADMINISTRADOR", especialidad.getAdministrador().getCodigo());
             cs.registerOutParameter("_ID_ESPECIALIDAD", java.sql.Types.INTEGER);
             cs.executeUpdate();
-            resultado = 1;
+            resultado = cs.getInt("_ID_ESPECIALIDAD");
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
             try{con.rollback();}catch(SQLException exe){System.out.println(exe.getMessage());}
@@ -57,7 +57,7 @@ public class EspecialidadMySQL implements EspecialidadDAO{
             cs.setString("_FID_ADMINISTRADOR", especialidad.getAdministrador().getCodigo());
             cs.setInt("_ID_ESPECIALIDAD", especialidad.getId_especialidad());
             cs.executeUpdate();
-            resultado = 1;
+            resultado = cs.getInt("ID_ESPECIALIDAD");
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
             try{con.rollback();}catch(SQLException exe){System.out.println(exe.getMessage());}
@@ -73,7 +73,7 @@ public class EspecialidadMySQL implements EspecialidadDAO{
         try{
             con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
             cs = con.prepareCall("{call ELIMINAR_ESPECIALIDAD(?)}");
-            cs.setInt("_ID_CURSO", idEspecialidad);
+            cs.setInt("_ID_ESPECIALIDAD", idEspecialidad);
             resultado = cs.executeUpdate();
         }catch(SQLException ex){
             System.out.println(ex.getMessage());

@@ -125,6 +125,7 @@ public class AlumnoMySQL implements AlumnoDAO{
                 alum.setPais(pais);
                 alum.setPassword(rs.getString("PASSWORD"));
                 alum.setTelefono(rs.getString("TELEFONO"));
+                alum.setEstado(rs.getInt("ESTADO"));
                 alumnos.add(alum);
             }
         }catch(ClassNotFoundException | SQLException ex){
