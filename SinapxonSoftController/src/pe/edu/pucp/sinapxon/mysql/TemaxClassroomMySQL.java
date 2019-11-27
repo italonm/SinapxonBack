@@ -5,6 +5,7 @@
  */
 package pe.edu.pucp.sinapxon.mysql;
 
+import java.io.File;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import pe.edu.pucp.sinapxon.config.DBManager;
 import pe.edu.pucp.sinapxon.dao.TemaxClassroomDAO;
+import pe.edu.pucp.sinapxon.model.Archivo_x_Tema;
 import pe.edu.pucp.sinapxon.model.Tema_x_Classroom;
 
 /**
@@ -23,8 +25,9 @@ public class TemaxClassroomMySQL implements TemaxClassroomDAO{
     
     Connection con;
     CallableStatement cs;
+    
     @Override
-    public void insertarTemaxClassroom(Tema_x_Classroom tema) {
+    public int insertarTemaxClassroom(Tema_x_Classroom tema) {
         try{
             con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
             cs = con.prepareCall("{call INSERTAR_TEMA(?,?,?,?)}");
@@ -32,14 +35,32 @@ public class TemaxClassroomMySQL implements TemaxClassroomDAO{
             cs.setString("_COD_CLASSROOM",tema.getClassroom().getCodigo());
             cs.setString("_DESCRIPCION", tema.getDescripcion());
             cs.setString("_LINK", tema.getLink());
+            cs.registerOutParameter("_ID_EVALUACION", java.sql.Types.INTEGER);
             cs.executeUpdate();
+            return cs.getInt("_ID_EVALUACION");
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
         }finally{
             try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+            return 0;
         }
     }
-
+    
+    @Override
+    public void insertarArchivos(Archivo_x_Tema archivo, int idTema, String idClassroom){
+        try {
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call INSERTAR_ARCHIVO_X_TEMA(?,?,?,?)}");
+            cs.setString("_NOMBRE", archivo.getNombre());
+            cs.setString("_DESCRIPCION", " ");
+            cs.setInt("_FID_TEMA", idTema);
+            cs.setString("_FID_CLASSROOM", idClassroom);
+            cs.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+            
+    }
     @Override
     public ArrayList<Tema_x_Classroom> listarTemaxClassroom(String id) {
         ArrayList<Tema_x_Classroom> temas = new ArrayList<>();

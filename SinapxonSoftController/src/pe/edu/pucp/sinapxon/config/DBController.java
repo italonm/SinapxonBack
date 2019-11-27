@@ -8,6 +8,7 @@ package pe.edu.pucp.sinapxon.config;
 import java.util.ArrayList;
 import java.util.Date;
 import pe.edu.pucp.sinapxon.model.Alumno;
+import pe.edu.pucp.sinapxon.model.Archivo_x_Tema;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
 import pe.edu.pucp.sinapxon.model.Especialidad;
@@ -92,8 +93,12 @@ public abstract class DBController {
         return daoFactory.getTemaxClassroomDAO().listarTemaxClassroom(id);
     }
     
-    public static void insertarTemaxClassroom(Tema_x_Classroom tema){
-        daoFactory.getTemaxClassroomDAO().insertarTemaxClassroom(tema);
+    public static int insertarTemaxClassroom(Tema_x_Classroom tema){
+        return daoFactory.getTemaxClassroomDAO().insertarTemaxClassroom(tema);
+    }
+    
+    public static void insertarArchivos(Archivo_x_Tema archivo, int idTema, String idClassroom){
+        daoFactory.getTemaxClassroomDAO().insertarArchivos(archivo, idTema, idClassroom);
     }
     
     public static void eliminarTemaxClassroom(int codTema,String codClassroom){

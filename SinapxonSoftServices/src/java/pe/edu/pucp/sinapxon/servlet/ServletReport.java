@@ -9,11 +9,13 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -40,7 +42,7 @@ public class ServletReport extends HttpServlet {
             JasperPrint jp = JasperFillManager.fillReport(reporte,hm,con);
             con.close();
             JasperExportManager.exportReportToPdfStream(jp, outStream);
-        } catch(Exception ex){
+        } catch(IOException | ClassNotFoundException | SQLException | JRException ex){
             System.out.println(ex.getMessage());
         }
     }
