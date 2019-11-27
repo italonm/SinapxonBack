@@ -125,6 +125,7 @@ public class AlumnoMySQL implements AlumnoDAO{
                 alum.setPais(pais);
                 alum.setPassword(rs.getString("PASSWORD"));
                 alum.setTelefono(rs.getString("TELEFONO"));
+                alum.setEstado(rs.getInt("ESTADO"));
                 alumnos.add(alum);
             }
         }catch(ClassNotFoundException | SQLException ex){
@@ -191,4 +192,22 @@ public class AlumnoMySQL implements AlumnoDAO{
 
     }
 
+    @Override
+    public int insertarAlumno_a_un_classroom(String codAlumno, String codClassroom) {
+        int salida = 0;
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call INSCRIBIR_ALUMNO_EN_CLASSROOM(?,?)}");
+            cs.setString("_FID_ALUMNO", codAlumno);
+            cs.setString("_FID_CLASSROOM", codClassroom);
+            cs.executeUpdate();
+            salida = 1;
+        } catch(ClassNotFoundException | SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+        return salida;
+    }
 }

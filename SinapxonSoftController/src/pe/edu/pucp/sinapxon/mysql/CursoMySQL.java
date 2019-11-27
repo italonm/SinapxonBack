@@ -82,12 +82,13 @@ public class CursoMySQL implements CursoDAO{
         try{
             con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
             con.setAutoCommit(false);
-            cs = con.prepareCall("{call INSERTAR_CURSO(?,?,?,?,?)}");
+            cs = con.prepareCall("{call INSERTAR_CURSO(?,?,?,?,?,?)}");
             cs.setInt("_FID_ESPECIALIDAD", curso.getEspecialidad().getId_especialidad());
             cs.setString("_FID_ADMINISTRADOR", curso.getAdministrador().getCodigo());
             cs.setString("_ID_CURSO", curso.getCodigo());
             cs.setString("_NOMBRE",curso.getNombre());
             cs.setString("_DESCRIPCION",curso.getDescripcion());
+            cs.setInt("_ESTADO",curso.getEstado());
             cs.executeUpdate();
             for(Curso cur : curso.getCursos()){
                 cs = con.prepareCall("{call INSERTAR_REQUISITO(?,?)}");

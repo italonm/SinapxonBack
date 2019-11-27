@@ -117,4 +117,51 @@ public class ClassroomMySQL implements ClassroomDAO{
             try{con.close();}catch(Exception ex){System.out.println(ex.getMessage());}
         }
     }
+
+    @Override
+    public ArrayList<Classroom> listarClassroomxCurso(Curso cursoIn) {
+        ArrayList<Classroom> classrooms = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call LISTAR_CLASSROOM_X_CURSO(?)}");
+            cs.setString("_CODIGO_CURSO", cursoIn.getCodigo());
+            ResultSet rs = cs.executeQuery();
+            while(rs.next()){
+                Classroom classroom = new Classroom();
+                Curso curso = new Curso();
+                Periodo perido = new Periodo();
+                Idioma idioma = new Idioma();
+                Profesor profesor = new Profesor();
+                
+                classroom.setCodigo(rs.getString("CODIGO"));
+                classroom.setActivo(rs.getInt("ACTIVO"));
+                curso.setCodigo(rs.getString("FID_CURSO"));
+                perido.setId_periodo(rs.getInt("FID_PERIODO"));
+                idioma.setId_idioma(rs.getInt("FID_IDIOMA"));
+                curso.setNombre(rs.getString("CURSO"));
+                curso.setDescripcion(rs.getString("DESCRIPCION"));
+                profesor.setNombre(rs.getString("NOMBRE"));
+                profesor.setApellidoPaterno(rs.getString("AP_PATERNO"));
+                profesor.setApellidoMaterno(rs.getString("AP_MATERNO"));
+                profesor.setAreaInteres(rs.getString("AREA_INTERES"));
+                profesor.setGradoInstruccion(rs.getString("GRADO_INSTRUCCION"));
+                perido.setNombre(rs.getString("PERIODO"));
+                idioma.setNombre(rs.getString("IDIOMA"));
+                
+                classroom.setCurso(curso);
+                classroom.setProfesor(profesor);
+                classroom.setAlumnos(new ArrayList<>());
+                classroom.setTemas(new ArrayList<>());
+                classroom.setPeriodo(perido);
+                classroom.setIdioma(idioma);
+                classrooms.add(classroom);
+            }
+        }catch(ClassNotFoundException | SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+        return classrooms;
+    }
 }
