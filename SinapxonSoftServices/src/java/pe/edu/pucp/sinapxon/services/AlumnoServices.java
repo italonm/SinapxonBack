@@ -5,11 +5,15 @@
  */
 package pe.edu.pucp.sinapxon.services;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import pe.edu.pucp.sinapxon.config.DBController;
+import pe.edu.pucp.sinapxon.model.Archivo_x_Tema;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
 import pe.edu.pucp.sinapxon.model.Evaluacion;
@@ -77,5 +81,18 @@ public class AlumnoServices {
     @WebMethod(operationName = "listarEvaluacionesXClassroom")
     public ArrayList<Evaluacion> listarEvaluacionesXClassroom(@WebParam(name="codigo")String codClassroom){
         return DBController.listarEvaluacionesXClassroom(codClassroom);
+    }
+    
+    @WebMethod(operationName = "listarArchivosXTemaXClassroom")
+    public ArrayList<Archivo_x_Tema> listarArchivos_x_Tema_x_Classroom(@WebParam(name = "idTema")int idTema, @WebParam(name = "idClassroom")String idClassroom)
+    {
+        return DBController.listarArchivosXTemasXClassroom(idTema, idClassroom);
+    }
+    
+    @WebMethod(operationName = "obtenerArchivo")
+    public byte[] obtenerArchivo(@WebParam(name = "nombreArchivo") int idArchivo) throws IOException {
+        byte[] bytesArchivo;
+        File arch = new File("D:\\Pruebas\\ARCHIVOS\\"+idArchivo);
+        return Files.readAllBytes(arch.toPath());
     }
 }

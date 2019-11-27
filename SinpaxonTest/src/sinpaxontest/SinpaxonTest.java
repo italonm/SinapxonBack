@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import pe.edu.pucp.sinapxon.config.DBController;
 import pe.edu.pucp.sinapxon.model.Alumno;
+import pe.edu.pucp.sinapxon.model.Archivo_x_Tema;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
 import pe.edu.pucp.sinapxon.model.Especialidad;
@@ -66,13 +67,19 @@ public class SinpaxonTest {
 //            }
 //        }
         
-        ArrayList<Evaluacion> evaluaciones = null;
-        evaluaciones = DBController.listarEvaluacionesXClassroom("H-0222");
-        if(evaluaciones != null)
-        {
-            for (Evaluacion evaluacione : evaluaciones) {
-                System.out.println(evaluacione.getNombre());
-            }
+//        ArrayList<Evaluacion> evaluaciones = null;
+//        evaluaciones = DBController.listarEvaluacionesXClassroom("H-0222");
+//        if(evaluaciones != null)
+//        {
+//            for (Evaluacion evaluacione : evaluaciones) {
+//                System.out.println(evaluacione.getNombre());
+//            }
+//        }
+        
+        ArrayList<Archivo_x_Tema> archivos = null;
+        archivos = DBController.listarArchivosXTemasXClassroom(3, "H-0222");
+        for (Archivo_x_Tema archivo : archivos) {
+            System.out.println(archivo.getNombre());
         }
     }
 }
