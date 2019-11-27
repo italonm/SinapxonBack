@@ -13,6 +13,7 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import pe.edu.pucp.sinapxon.config.DBController;
+import pe.edu.pucp.sinapxon.model.Archivo_x_Entregable;
 import pe.edu.pucp.sinapxon.model.Archivo_x_Tema;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
@@ -94,5 +95,32 @@ public class AlumnoServices {
         byte[] bytesArchivo;
         File arch = new File("D:\\Pruebas\\ARCHIVOS\\"+idArchivo);
         return Files.readAllBytes(arch.toPath());
+    }
+    
+    @WebMethod(operationName = "insertarArchivoXEntregable")
+    public int insertarArchivoXEntregable(@WebParam(name = "archivo") Archivo_x_Entregable archivo)
+    {
+        return DBController.insertarArchivoXEntregable(archivo);
+    }
+    
+    @WebMethod(operationName = "insertarEntregable")
+    public void insertarEntregable(
+            @WebParam(name = "idEvaluacion") int idEvaluacion,
+            @WebParam(name = "idAlumno")String idAlumno,
+            @WebParam(name = "idClassroom")String idClassroom,
+            @WebParam(name = "descripcion")String descripcion,
+            @WebParam(name = "idArchivoXEntregable")int idArchivoXEntregable
+    )
+    {
+        DBController.insertarEntregable(idEvaluacion, idAlumno, idClassroom, descripcion, idArchivoXEntregable);
+    }
+    
+    @WebMethod(operationName = "eliminarEntregable")
+    public void eliminarEntregable(
+            @WebParam(name = "idEvaluacion") int idEvaluacion,
+            @WebParam(name = "idAlumno") String idAlumno,
+            @WebParam(name = "idClassroom") String idClassroom)
+    {
+        DBController.eliminarEntregable(idEvaluacion, idAlumno, idClassroom);
     }
 }
