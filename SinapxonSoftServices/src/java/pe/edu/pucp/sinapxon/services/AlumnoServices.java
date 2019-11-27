@@ -5,14 +5,22 @@
  */
 package pe.edu.pucp.sinapxon.services;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.TimeZone;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import pe.edu.pucp.sinapxon.config.DBController;
+import pe.edu.pucp.sinapxon.model.Archivo_x_Entregable;
+import pe.edu.pucp.sinapxon.model.Archivo_x_Tema;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
+import pe.edu.pucp.sinapxon.model.Evaluacion;
+import pe.edu.pucp.sinapxon.model.Periodo;
+import pe.edu.pucp.sinapxon.model.Tema_x_Classroom;
 
 /**
  *
@@ -40,5 +48,84 @@ public class AlumnoServices {
     public ArrayList<Curso> listarCursos(String nombre) {
         ArrayList<Curso> cursos = DBController.listarCursos(nombre);
         return cursos;
+    }
+    
+    @WebMethod(operationName = "listarClassroomsxCurso")
+    public ArrayList<Classroom> listarClassroomXCurso(@WebParam(name = "curso") Curso curso){
+        return DBController.listarClassroomxCurso(curso);
+    }
+    
+    @WebMethod(operationName = "insertarAlumnoAlClassroom")
+    public int insertarAlumnoAlClassroom(@WebParam(name = "codigALumno") String codAlumno, @WebParam(name = "codigoClassroom") String codClassroom){
+        return DBController.insertarAlumno_classroom(codAlumno, codClassroom);
+    }
+    
+    @WebMethod(operationName = "listarClassroomsXAlumno_X_Periodo")
+    public ArrayList<Classroom> listarClassroomsXAlumno_X_Periodo(@WebParam(name = "codigoAlumno")String codAlum,@WebParam(name = "id_perido") int id_periodo){
+        ArrayList<Classroom> clasrrums = DBController.listarClassroomXAlumnoXPeriodo(codAlum,id_periodo);
+        return clasrrums;
+    }
+    
+    @WebMethod(operationName = "listarClassrooms_Alumno_Periodo")
+    public ArrayList<Classroom> listarClassrooms_Alumno_Periodo(@WebParam (name = "CodAl") String codAl, @WebParam(name = "idPer")int idPer)
+    {
+        ArrayList<Classroom> classrooms = DBController.listarClassroomXAlumnoXPeriodo(codAl, idPer);
+        return classrooms;
+    }
+    
+    
+    @WebMethod(operationName = "listarPeriodos")
+    public ArrayList<Periodo> listarPeriodos(){
+        return DBController.listarPeriodos();
+    }
+    
+    @WebMethod(operationName = "listarTemaxClassroom")
+    public ArrayList<Tema_x_Classroom> listarTemaxClassroom(String id){
+        return DBController.listarTemaxClassroom(id);
+    }
+    
+    @WebMethod(operationName = "listarEvaluacionesXClassroom")
+    public ArrayList<Evaluacion> listarEvaluacionesXClassroom(@WebParam(name="codigo")String codClassroom){
+        return DBController.listarEvaluacionesXClassroom(codClassroom);
+    }
+    
+    @WebMethod(operationName = "listarArchivosXTemaXClassroom")
+    public ArrayList<Archivo_x_Tema> listarArchivos_x_Tema_x_Classroom(@WebParam(name = "idTema")int idTema, @WebParam(name = "idClassroom")String idClassroom)
+    {
+        return DBController.listarArchivosXTemasXClassroom(idTema, idClassroom);
+    }
+    
+    @WebMethod(operationName = "obtenerArchivo")
+    public byte[] obtenerArchivo(@WebParam(name = "nombreArchivo") int idArchivo) throws IOException {
+        byte[] bytesArchivo;
+        File arch = new File("C:\\Archivos\\"+idArchivo);
+        return Files.readAllBytes(arch.toPath());
+    }
+    
+    @WebMethod(operationName = "insertarArchivoXEntregable")
+    public int insertarArchivoXEntregable(@WebParam(name = "archivo") Archivo_x_Entregable archivo)
+    {
+        return DBController.insertarArchivoXEntregable(archivo);
+    }
+    
+    @WebMethod(operationName = "insertarEntregable")
+    public void insertarEntregable(
+            @WebParam(name = "idEvaluacion") int idEvaluacion,
+            @WebParam(name = "idAlumno")String idAlumno,
+            @WebParam(name = "idClassroom")String idClassroom,
+            @WebParam(name = "descripcion")String descripcion,
+            @WebParam(name = "idArchivoXEntregable")int idArchivoXEntregable
+    )
+    {
+        DBController.insertarEntregable(idEvaluacion, idAlumno, idClassroom, descripcion, idArchivoXEntregable);
+    }
+    
+    @WebMethod(operationName = "eliminarEntregable")
+    public void eliminarEntregable(
+            @WebParam(name = "idEvaluacion") int idEvaluacion,
+            @WebParam(name = "idAlumno") String idAlumno,
+            @WebParam(name = "idClassroom") String idClassroom)
+    {
+        DBController.eliminarEntregable(idEvaluacion, idAlumno, idClassroom);
     }
 }

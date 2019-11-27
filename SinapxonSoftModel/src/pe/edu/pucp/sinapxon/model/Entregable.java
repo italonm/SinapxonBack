@@ -12,11 +12,20 @@ public class Entregable {
     private String descripcion;
     private int nota;
     private Evaluacion evaluacion;
+    private Archivo_x_Entregable archivo;
     private ArrayList<Archivo_x_Entregable> archivos;
     private Classroom_x_Alumno alumno;
     
     public Entregable() {}
+    
+    public Archivo_x_Entregable getArchivo() {
+        return archivo;
+    }
 
+    public void setArchivo(Archivo_x_Entregable archivo) {
+        this.archivo = archivo;
+    }
+    
     public Entregable(String descripcion, int nota, Evaluacion evaluacion, Classroom_x_Alumno alumno) {
         this.descripcion = descripcion;
         this.nota = nota;

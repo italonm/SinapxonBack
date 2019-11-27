@@ -82,6 +82,7 @@ public class ProfesorMySQL implements ProfesorDAO{
                 prof.setTelefono(rs.getString("TELEFONO"));
                 prof.setAreaInteres(rs.getString("AREA_INTERES"));
                 prof.setGradoInstruccion(rs.getString("GRADO_INSTRUCCION"));
+                prof.setEstado(rs.getInt("ESTADO"));
                 profesores.add(prof);
             }
         }catch(ClassNotFoundException | SQLException ex){

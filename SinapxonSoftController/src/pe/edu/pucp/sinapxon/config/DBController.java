@@ -8,6 +8,7 @@ package pe.edu.pucp.sinapxon.config;
 import java.util.ArrayList;
 import java.util.Date;
 import pe.edu.pucp.sinapxon.model.Alumno;
+import pe.edu.pucp.sinapxon.model.Archivo_x_Entregable;
 import pe.edu.pucp.sinapxon.model.Archivo_x_Tema;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
@@ -60,6 +61,10 @@ public abstract class DBController {
     
     public static ArrayList<Classroom> listarClassroomxAlumno(String codigo){
         return daoFactory.getClassroomDAO().listarClassroomxAlumno(codigo);
+    }
+    
+    public static ArrayList<Classroom> listarClassroomxCurso(Curso cursoIn){
+        return daoFactory.getClassroomDAO().listarClassroomxCurso(cursoIn);
     }
     
     //=========================================================================================
@@ -189,6 +194,14 @@ public abstract class DBController {
     public static ArrayList<Alumno> listarAlumnoXClassroom(String codigoClassrom){
         return daoFactory.getAlumnoDAO().listarAlumnosXClassroom(codigoClassrom);
     }
+    public static ArrayList<Classroom> listarClassroomXAlumnoXPeriodo(String codAlum, int id_periodo){
+        return daoFactory.getClassroomXAlumnoDAO().listarClassroomXAlumnoXPeriodo(codAlum, id_periodo);
+    }
+    
+    public static int insertarAlumno_classroom(String codAlumno, String codClassroom)
+    {
+        return daoFactory.getAlumnoDAO().insertarAlumno_a_un_classroom(codAlumno, codClassroom);
+    }
     //=========================================================================================
     //Profesor
     public static int insertarProfesor(Profesor profesor){
@@ -254,5 +267,28 @@ public abstract class DBController {
     
     public static ArrayList<Pais> listarPaises(){
         return daoFactory.getPaisDAO().listarPaises();
+    }
+    
+    //=========================================================================================
+    //Archivos
+    
+    public static ArrayList<Archivo_x_Tema> listarArchivosXTemasXClassroom(int idTema, String idClassroom)
+    {
+        return daoFactory.getArchivoXTemaDAO().listarArchivosXTemaXClassroom(idTema, idClassroom);
+    }
+    
+    public static int insertarArchivoXEntregable(Archivo_x_Entregable archivo)
+    {
+        return daoFactory.getArchivoXEntregableDAO().insertarArchivo_x_Entregable(archivo);
+    }
+    
+    public static void insertarEntregable(int idEvaluacion, String idAlumno, String idClassroom, String descripcion, int idArchivoXEntregable)
+    {
+        daoFactory.getEntregableDAO().insertarEntregable(idEvaluacion, idAlumno, idClassroom, descripcion, idArchivoXEntregable);
+    }
+    
+    public static void eliminarEntregable(int idEvaluacion, String idAlumno, String idClassroom)
+    {
+        daoFactory.getEntregableDAO().eliminarEntregable(idEvaluacion, idAlumno, idClassroom);
     }
 }
