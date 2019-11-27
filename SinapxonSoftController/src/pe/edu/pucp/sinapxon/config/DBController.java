@@ -87,6 +87,7 @@ public abstract class DBController {
     public static void crearClassroomYasignarProfesor(SolicitudClassroom solicitudClassroom){
         daoFactory.getSolicitudClassroomDAO().crearClassroom_y_asignarProfesor(solicitudClassroom);
     }
+    
     //=========================================================================================
     //Tema
     public static ArrayList<Tema> listarTemas(){
@@ -101,6 +102,18 @@ public abstract class DBController {
         daoFactory.getTemaxClassroomDAO().insertarTemaxClassroom(tema);
     }
     
+    public static int insertarArchivos(Archivo_x_Tema archivo, int idTema, String idClassroom){
+        return daoFactory.getTemaxClassroomDAO().insertarArchivos(archivo, idTema, idClassroom);
+    }
+    
+    public static void guardarArchivoxTema(byte[] archivo,int idArchivo){
+        daoFactory.getTemaxClassroomDAO().guardarArchivo(archivo,idArchivo);
+    }
+    
+    public static void eliminarTemaxClassroom(int codTema,String codClassroom){
+        daoFactory.getTemaxClassroomDAO().eliminarTemaxClassroom(codTema,codClassroom);
+    }
+    
     //=========================================================================================
     //Evaluacion
     public static void insertarEvaluacion(Evaluacion evaluacion,String codClass,int codTema){
@@ -110,7 +123,9 @@ public abstract class DBController {
     public static ArrayList<Evaluacion> listarEvaluacionesXClassroom(String codigoClassroom){
         return daoFactory.getEvaluacionDAO().listarEvaluacionesXClassroom(codigoClassroom);
     }
-    
+    public static void eliminarEvaluacionxClassroom(int codigo){
+        daoFactory.getEvaluacionDAO().eliminarEvaluacionxClassroom(codigo);
+    }
     //=========================================================================================
     //Curso
     public static void insertarCurso(Curso curso){
@@ -125,18 +140,15 @@ public abstract class DBController {
         return daoFactory.getCursoDAO().eliminarCurso(idCurso);
     }
     
-    public static ArrayList<Curso> listarCursos(String nombre)
-    {
+    public static ArrayList<Curso> listarCursos(String nombre){
         return daoFactory.getCursoDAO().listarCurso(nombre);
     }
     
-    public static ArrayList<Curso> listarRequisitos(String codCur)
-    {
+    public static ArrayList<Curso> listarRequisitos(String codCur){
         return daoFactory.getCursoDAO().listarRequisitos(codCur);
     }
     
-    public static ArrayList<Curso> listarCursosSin(String nombre)
-    {
+    public static ArrayList<Curso> listarCursosSin(String nombre){
         return daoFactory.getCursoDAO().listarCursoSin(nombre);
     }
     
