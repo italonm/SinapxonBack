@@ -98,7 +98,7 @@ public class AlumnoServices {
     @WebMethod(operationName = "obtenerArchivo")
     public byte[] obtenerArchivo(@WebParam(name = "nombreArchivo") int idArchivo) throws IOException {
         byte[] bytesArchivo;
-        File arch = new File("D:\\Pruebas\\ARCHIVOS\\"+idArchivo);
+        File arch = new File("C:\\Archivos\\"+idArchivo);
         return Files.readAllBytes(arch.toPath());
     }
     

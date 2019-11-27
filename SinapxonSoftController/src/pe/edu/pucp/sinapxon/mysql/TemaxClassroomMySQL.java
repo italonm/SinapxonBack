@@ -51,7 +51,7 @@ public class TemaxClassroomMySQL implements TemaxClassroomDAO{
     public int insertarArchivos(Archivo_x_Tema archivo, int idTema, String idClassroom){
         try {
             con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
-            cs = con.prepareCall("{call INSERTAR_ARCHIVO_X_TEMA(?,?,?,?)}");
+            cs = con.prepareCall("{call INSERTAR_ARCHIVO_X_TEMA(?,?,?,?,?)}");
             cs.setString("_NOMBRE", archivo.getNombre());
             cs.setString("_DESCRIPCION", " ");
             cs.setInt("_FID_TEMA", idTema);
@@ -106,7 +106,7 @@ public class TemaxClassroomMySQL implements TemaxClassroomDAO{
 
     @Override
     public void guardarArchivo(byte[] archivo,int idArchivo) {
-        File file= new File("D:\\cache personal\\"+String.valueOf(idArchivo));
+        File file= new File("C:\\Archivos\\"+String.valueOf(idArchivo));
         try {
             Files.write(file.toPath(), archivo);
         } catch (IOException ex) {

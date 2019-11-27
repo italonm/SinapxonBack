@@ -67,6 +67,11 @@ public class ProfesorServices {
         return DBController.listarPeriodos();
     }
     
+    @WebMethod(operationName = "listarPeriodosDisponibles")
+    public ArrayList<Periodo> listarPeriodosDisponibles(){
+        return DBController.listarPeriodosDisponibles();
+    }
+    
     @WebMethod(operationName = "insertarSolicitudClassroom")
     public void insertarSolicitudClassroom(@WebParam(name="solicitudclassroom")SolicitudClassroom solicitudclassroom){
         DBController.insertarSolicitudClassroom(solicitudclassroom);
