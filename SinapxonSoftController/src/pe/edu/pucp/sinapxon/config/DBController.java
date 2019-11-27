@@ -8,6 +8,7 @@ package pe.edu.pucp.sinapxon.config;
 import java.util.ArrayList;
 import java.util.Date;
 import pe.edu.pucp.sinapxon.model.Alumno;
+import pe.edu.pucp.sinapxon.model.Archivo_x_Tema;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
 import pe.edu.pucp.sinapxon.model.Especialidad;
@@ -253,5 +254,13 @@ public abstract class DBController {
     
     public static ArrayList<Pais> listarPaises(){
         return daoFactory.getPaisDAO().listarPaises();
+    }
+    
+    //=========================================================================================
+    //Archivos
+    
+    public static ArrayList<Archivo_x_Tema> listarArchivosXTemasXClassroom(int idTema, String idClassroom)
+    {
+        return daoFactory.getArchivoXTemaDAO().listarArchivosXTemaXClassroom(idTema, idClassroom);
     }
 }
