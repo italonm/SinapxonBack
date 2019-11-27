@@ -117,7 +117,7 @@ public class CursoMySQL implements CursoDAO{
             cs.setString("_ID_CURSO", curso.getCodigo());
             cs.setString("_NOMBRE",curso.getNombre());
             cs.setString("_DESCRIPCION",curso.getDescripcion());
-            cs.setString("_ESTADO",curso.getDescripcion());
+            cs.setInt("_ESTADO",curso.getEstado());
             cs.executeUpdate();
             for(Curso cur : curso.getCursos()){
                 cs = con.prepareCall("{call INSERTAR_REQUISITO(?,?)}");
