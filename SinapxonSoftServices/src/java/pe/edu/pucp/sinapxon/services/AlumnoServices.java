@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.TimeZone;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -23,11 +24,15 @@ import pe.edu.pucp.sinapxon.model.Tema_x_Classroom;
 
 /**
  *
- * @author Italo
+ * @author Rick
  */
 @WebService(serviceName = "AlumnoServices")
 public class AlumnoServices {
 
+    public AlumnoServices(){
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+    }
+    
     @WebMethod(operationName = "listarClassroomxAlumno")
     public ArrayList<Classroom> listarClassroomxAlumno(@WebParam(name="codigo")String codigo){
         return DBController.listarClassroomxAlumno(codigo);

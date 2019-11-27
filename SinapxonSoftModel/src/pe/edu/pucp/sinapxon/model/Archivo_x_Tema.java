@@ -11,6 +11,7 @@ public class Archivo_x_Tema {
     private int id_archivo_x_tema;
     private String nombre;
     private Tema_x_Classroom tema;
+    private String descripcion;
     
     public Archivo_x_Tema() {
         
@@ -39,6 +40,20 @@ public class Archivo_x_Tema {
     
     public void setTema(Tema_x_Classroom tema) {
         this.tema = tema;
+    }
+
+    /**
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
     
 }

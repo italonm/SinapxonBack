@@ -5,14 +5,20 @@
  */
 package pe.edu.pucp.sinapxon.mysql;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pe.edu.pucp.sinapxon.config.DBManager;
 import pe.edu.pucp.sinapxon.dao.TemaxClassroomDAO;
+import pe.edu.pucp.sinapxon.model.Archivo_x_Tema;
 import pe.edu.pucp.sinapxon.model.Tema_x_Classroom;
 
 /**
@@ -23,6 +29,7 @@ public class TemaxClassroomMySQL implements TemaxClassroomDAO{
     
     Connection con;
     CallableStatement cs;
+    
     @Override
     public void insertarTemaxClassroom(Tema_x_Classroom tema) {
         try{
@@ -39,7 +46,24 @@ public class TemaxClassroomMySQL implements TemaxClassroomDAO{
             try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
         }
     }
-
+    
+    @Override
+    public int insertarArchivos(Archivo_x_Tema archivo, int idTema, String idClassroom){
+        try {
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call INSERTAR_ARCHIVO_X_TEMA(?,?,?,?)}");
+            cs.setString("_NOMBRE", archivo.getNombre());
+            cs.setString("_DESCRIPCION", " ");
+            cs.setInt("_FID_TEMA", idTema);
+            cs.setString("_FID_CLASSROOM", idClassroom);
+            cs.registerOutParameter("_ID_ARCHIVO_X_TEMA", java.sql.Types.INTEGER);
+            cs.executeUpdate();
+            return cs.getInt("_ID_ARCHIVO_X_TEMA");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
+    }
     @Override
     public ArrayList<Tema_x_Classroom> listarTemaxClassroom(String id) {
         ArrayList<Tema_x_Classroom> temas = new ArrayList<>();
@@ -65,4 +89,28 @@ public class TemaxClassroomMySQL implements TemaxClassroomDAO{
         return temas;
     }
     
+    @Override
+    public void eliminarTemaxClassroom(int codTema,String codClassroom) {
+        try{
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call ELIMINAR_TEMA(?,?)}");
+            cs.setInt("_ID_TEMA",codTema);
+            cs.setString("_ID_CLASSROOM",codClassroom);
+            cs.executeUpdate();
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+    }
+
+    @Override
+    public void guardarArchivo(byte[] archivo,int idArchivo) {
+        File file= new File("D:\\cache personal\\"+String.valueOf(idArchivo));
+        try {
+            Files.write(file.toPath(), archivo);
+        } catch (IOException ex) {
+            Logger.getLogger(TemaxClassroomMySQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

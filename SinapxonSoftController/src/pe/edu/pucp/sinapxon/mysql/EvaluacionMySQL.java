@@ -69,5 +69,19 @@ public class EvaluacionMySQL implements EvaluacionDAO{
         }
         return evaluaciones;
     }
+
+    @Override
+    public void eliminarEvaluacionxClassroom(int codigo) {
+        try{
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs = con.prepareCall("{call ELIMINAR_EVALUACION(?)}");
+            cs.setInt("_ID_EVALUACION",codigo);
+            cs.executeUpdate();
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+    }
     
 }
