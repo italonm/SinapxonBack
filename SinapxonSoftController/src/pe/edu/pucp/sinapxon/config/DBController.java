@@ -8,9 +8,11 @@ package pe.edu.pucp.sinapxon.config;
 import java.util.ArrayList;
 import java.util.Date;
 import pe.edu.pucp.sinapxon.model.Alumno;
+import pe.edu.pucp.sinapxon.model.Archivo_x_Entregable;
 import pe.edu.pucp.sinapxon.model.Archivo_x_Tema;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
+import pe.edu.pucp.sinapxon.model.Entregable;
 import pe.edu.pucp.sinapxon.model.Especialidad;
 import pe.edu.pucp.sinapxon.model.Evaluacion;
 import pe.edu.pucp.sinapxon.model.Idioma;
@@ -256,9 +258,13 @@ public abstract class DBController {
     
     //=========================================================================================
     //Archivos
-    
-    public static ArrayList<Archivo_x_Tema> listarArchivosXTemasXClassroom(int idTema, String idClassroom)
-    {
+    public static ArrayList<Archivo_x_Tema> listarArchivosXTemasXClassroom(int idTema, String idClassroom){
         return daoFactory.getArchivoXTemaDAO().listarArchivosXTemaXClassroom(idTema, idClassroom);
+    }
+    
+    //=========================================================================================
+    //Archivo_x_Entregable
+    public static ArrayList<Archivo_x_Entregable> listarArchivosXEntregable(Entregable entregable){
+        return daoFactory.getArchivoXEntregableDAO().listarArchivosXEntregable(entregable);
     }
 }

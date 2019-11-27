@@ -6,6 +6,7 @@
 package pe.edu.pucp.sinapxon.config;
 
 import pe.edu.pucp.sinapxon.dao.AlumnoDAO;
+import pe.edu.pucp.sinapxon.dao.Archivo_x_EntregableDAO;
 import pe.edu.pucp.sinapxon.dao.Archivo_x_TemaDAO;
 import pe.edu.pucp.sinapxon.dao.ClassroomDAO;
 import pe.edu.pucp.sinapxon.dao.ClassroomxAlumnoDAO;
@@ -20,6 +21,7 @@ import pe.edu.pucp.sinapxon.dao.ProfesorDAO;
 import pe.edu.pucp.sinapxon.dao.SolicitudClassroomDAO;
 import pe.edu.pucp.sinapxon.dao.TemaDAO;
 import pe.edu.pucp.sinapxon.dao.TemaxClassroomDAO;
+import pe.edu.pucp.sinapxon.model.Archivo_x_Entregable;
 
 /**
  *
@@ -42,6 +44,7 @@ public abstract class DAOFactory {
     public abstract EvaluacionDAO getEvaluacionDAO();
     public abstract ClassroomxAlumnoDAO getClassroomXAlumnoDAO();
     public abstract Archivo_x_TemaDAO getArchivoXTemaDAO();
+    public abstract Archivo_x_EntregableDAO getArchivoXEntregableDAO();
     
     public static DAOFactory getDAOFactory(){
         return new MySQLDAOFactory();
