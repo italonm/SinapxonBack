@@ -6,12 +6,16 @@
 package pe.edu.pucp.sinapxon.mysql;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pe.edu.pucp.sinapxon.config.DBManager;
 import pe.edu.pucp.sinapxon.dao.TemaxClassroomDAO;
 import pe.edu.pucp.sinapxon.model.Archivo_x_Tema;
@@ -27,7 +31,7 @@ public class TemaxClassroomMySQL implements TemaxClassroomDAO{
     CallableStatement cs;
     
     @Override
-    public int insertarTemaxClassroom(Tema_x_Classroom tema) {
+    public void insertarTemaxClassroom(Tema_x_Classroom tema) {
         try{
             con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
             cs = con.prepareCall("{call INSERTAR_TEMA(?,?,?,?)}");
@@ -35,19 +39,16 @@ public class TemaxClassroomMySQL implements TemaxClassroomDAO{
             cs.setString("_COD_CLASSROOM",tema.getClassroom().getCodigo());
             cs.setString("_DESCRIPCION", tema.getDescripcion());
             cs.setString("_LINK", tema.getLink());
-            cs.registerOutParameter("_ID_EVALUACION", java.sql.Types.INTEGER);
             cs.executeUpdate();
-            return cs.getInt("_ID_EVALUACION");
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
         }finally{
             try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
-            return 0;
         }
     }
     
     @Override
-    public void insertarArchivos(Archivo_x_Tema archivo, int idTema, String idClassroom){
+    public int insertarArchivos(Archivo_x_Tema archivo, int idTema, String idClassroom){
         try {
             con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
             cs = con.prepareCall("{call INSERTAR_ARCHIVO_X_TEMA(?,?,?,?)}");
@@ -55,11 +56,13 @@ public class TemaxClassroomMySQL implements TemaxClassroomDAO{
             cs.setString("_DESCRIPCION", " ");
             cs.setInt("_FID_TEMA", idTema);
             cs.setString("_FID_CLASSROOM", idClassroom);
+            cs.registerOutParameter("_ID_ARCHIVO_X_TEMA", java.sql.Types.INTEGER);
             cs.executeUpdate();
+            return cs.getInt("_ID_ARCHIVO_X_TEMA");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-            
+        return 0;
     }
     @Override
     public ArrayList<Tema_x_Classroom> listarTemaxClassroom(String id) {
@@ -98,6 +101,16 @@ public class TemaxClassroomMySQL implements TemaxClassroomDAO{
             System.out.println(ex.getMessage());
         }finally{
             try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+    }
+
+    @Override
+    public void guardarArchivo(byte[] archivo,int idArchivo) {
+        File file= new File("D:\\cache personal\\"+String.valueOf(idArchivo));
+        try {
+            Files.write(file.toPath(), archivo);
+        } catch (IOException ex) {
+            Logger.getLogger(TemaxClassroomMySQL.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

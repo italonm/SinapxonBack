@@ -42,7 +42,7 @@ public class ServletReport extends HttpServlet {
             JasperPrint jp = JasperFillManager.fillReport(reporte,hm,con);
             con.close();
             JasperExportManager.exportReportToPdfStream(jp, outStream);
-        } catch(IOException | ClassNotFoundException | SQLException | JRException ex){
+        } catch(Exception ex){
             System.out.println(ex.getMessage());
         }
     }

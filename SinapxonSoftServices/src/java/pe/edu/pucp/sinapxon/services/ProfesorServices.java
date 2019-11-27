@@ -78,13 +78,18 @@ public class ProfesorServices {
     }
     
     @WebMethod(operationName = "insertarTemaxClassroom")
-    public int insertarTemaxClassroom(@WebParam(name="tema")Tema_x_Classroom tema){
-        return DBController.insertarTemaxClassroom(tema);
+    public void insertarTemaxClassroom(@WebParam(name="tema")Tema_x_Classroom tema){
+        DBController.insertarTemaxClassroom(tema);
     }
     
     @WebMethod(operationName = "insertarArchivoXTema")
-    public void insertarArchivo(Archivo_x_Tema archivo, int idTema, String idClassroom){
-        DBController.insertarArchivos(archivo,idTema,idClassroom);
+    public int insertarArchivo(Archivo_x_Tema archivo, int idTema, String idClassroom){
+        return DBController.insertarArchivos(archivo,idTema,idClassroom);
+    }
+    
+    @WebMethod(operationName = "guardarArchivoxTema")
+    public void guardarArchivoxTema(byte[] archivo,int idArchivo){
+        DBController.guardarArchivoxTema(archivo,idArchivo);
     }
     
     @WebMethod(operationName = "listarTemas")

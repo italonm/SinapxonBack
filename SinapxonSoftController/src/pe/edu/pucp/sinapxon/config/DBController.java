@@ -93,12 +93,16 @@ public abstract class DBController {
         return daoFactory.getTemaxClassroomDAO().listarTemaxClassroom(id);
     }
     
-    public static int insertarTemaxClassroom(Tema_x_Classroom tema){
-        return daoFactory.getTemaxClassroomDAO().insertarTemaxClassroom(tema);
+    public static void insertarTemaxClassroom(Tema_x_Classroom tema){
+        daoFactory.getTemaxClassroomDAO().insertarTemaxClassroom(tema);
     }
     
-    public static void insertarArchivos(Archivo_x_Tema archivo, int idTema, String idClassroom){
-        daoFactory.getTemaxClassroomDAO().insertarArchivos(archivo, idTema, idClassroom);
+    public static int insertarArchivos(Archivo_x_Tema archivo, int idTema, String idClassroom){
+        return daoFactory.getTemaxClassroomDAO().insertarArchivos(archivo, idTema, idClassroom);
+    }
+    
+    public static void guardarArchivoxTema(byte[] archivo,int idArchivo){
+        daoFactory.getTemaxClassroomDAO().guardarArchivo(archivo,idArchivo);
     }
     
     public static void eliminarTemaxClassroom(int codTema,String codClassroom){
