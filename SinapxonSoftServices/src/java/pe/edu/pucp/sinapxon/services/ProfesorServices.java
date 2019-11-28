@@ -16,12 +16,6 @@ import java.util.TimeZone;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
 import pe.edu.pucp.sinapxon.config.DBController;
 import pe.edu.pucp.sinapxon.config.DBManager;
 import pe.edu.pucp.sinapxon.model.Alumno;
@@ -35,7 +29,7 @@ import pe.edu.pucp.sinapxon.model.Periodo;
 import pe.edu.pucp.sinapxon.model.SolicitudClassroom;
 import pe.edu.pucp.sinapxon.model.Tema;
 import pe.edu.pucp.sinapxon.model.Tema_x_Classroom;
-import pe.edu.pucp.sinapxon.servlet.ServletReport;
+//import pe.edu.pucp.sinapxon.servlet.ServletReport;
 
 /**
  *
@@ -134,23 +128,23 @@ public class ProfesorServices {
         DBController.eliminarEvaluacionxClassroom(codigo);
     }
     
-    @WebMethod(operationName = "generarReportePDF")
-    public byte[] generarReportePDF(@WebParam (name = "codClassroom") String codClassroom){
-        byte[] arreglo = null;
-        try {
-            JasperReport reporte = (JasperReport) JRLoader.loadObjectFromFile(ServletReport.class.getResource("/pe/edu/pucp/sinapxon/reports/ReporteAlumnosConNotasXClassroom.jasper").getFile());
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
-            HashMap hm = new HashMap();
-            hm.put("FID_CLASSROOM", codClassroom);
-            JasperPrint jp = 
-                    JasperFillManager.fillReport(reporte,hm,con);
-            arreglo = JasperExportManager.exportReportToPdf(jp);
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-        return arreglo;
-    }
+//    @WebMethod(operationName = "generarReportePDF")
+//    public byte[] generarReportePDF(@WebParam (name = "codClassroom") String codClassroom){
+//        byte[] arreglo = null;
+//        try {
+//            JasperReport reporte = (JasperReport) JRLoader.loadObjectFromFile(ServletReport.class.getResource("/pe/edu/pucp/sinapxon/reports/ReporteAlumnosConNotasXClassroom.jasper").getFile());
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            Connection con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+//            HashMap hm = new HashMap();
+//            hm.put("FID_CLASSROOM", codClassroom);
+//            JasperPrint jp = 
+//                    JasperFillManager.fillReport(reporte,hm,con);
+//            arreglo = JasperExportManager.exportReportToPdf(jp);
+//        }catch(Exception ex){
+//            System.out.println(ex.getMessage());
+//        }
+//        return arreglo;
+//    }
     
     @WebMethod(operationName = "calificarEntregable")
     public void calificarEntregable(
