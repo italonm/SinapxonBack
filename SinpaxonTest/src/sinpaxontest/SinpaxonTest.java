@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import pe.edu.pucp.sinapxon.config.DBController;
 import pe.edu.pucp.sinapxon.model.Alumno;
+import pe.edu.pucp.sinapxon.model.Archivo_x_Entregable;
 import pe.edu.pucp.sinapxon.model.Archivo_x_Tema;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
@@ -76,10 +77,23 @@ public class SinpaxonTest {
 //            }
 //        }
         
-        ArrayList<Archivo_x_Tema> archivos = null;
-        archivos = DBController.listarArchivosXTemasXClassroom(3, "H-0222");
-        for (Archivo_x_Tema archivo : archivos) {
-            System.out.println(archivo.getNombre());
+//        ArrayList<Archivo_x_Tema> archivos = null;
+//        archivos = DBController.listarArchivosXTemasXClassroom(3, "H-0222");
+//        for (Archivo_x_Tema archivo : archivos) {
+//            System.out.println(archivo.getNombre());
+//        }
+        
+//        Archivo_x_Entregable arch = new Archivo_x_Entregable();
+//        arch.setNombre("hola.c");
+//        int a = DBController.insertarArchivoXEntregable(arch);
+//        DBController.insertarEntregable(14, "20190", "H-0222", " ", a);
+//        System.out.println(a);
+        
+        ArrayList<Archivo_x_Entregable> archs;
+        archs = DBController.listarArchivosXEntregable(14, "20190", "H-0222");
+        
+        for (Archivo_x_Entregable arch : archs) {
+            System.out.println(arch.getNombre());
         }
     }
 }

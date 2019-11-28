@@ -12,6 +12,7 @@ import pe.edu.pucp.sinapxon.model.Archivo_x_Entregable;
 import pe.edu.pucp.sinapxon.model.Archivo_x_Tema;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
+import pe.edu.pucp.sinapxon.model.Entregable;
 import pe.edu.pucp.sinapxon.model.Especialidad;
 import pe.edu.pucp.sinapxon.model.Evaluacion;
 import pe.edu.pucp.sinapxon.model.Idioma;
@@ -290,5 +291,9 @@ public abstract class DBController {
     public static void eliminarEntregable(int idEvaluacion, String idAlumno, String idClassroom)
     {
         daoFactory.getEntregableDAO().eliminarEntregable(idEvaluacion, idAlumno, idClassroom);
+    }
+    
+    public static ArrayList<Archivo_x_Entregable> listarArchivosXEntregable(int idEvaluacion, String idAlumno, String idClassroom){
+        return daoFactory.getArchivoXEntregableDAO().listarArchivosXEntregable(idEvaluacion, idAlumno, idClassroom);
     }
 }

@@ -8,6 +8,8 @@ package pe.edu.pucp.sinapxon.services;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.TimeZone;
 import javax.jws.WebService;
@@ -127,5 +129,35 @@ public class AlumnoServices {
             @WebParam(name = "idClassroom") String idClassroom)
     {
         DBController.eliminarEntregable(idEvaluacion, idAlumno, idClassroom);
+    }
+    
+    @WebMethod(operationName = "listarArchivosXAlumnoXClassroomXEvaluacion")
+    public ArrayList<Archivo_x_Entregable> listarArchivosXAlumnoXClassroomXEvaluacion(
+            @WebParam(name = "idEvaluacion")int idEvaluacion,
+            @WebParam(name = "idAlumno")String idAlumno,
+            @WebParam(name = "idClassroom")String idClassroom
+    )
+    {
+        return DBController.listarArchivosXEntregable(idEvaluacion, idAlumno, idClassroom);
+    }
+    
+    @WebMethod(operationName = "guardarArchivo")
+    public void guardarArchivo(@WebParam(name = "bytesArchivo")byte[] archivo,@WebParam(name = "idArchivo")int idArchivo){
+        Path path = Paths.get("C:\\Entregables");
+        if(Files.exists(path))
+        {
+            File file= new File(path.toString()+"\\"+String.valueOf(idArchivo));
+            try {
+                Files.write(file.toPath(), archivo);
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        else
+        {
+            new File("C:\\Entregables").mkdir();
+        }
+        
+        
     }
 }
