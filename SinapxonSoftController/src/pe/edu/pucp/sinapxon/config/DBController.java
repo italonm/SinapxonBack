@@ -282,6 +282,9 @@ public abstract class DBController {
     {
         return daoFactory.getArchivoXEntregableDAO().insertarArchivo_x_Entregable(archivo);
     }
+    public static void calificarEntregable(int idEvaluacion, String idAlumno, String idClassroom,float nota){
+        daoFactory.getEntregableDAO().calificarEntregable(idEvaluacion, idAlumno, idClassroom, nota);
+    }
     
     public static void insertarEntregable(int idEvaluacion, String idAlumno, String idClassroom, String descripcion, int idArchivoXEntregable)
     {
@@ -295,5 +298,8 @@ public abstract class DBController {
     
     public static ArrayList<Archivo_x_Entregable> listarArchivosXEntregable(int idEvaluacion, String idAlumno, String idClassroom){
         return daoFactory.getArchivoXEntregableDAO().listarArchivosXEntregable(idEvaluacion, idAlumno, idClassroom);
+    }
+    public static ArrayList<Entregable> listarEntregables(int idEvaluacion, String idClassroom){
+        return daoFactory.getEntregableDAO().listarEntregables(idEvaluacion, idClassroom);
     }
 }

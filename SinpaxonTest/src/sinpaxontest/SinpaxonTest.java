@@ -13,6 +13,7 @@ import pe.edu.pucp.sinapxon.model.Archivo_x_Entregable;
 import pe.edu.pucp.sinapxon.model.Archivo_x_Tema;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
+import pe.edu.pucp.sinapxon.model.Entregable;
 import pe.edu.pucp.sinapxon.model.Especialidad;
 import pe.edu.pucp.sinapxon.model.Evaluacion;
 import pe.edu.pucp.sinapxon.model.Idioma;

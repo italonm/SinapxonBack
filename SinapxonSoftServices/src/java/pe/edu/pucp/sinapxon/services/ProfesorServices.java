@@ -28,6 +28,7 @@ import pe.edu.pucp.sinapxon.model.Alumno;
 import pe.edu.pucp.sinapxon.model.Archivo_x_Tema;
 import pe.edu.pucp.sinapxon.model.Classroom;
 import pe.edu.pucp.sinapxon.model.Curso;
+import pe.edu.pucp.sinapxon.model.Entregable;
 import pe.edu.pucp.sinapxon.model.Evaluacion;
 import pe.edu.pucp.sinapxon.model.Idioma;
 import pe.edu.pucp.sinapxon.model.Periodo;
@@ -151,4 +152,19 @@ public class ProfesorServices {
         return arreglo;
     }
     
+    @WebMethod(operationName = "calificarEntregable")
+    public void calificarEntregable(
+            @WebParam(name = "idEvaluacion") int idEvaluacion,
+            @WebParam(name = "idAlumno")String idAlumno,
+            @WebParam(name = "idClassroom")String idClassroom,
+            @WebParam(name = "nota")float nota
+    )
+    {
+        
+    }
+    
+    @WebMethod(operationName = "listarEntregables")
+    public ArrayList<Entregable> listarEntregables(int idEvaluacion, String idClassroom){
+        return DBController.listarEntregables(idEvaluacion, idClassroom);
+    }
 }
