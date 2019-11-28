@@ -206,4 +206,31 @@ public class CursoMySQL implements CursoDAO{
         return cursos;
     }
     
+    @Override
+    public ArrayList<Curso> listarCursoxRequisito(String codReq) {
+        ArrayList<Curso> curxrequisitos = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBManager.url, DBManager.user, DBManager.password);
+            cs1 = con.prepareCall("{call LISTAR_CURSOS_X_REQUISITO(?)}");
+            cs1.setString("_CODIGO_REQ", codReq);
+            ResultSet rs2 = cs1.executeQuery();
+            while(rs2.next()){
+                Curso creq = new Curso();
+                creq.setCodigo(rs2.getString("CODIGO"));
+                creq.setNombre(rs2.getString("NOMBRE"));
+                creq.setDescripcion(rs2.getString("DESCRIPCION"));
+                creq.getAdministrador().setCodigo(rs2.getString("FID_ADMINISTRADOR"));
+                creq.getEspecialidad().setId_especialidad(rs2.getInt("FID_ESPECIALIDAD"));
+                creq.setEstado(rs2.getInt("ESTADO"));
+                curxrequisitos.add(creq);
+            }
+        }catch(ClassNotFoundException | SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            try{con.close();}catch(SQLException ex){System.out.println(ex.getMessage());}
+        }
+        return curxrequisitos;
+    }
+    
 }

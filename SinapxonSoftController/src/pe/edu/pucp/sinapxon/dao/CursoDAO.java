@@ -19,4 +19,5 @@ public interface CursoDAO {
     public ArrayList<Curso> listarCurso(String nombre);
     public ArrayList<Curso> listarCursoSin(String nombre);
     public ArrayList<Curso> listarRequisitos(String codCur);
+    public ArrayList<Curso> listarCursoxRequisito(String codReq);
 }

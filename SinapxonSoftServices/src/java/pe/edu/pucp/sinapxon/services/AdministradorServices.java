@@ -66,6 +66,11 @@ public class AdministradorServices {
         return cursos;
     }
     
+    @WebMethod(operationName = "listarCursosXRequsitos")
+    public ArrayList<Curso> listarCursosXRequsitos(String codReq) {
+        ArrayList<Curso> cursos = DBController.listarCursosxRequisito(codReq);
+        return cursos;
+    }
     //Especialidad 
     //==========================================================================
     @WebMethod(operationName = "insertarEspecialidad")
