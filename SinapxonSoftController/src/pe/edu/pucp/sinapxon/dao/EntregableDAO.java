@@ -14,6 +14,7 @@ import pe.edu.pucp.sinapxon.model.Entregable;
  */
 public interface EntregableDAO {
     public void insertarEntregable(int idEvaluacion, String idAlumno, String idClassroom, String descripcion, int idArchivoXEntregable);
+    public void calificarEntregable(int idEvaluacion, String idAlumno, String idClassroom,float nota);
     public void eliminarEntregable(int idEvaluacion, String idAlumno, String idClassroom);
-    public ArrayList<Entregable> listarEntregables(int idEvaluacion, String idAlumno, String idClassroom);
+    public ArrayList<Entregable> listarEntregables(int idEvaluacion,String idClassroom);
 }
